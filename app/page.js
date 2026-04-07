@@ -21,6 +21,8 @@ const testimonials = [
   { name: "Meera Das", roll: "21CS006", rating: 5, quote: "Boosted my confidence tremendously for technical interviews." },
   { name: "Karthik Kumar", roll: "21CS007", rating: 5, quote: "The AI interviewer feels incredibly realistic and helpful." },
   { name: "Ananya Reddy", roll: "21CS008", rating: 5, quote: "Perfect practice platform for coding interviews." },
+  { name: "Nitish Reddy", roll: "21CS009", rating: 5, quote: "Perfect practice platform for coding and development." },
+
 ];
 
 function TestimonialsSection() {
