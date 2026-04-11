@@ -17,6 +17,7 @@ import {
   ChevronUp,
   ExternalLink,
   Calendar,
+  Youtube,
 } from "lucide-react";
 import { careerRoadmaps } from "@/data/mockData";
 
@@ -479,23 +480,36 @@ const CareerRoadmaps = () => {
                                     <BookOpen className="w-4 h-4 mr-2 text-green-400" />
                                     Learning Resources
                                   </h4>
-                                  <div className="space-y-2">
+                                  <div className="space-y-3">
                                     {week.resources?.map(
                                       (resource, resourceIndex) => (
                                         <div
                                           key={resourceIndex}
-                                          className="flex items-center space-x-2"
+                                          className="flex items-center space-x-4"
                                         >
                                           <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0" />
                                           {typeof resource === 'object' && resource.url ? (
-                                            <a
-                                              href={resource.url}
-                                              target="_blank"
-                                              rel="noopener noreferrer"
-                                              className="text-gray-300 text-sm hover:text-green-400 cursor-pointer transition-colors hover:underline"
-                                            >
-                                              {resource.name}
-                                            </a>
+                                            <div className="flex items-center space-x-4">
+                                              <a
+                                                href={resource.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-gray-300 text-sm hover:text-green-400 cursor-pointer transition-colors hover:underline min-w-[120px]"
+                                              >
+                                                {resource.name}
+                                              </a>
+                                              {resource.yturl && (
+                                                <a
+                                                  href={resource.yturl}
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  className="text-red-500 hover:text-red-400 transition-all duration-200 transform hover:scale-125"
+                                                  title="Watch Video Tutorial"
+                                                >
+                                                  <Youtube className="w-5 h-5" />
+                                                </a>
+                                              )}
+                                            </div>
                                           ) : (
                                             <span className="text-gray-300 text-sm">
                                               {typeof resource === 'string' ? resource : resource.name}

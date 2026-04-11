@@ -1,984 +1,1181 @@
 export const careerRoadmaps = [
-  {
-    role: "webdeveloper",
-    description: "Master full-stack web development from frontend to backend",
-    duration: "16 weeks",
-    difficulty: "Beginner",
-    weeks: [
+{
+  "role": "webdeveloper",
+  "description": "Master full-stack web development from frontend to backend",
+  "duration": "10 weeks",
+  "difficulty": "Beginner",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "HTML & CSS Fundamentals",
+      "description": "Learn the building blocks of web development",
+      "skills": [
+        "HTML5 Semantic Elements",
+        "CSS3 Styling",
+        "Flexbox",
+        "Grid Layout"
+      ],
+      "resources": [
+        {
+          "name": "MDN Web Docs - HTML",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
+          "yturl": "https://www.youtube.com/watch?v=pQN-pnXPaVg"
+        },
+        {
+          "name": "CSS Tricks - Complete Guide",
+          "url": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+          "yturl": "https://www.youtube.com/watch?v=3YW65K6LcIA"
+        },
+        {
+          "name": "freeCodeCamp - Responsive Web Design",
+          "url": "https://www.freecodecamp.org/learn/responsive-web-design/",
+          "yturl": "https://www.youtube.com/watch?v=srvUrASNj0s"
+        }
+      ],
+      "milestone": "Build a responsive landing page",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "JavaScript Basics",
+      "description": "Understanding JavaScript fundamentals",
+      "skills": [
+        "Variables & Data Types",
+        "Functions",
+        "DOM Manipulation",
+        "Events"
+      ],
+      "resources": [
+        {
+          "name": "JavaScript.info - The Modern Tutorial",
+          "url": "https://javascript.info/",
+          "yturl": "https://www.youtube.com/watch?v=tY3EYcQJdY4"
+        },
+        {
+          "name": "Eloquent JavaScript - Free Book",
+          "url": "https://eloquentjavascript.net/",
+          "yturl": "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+        },
+        {
+          "name": "MDN JavaScript Guide",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+          "yturl": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
+        }
+      ],
+      "milestone": "Create an interactive calculator",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Advanced JavaScript",
+      "description": "ES6+ features and asynchronous programming",
+      "skills": [
+        "Arrow Functions",
+        "Promises",
+        "Async/Await",
+        "Modules"
+      ],
+      "resources": [
+        {
+          "name": "ES6 Features - MDN",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import",
+          "yturl": "https://www.youtube.com/watch?v=NCwa_xi0Uuc"
+        },
+        {
+          "name": "Async JavaScript - JavaScript.info",
+          "url": "https://javascript.info/async",
+          "yturl": "https://www.youtube.com/watch?v=PoRJizFvM7s"
+        },
+        {
+          "name": "You Don't Know JS - GitHub",
+          "url": "https://github.com/getify/You-Dont-Know-JS",
+          "yturl": "https://www.youtube.com/watch?v=Oe421EPjeBE"
+        }
+      ],
+      "milestone": "Build a weather app with API integration",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "React Fundamentals",
+      "description": "Introduction to React library",
+      "skills": [
+        "Components",
+        "Props",
+        "State",
+        "Event Handling"
+      ],
+      "resources": [
+        {
+          "name": "React Official Documentation",
+          "url": "https://react.dev/learn",
+          "yturl": "https://www.youtube.com/watch?v=bMknfKXIFA8"
+        },
+        {
+          "name": "React Tutorial - Official",
+          "url": "https://react.dev/learn/tutorial-tic-tac-toe",
+          "yturl": "https://www.youtube.com/watch?v=SqcY0GlETPk"
+        },
+        {
+          "name": "Scrimba React Course",
+          "url": "https://scrimba.com/learn/learnreact",
+          "yturl": "https://www.youtube.com/watch?v=2p7uKt5GZhQ"
+        }
+      ],
+      "milestone": "Create a todo list application",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "React Advanced Concepts",
+      "description": "Deep dive into React hooks and performance optimization",
+      "skills": [
+        "useEffect",
+        "Custom Hooks",
+        "Context API",
+        "React DevTools"
+      ],
+      "resources": [
+        {
+          "name": "React Docs - Hooks",
+          "url": "https://react.dev/reference/react",
+          "yturl": "https://www.youtube.com/watch?v=0ZJgIjIuY7U"
+        },
+        {
+          "name": "Kent C. Dodds Blog",
+          "url": "https://kentcdodds.com/blog",
+          "yturl": "https://www.youtube.com/watch?v=TNhaISOUy6Q"
+        },
+        {
+          "name": "React Performance Guide",
+          "url": "https://react.dev/learn/render-and-commit",
+          "yturl": "https://www.youtube.com/watch?v=5LrDIWkK_Bc"
+        }
+      ],
+      "milestone": "Build a notes app with light/dark mode toggle",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Routing & Navigation",
+      "description": "Implement client-side routing using React Router",
+      "skills": [
+        "React Router v6",
+        "Nested Routes",
+        "Dynamic Routing"
+      ],
+      "resources": [
+        {
+          "name": "React Router Docs",
+          "url": "https://reactrouter.com/en/main",
+          "yturl": "https://www.youtube.com/watch?v=Ul3y1LXxzdU"
+        },
+        {
+          "name": "Web Dev Simplified - React Router",
+          "url": "https://www.youtube.com/watch?v=943D7U74_sQ",
+          "yturl": "https://www.youtube.com/watch?v=943D7U74_sQ"
+        },
+        {
+          "name": "React Router Tutorial",
+          "url": "https://reactrouter.com/en/main/start/tutorial",
+          "yturl": "https://www.youtube.com/watch?v=4NpGzBEySvI"
+        }
+      ],
+      "milestone": "Build a multi-page blog website",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "State Management",
+      "description": "Manage complex state with tools like Redux and Context API",
+      "skills": [
+        "Redux Basics",
+        "Redux Toolkit",
+        "Middleware",
+        "Context vs Redux"
+      ],
+      "resources": [
+        {
+          "name": "Redux Official Documentation",
+          "url": "https://redux.js.org/introduction/getting-started",
+          "yturl": "https://www.youtube.com/watch?v=9boMnm5X9ak"
+        },
+        {
+          "name": "Redux Toolkit Quick Start",
+          "url": "https://redux-toolkit.js.org/tutorials/quick-start",
+          "yturl": "https://www.youtube.com/watch?v=bbkBuqC1rU4"
+        },
+        {
+          "name": "Redux Essentials Tutorial",
+          "url": "https://redux.js.org/tutorials/essentials/part-1-overview-concepts",
+          "yturl": "https://www.youtube.com/watch?v=fbwHB3cu4z4"
+        }
+      ],
+      "milestone": "Build a shopping cart app",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Backend with Node.js",
+      "description": "Set up a basic server using Node.js and Express.js",
+      "skills": [
+        "Express Routing",
+        "Middleware",
+        "REST APIs",
+        "Handling Requests"
+      ],
+      "resources": [
+        {
+          "name": "Node.js Official Documentation",
+          "url": "https://nodejs.org/en/docs/",
+          "yturl": "https://www.youtube.com/watch?v=Oe421EPjeBE"
+        },
+        {
+          "name": "Express.js Documentation",
+          "url": "https://expressjs.com/en/starter/installing.html",
+          "yturl": "https://www.youtube.com/watch?v=L72fhGm1tfE"
+        },
+        {
+          "name": "Node.js Crash Course - Traversy Media",
+          "url": "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
+          "yturl": "https://www.youtube.com/watch?v=fBNz5xF-Kx4"
+        }
+      ],
+      "milestone": "Create a simple REST API for products",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Databases with MongoDB",
+      "description": "Learn to store and retrieve data using MongoDB and Mongoose",
+      "skills": [
+        "MongoDB CRUD",
+        "Mongoose Models",
+        "Database Relationships"
+      ],
+      "resources": [
+        {
+          "name": "MongoDB University",
+          "url": "https://www.mongodb.com/university",
+          "yturl": "https://www.youtube.com/watch?v=ofme2o29ngU"
+        },
+        {
+          "name": "Mongoose Docs",
+          "url": "https://mongoosejs.com/docs/",
+          "yturl": "https://www.youtube.com/watch?v=DZBGEVgL2eE"
+        },
+        {
+          "name": "The Net Ninja MongoDB Series",
+          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jpvoYriYIqi9XtqJ7Nl7KO",
+          "yturl": "https://www.youtube.com/watch?v=ofme2o29ngU"
+        }
+      ],
+      "milestone": "Build a backend for a user registration system",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Authentication & Authorization",
+      "description": "Secure your applications with login, JWT tokens, and protected routes",
+      "skills": [
+        "JWT",
+        "Cookies & Sessions",
+        "Hashing with Bcrypt",
+        "Protected Routes"
+      ],
+      "resources": [
+        {
+          "name": "Auth0 Blog",
+          "url": "https://auth0.com/blog",
+          "yturl": "https://www.youtube.com/watch?v=7Q17ubqLfaM"
+        },
+        {
+          "name": "Traversy Media Auth Tutorial",
+          "url": "https://www.youtube.com/watch?v=enopDSs3DRw",
+          "yturl": "https://www.youtube.com/watch?v=enopDSs3DRw"
+        },
+        {
+          "name": "JWT.io Docs",
+          "url": "https://jwt.io/introduction",
+          "yturl": "https://www.youtube.com/watch?v=mbsmsi7l3r4"
+        }
+      ],
+      "milestone": "Implement login & signup system with JWT",
+      "completed": false
+    }
+  ]
+},
+{
+    "role": "ai/mlengineer",
+    "description": "Build intelligent systems and machine learning models",
+    "duration": "10 weeks",
+    "difficulty": "Intermediate",
+    "weeks": [
       {
-        week: 1,
-        title: "HTML & CSS Fundamentals",
-        description: "Learn the building blocks of web development",
-        skills: [
-          "HTML5 Semantic Elements",
-          "CSS3 Styling",
-          "Flexbox",
-          "Grid Layout",
+        "week": 1,
+        "title": "Python Programming",
+        "description": "Master Python for data science and ML",
+        "skills": ["Python Syntax", "Data Structures", "NumPy", "Pandas"],
+        "resources": [
+          {
+            "name": "Python.org - Official Tutorial",
+            "url": "https://docs.python.org/3/tutorial/",
+            "yturl": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+          },
+          {
+            "name": "NumPy Documentation",
+            "url": "https://numpy.org/doc/stable/user/quickstart.html",
+            "yturl": "https://www.youtube.com/watch?v=QUT1VHiLmmI"
+          },
+          {
+            "name": "Pandas Tutorial",
+            "url": "https://pandas.pydata.org/docs/user_guide/10min.html",
+            "yturl": "https://www.youtube.com/watch?v=vmEHCJofslg"
+          }
         ],
-        resources: [
-          {
-            name: "MDN Web Docs - HTML",
-            url: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-          },
-          {
-            name: "CSS Tricks - Complete Guide",
-            url: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
-          },
-          {
-            name: "freeCodeCamp - Responsive Web Design",
-            url: "https://www.freecodecamp.org/learn/responsive-web-design/",
-          },
-        ],
-        milestone: "Build a responsive landing page",
-        completed: false,
+        "milestone": "Complete data manipulation exercises",
+        "completed": false
       },
       {
-        week: 2,
-        title: "JavaScript Basics",
-        description: "Understanding JavaScript fundamentals",
-        skills: [
-          "Variables & Data Types",
-          "Functions",
-          "DOM Manipulation",
-          "Events",
-        ],
-        resources: [
-          {
-            name: "JavaScript.info - The Modern Tutorial",
-            url: "https://javascript.info/",
-          },
-          {
-            name: "Eloquent JavaScript - Free Book",
-            url: "https://eloquentjavascript.net/",
-          },
-          {
-            name: "MDN JavaScript Guide",
-            url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
-          },
-        ],
-        milestone: "Create an interactive calculator",
-        completed: false,
-      },
-      {
-        week: 3,
-        title: "Advanced JavaScript",
-        description: "ES6+ features and asynchronous programming",
-        skills: ["Arrow Functions", "Promises", "Async/Await", "Modules"],
-        resources: [
-          {
-            name: "ES6 Features - MDN",
-            url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla",
-          },
-          {
-            name: "Async JavaScript - JavaScript.info",
-            url: "https://javascript.info/async",
-          },
-          {
-            name: "You Don't Know JS - GitHub",
-            url: "https://github.com/getify/You-Dont-Know-JS",
-          },
-        ],
-        milestone: "Build a weather app with API integration",
-        completed: false,
-      },
-      {
-        week: 4,
-        title: "React Fundamentals",
-        description: "Introduction to React library",
-        skills: ["Components", "Props", "State", "Event Handling"],
-        resources: [
-          {
-            name: "React Official Documentation",
-            url: "https://react.dev/learn",
-          },
-          {
-            name: "React Tutorial - Official",
-            url: "https://react.dev/learn/tutorial-tic-tac-toe",
-          },
-          {
-            name: "Scrimba React Course",
-            url: "https://scrimba.com/learn/learnreact",
-          },
-        ],
-        milestone: "Create a todo list application",
-        completed: false,
-      },
-      {
-        week: 5,
-        title: "React Advanced Concepts",
-        description: "Deep dive into React hooks and performance optimization",
-        skills: ["useEffect", "Custom Hooks", "Context API", "React DevTools"],
-        resources: [
-          {
-            name: "React Docs - Hooks",
-            url: "https://react.dev/reference/react",
-          },
-          { name: "Kent C. Dodds Blog", url: "https://kentcdodds.com/blog" },
-          {
-            name: "React Performance Guide",
-            url: "https://react.dev/learn/render-and-commit",
-          },
-        ],
-        milestone: "Build a notes app with light/dark mode toggle",
-        completed: false,
-      },
-      {
-        week: 6,
-        title: "Routing & Navigation",
-        description: "Implement client-side routing using React Router",
-        skills: ["React Router v6", "Nested Routes", "Dynamic Routing"],
-        resources: [
-          { name: "React Router Docs", url: "https://reactrouter.com/en/main" },
-          {
-            name: "Web Dev Simplified - React Router",
-            url: "https://www.youtube.com/watch?v=Ul3y1LXxzdU",
-          },
-          {
-            name: "React Router Tutorial",
-            url: "https://reactrouter.com/en/main/start/tutorial",
-          },
-        ],
-        milestone: "Build a multi-page blog website",
-        completed: false,
-      },
-      {
-        week: 7,
-        title: "State Management",
-        description:
-          "Manage complex state with tools like Redux and Context API",
-        skills: [
-          "Redux Basics",
-          "Redux Toolkit",
-          "Middleware",
-          "Context vs Redux",
-        ],
-        resources: [
-          {
-            name: "Redux Official Documentation",
-            url: "https://redux.js.org/introduction/getting-started",
-          },
-          {
-            name: "Redux Toolkit Quick Start",
-            url: "https://redux-toolkit.js.org/tutorials/quick-start",
-          },
-          {
-            name: "Redux Essentials Tutorial",
-            url: "https://redux.js.org/tutorials/essentials/part-1-overview-concepts",
-          },
-        ],
-        milestone: "Build a shopping cart app",
-        completed: false,
-      },
-      {
-        week: 8,
-        title: "Backend with Node.js",
-        description: "Set up a basic server using Node.js and Express.js",
-        skills: [
-          "Express Routing",
-          "Middleware",
-          "REST APIs",
-          "Handling Requests",
-        ],
-        resources: [
-          {
-            name: "Node.js Official Documentation",
-            url: "https://nodejs.org/en/docs/",
-          },
-          {
-            name: "Express.js Documentation",
-            url: "https://expressjs.com/en/starter/installing.html",
-          },
-          {
-            name: "Node.js Crash Course - Traversy Media",
-            url: "https://www.youtube.com/watch?v=fBNz5xF-Kx4",
-          },
-        ],
-        milestone: "Create a simple REST API for products",
-        completed: false,
-      },
-      {
-        week: 9,
-        title: "Databases with MongoDB",
-        description:
-          "Learn to store and retrieve data using MongoDB and Mongoose",
-        skills: ["MongoDB CRUD", "Mongoose Models", "Database Relationships"],
-        resources: [
-          "MongoDB University",
-          "Mongoose Docs",
-          "The Net Ninja MongoDB Series",
-        ],
-        milestone: "Build a backend for a user registration system",
-        completed: false,
-      },
-      {
-        week: 10,
-        title: "Authentication & Authorization",
-        description:
-          "Secure your applications with login, JWT tokens, and protected routes",
-        skills: [
-          "JWT",
-          "Cookies & Sessions",
-          "Hashing with Bcrypt",
-          "Protected Routes",
-        ],
-        resources: [
-          "Auth0 Blog",
-          "Traversy Media Auth Tutorial",
-          "JWT.io Docs",
-        ],
-        milestone: "Implement login & signup system with JWT",
-        completed: false,
-      },
-    ],
-  },
-  {
-    role: "ai/mlengineer",
-    description: "Build intelligent systems and machine learning models",
-    duration: "20 weeks",
-    difficulty: "Intermediate",
-    weeks: [
-      {
-        week: 1,
-        title: "Python Programming",
-        description: "Master Python for data science and ML",
-        skills: ["Python Syntax", "Data Structures", "NumPy", "Pandas"],
-        resources: [
-          {
-            name: "Python.org - Official Tutorial",
-            url: "https://docs.python.org/3/tutorial/",
-          },
-          {
-            name: "NumPy Documentation",
-            url: "https://numpy.org/doc/stable/user/quickstart.html",
-          },
-          {
-            name: "Pandas Tutorial",
-            url: "https://pandas.pydata.org/docs/user_guide/10min.html",
-          },
-        ],
-        milestone: "Complete data manipulation exercises",
-        completed: false,
-      },
-      {
-        week: 2,
-        title: "Statistics & Mathematics",
-        description: "Foundation for machine learning",
-        skills: [
+        "week": 2,
+        "title": "Statistics & Mathematics",
+        "description": "Foundation for machine learning",
+        "skills": [
           "Descriptive Statistics",
           "Probability",
           "Linear Algebra",
-          "Calculus",
+          "Calculus"
         ],
-        resources: [
+        "resources": [
           {
-            name: "Khan Academy - Statistics",
-            url: "https://www.khanacademy.org/math/statistics-probability",
+            "name": "Khan Academy - Statistics",
+            "url": "https://www.khanacademy.org/math/statistics-probability",
+            "yturl": "https://www.youtube.com/watch?v=uhxtUt_-GyM"
           },
           {
-            name: "StatQuest - YouTube",
-            url: "https://www.youtube.com/c/joshstarmer",
+            "name": "StatQuest - YouTube",
+            "url": "https://www.youtube.com/c/joshstarmer",
+            "yturl": "https://www.youtube.com/watch?v=EbC1w4m-1Gw"
           },
           {
-            name: "3Blue1Brown - Linear Algebra",
-            url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
-          },
+            "name": "3Blue1Brown - Linear Algebra",
+            "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+            "yturl": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab"
+          }
         ],
-        milestone: "Statistical analysis project",
-        completed: false,
+        "milestone": "Statistical analysis project",
+        "completed": false
       },
       {
-        week: 3,
-        title: "Data Visualization",
-        description: "Learn to visualize data effectively",
-        skills: ["Matplotlib", "Seaborn", "Plotly", "Correlation Heatmaps"],
-        resources: [
+        "week": 3,
+        "title": "Data Visualization",
+        "description": "Learn to visualize data effectively",
+        "skills": ["Matplotlib", "Seaborn", "Plotly", "Correlation Heatmaps"],
+        "resources": [
           {
-            name: "Matplotlib Documentation",
-            url: "https://matplotlib.org/stable/tutorials/index.html",
+            "name": "Matplotlib Documentation",
+            "url": "https://matplotlib.org/stable/tutorials/index.html",
+            "yturl": "https://www.youtube.com/watch?v=wB9C0Mz9gSo"
           },
           {
-            name: "Seaborn Tutorial",
-            url: "https://seaborn.pydata.org/tutorial.html",
+            "name": "Seaborn Tutorial",
+            "url": "https://seaborn.pydata.org/tutorial.html",
+            "yturl": "https://www.youtube.com/watch?v=6GUZXDef2U0"
           },
           {
-            name: "Plotly Express Guide",
-            url: "https://plotly.com/python/plotly-express/",
-          },
+            "name": "Plotly Express Guide",
+            "url": "https://plotly.com/python/plotly-express/",
+            "yturl": "https://www.youtube.com/watch?v=DFMh6liDRtk"
+          }
         ],
-        milestone: "Create a data report with visual insights",
-        completed: false,
+        "milestone": "Create a data report with visual insights",
+        "completed": false
       },
       {
-        week: 4,
-        title: "Supervised Learning Basics",
-        description: "Build basic machine learning models",
-        skills: [
+        "week": 4,
+        "title": "Supervised Learning Basics",
+        "description": "Build basic machine learning models",
+        "skills": [
           "Linear Regression",
           "Logistic Regression",
-          "Model Evaluation",
+          "Model Evaluation"
         ],
-        resources: [
+        "resources": [
           {
-            name: "Scikit-learn User Guide",
-            url: "https://scikit-learn.org/stable/user_guide.html",
+            "name": "Scikit-learn User Guide",
+            "url": "https://scikit-learn.org/stable/user_guide.html",
+            "yturl": "https://www.youtube.com/watch?v=pYiddo88zew"
           },
           {
-            name: "Andrew Ng ML Course - Coursera",
-            url: "https://www.coursera.org/learn/machine-learning",
+            "name": "Andrew Ng ML Course - Coursera",
+            "url": "https://www.coursera.org/learn/machine-learning",
+            "yturl": "https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU"
           },
           {
-            name: "Kaggle Learn - Intro to ML",
-            url: "https://www.kaggle.com/learn/intro-to-machine-learning",
-          },
+            "name": "Kaggle Learn - Intro to ML",
+            "url": "https://www.kaggle.com/learn/intro-to-machine-learning",
+            "yturl": "https://www.youtube.com/watch?v=i_LwzRVP7bg"
+          }
         ],
-        milestone: "Predict student scores and loan approvals",
-        completed: false,
+        "milestone": "Predict student scores and loan approvals",
+        "completed": false
       },
       {
-        week: 5,
-        title: "Model Improvement & Evaluation",
-        description: "Tune and evaluate models with best practices",
-        skills: [
+        "week": 5,
+        "title": "Model Improvement & Evaluation",
+        "description": "Tune and evaluate models with best practices",
+        "skills": [
           "Cross-validation",
           "Grid Search",
           "Confusion Matrix",
-          "ROC Curve",
+          "ROC Curve"
         ],
-        resources: [
+        "resources": [
           {
-            name: "Scikit-learn Model Evaluation",
-            url: "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "name": "Scikit-learn Model Evaluation",
+            "url": "https://scikit-learn.org/stable/modules/model_evaluation.html",
+            "yturl": "https://www.youtube.com/watch?v=6XUSMOjV5E8"
           },
           {
-            name: "ML Cheat Sheet",
-            url: "https://ml-cheatsheet.readthedocs.io/en/latest/",
+            "name": "ML Cheat Sheet",
+            "url": "https://ml-cheatsheet.readthedocs.io/en/latest/",
+            "yturl": "https://www.youtube.com/watch?v=Kdsp6soqA7o"
           },
           {
-            name: "StatQuest - Model Evaluation",
-            url: "https://www.youtube.com/watch?v=Kdsp6soqA7o",
-          },
+            "name": "StatQuest - Model Evaluation",
+            "url": "https://www.youtube.com/watch?v=Kdsp6soqA7o",
+            "yturl": "https://www.youtube.com/watch?v=Kdsp6soqA7o"
+          }
         ],
-        milestone: "Improve accuracy of a classification model",
-        completed: false,
+        "milestone": "Improve accuracy of a classification model",
+        "completed": false
       },
       {
-        week: 6,
-        title: "Unsupervised Learning",
-        description: "Explore clustering and dimensionality reduction",
-        skills: ["K-Means", "Hierarchical Clustering", "PCA", "t-SNE"],
-        resources: [
+        "week": 6,
+        "title": "Unsupervised Learning",
+        "description": "Explore clustering and dimensionality reduction",
+        "skills": ["K-Means", "Hierarchical Clustering", "PCA", "t-SNE"],
+        "resources": [
           {
-            name: "Scikit-learn Clustering",
-            url: "https://scikit-learn.org/stable/modules/clustering.html",
+            "name": "Scikit-learn Clustering",
+            "url": "https://scikit-learn.org/stable/modules/clustering.html",
+            "yturl": "https://www.youtube.com/watch?v=4b5d3muPQmA"
           },
           {
-            name: "Khan Academy - PCA",
-            url: "https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/quadratic-approximations/a/the-hessian",
+            "name": "StatQuest - PCA",
+            "url": "https://www.youtube.com/watch?v=FgakZw6K1QQ",
+            "yturl": "https://www.youtube.com/watch?v=FgakZw6K1QQ"
           },
           {
-            name: "StatQuest - K-Means Clustering",
-            url: "https://www.youtube.com/watch?v=4b5d3muPQmA",
-          },
+            "name": "StatQuest - K-Means Clustering",
+            "url": "https://www.youtube.com/watch?v=4b5d3muPQmA",
+            "yturl": "https://www.youtube.com/watch?v=4b5d3muPQmA"
+          }
         ],
-        milestone: "Customer segmentation project",
-        completed: false,
+        "milestone": "Customer segmentation project",
+        "completed": false
       },
       {
-        week: 7,
-        title: "Natural Language Processing (NLP)",
-        description: "Work with text data and language models",
-        skills: [
+        "week": 7,
+        "title": "Natural Language Processing (NLP)",
+        "description": "Work with text data and language models",
+        "skills": [
           "Text Cleaning",
           "TF-IDF",
           "Word Embeddings",
-          "Text Classification",
+          "Text Classification"
         ],
-        resources: [
+        "resources": [
           {
-            name: "NLTK Book - Natural Language Processing",
-            url: "https://www.nltk.org/book/",
+            "name": "NLTK Book - Natural Language Processing",
+            "url": "https://www.nltk.org/book/",
+            "yturl": "https://www.youtube.com/watch?v=pr6ziftYXvA"
           },
           {
-            name: "spaCy Documentation",
-            url: "https://spacy.io/usage/spacy-101",
+            "name": "spaCy Documentation",
+            "url": "https://spacy.io/usage/spacy-101",
+            "yturl": "https://www.youtube.com/watch?v=M7SWr5xObkA"
           },
           {
-            name: "Kaggle NLP Datasets",
-            url: "https://www.kaggle.com/datasets?search=nlp",
-          },
+            "name": "freeCodeCamp - NLP with Python",
+            "url": "https://www.freecodecamp.org/news/natural-language-processing-tutorial/",
+            "yturl": "https://www.youtube.com/watch?v=X2vAabgKiuM"
+          }
         ],
-        milestone: "Build a sentiment analysis model",
-        completed: false,
+        "milestone": "Build a sentiment analysis model",
+        "completed": false
       },
       {
-        week: 8,
-        title: "Neural Networks & Deep Learning",
-        description: "Build and train neural networks",
-        skills: [
+        "week": 8,
+        "title": "Neural Networks & Deep Learning",
+        "description": "Build and train neural networks",
+        "skills": [
           "Perceptron",
           "Activation Functions",
           "Backpropagation",
-          "TensorFlow/Keras",
+          "TensorFlow/Keras"
         ],
-        resources: [
+        "resources": [
           {
-            name: "DeepLearning.ai - Neural Networks Course",
-            url: "https://www.coursera.org/learn/neural-networks-deep-learning",
+            "name": "DeepLearning.ai - Neural Networks Course",
+            "url": "https://www.coursera.org/learn/neural-networks-deep-learning",
+            "yturl": "https://www.youtube.com/watch?v=CS4cs9xVecg"
           },
           {
-            name: "TensorFlow Official Tutorials",
-            url: "https://www.tensorflow.org/tutorials",
+            "name": "TensorFlow Official Tutorials",
+            "url": "https://www.tensorflow.org/tutorials",
+            "yturl": "https://www.youtube.com/watch?v=tPYj3fFJGjk"
           },
           {
-            name: "3Blue1Brown - Neural Networks",
-            url: "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
-          },
+            "name": "3Blue1Brown - Neural Networks",
+            "url": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi",
+            "yturl": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi"
+          }
         ],
-        milestone: "Train a digit classifier with MNIST",
-        completed: false,
+        "milestone": "Train a digit classifier with MNIST",
+        "completed": false
       },
       {
-        week: 9,
-        title: "Computer Vision",
-        description: "Work with image data using CNNs",
-        skills: [
+        "week": 9,
+        "title": "Computer Vision",
+        "description": "Work with image data using CNNs",
+        "skills": [
           "Convolution Layers",
           "Pooling",
           "Data Augmentation",
-          "Image Classification",
+          "Image Classification"
         ],
-        resources: [
+        "resources": [
           {
-            name: "PyImageSearch - Computer Vision",
-            url: "https://pyimagesearch.com/start-here/",
+            "name": "PyImageSearch - Computer Vision",
+            "url": "https://pyimagesearch.com/start-here/",
+            "yturl": "https://www.youtube.com/watch?v=2gS6uX7VPWw"
           },
           {
-            name: "Keras Computer Vision Tutorials",
-            url: "https://keras.io/examples/vision/",
+            "name": "Keras Computer Vision Tutorials",
+            "url": "https://keras.io/examples/vision/",
+            "yturl": "https://www.youtube.com/watch?v=qFJeN9V1ZsI"
           },
           {
-            name: "FastAI - Practical Deep Learning",
-            url: "https://course.fast.ai/",
-          },
+            "name": "FastAI - Practical Deep Learning",
+            "url": "https://course.fast.ai/",
+            "yturl": "https://www.youtube.com/watch?v=0oyCUWLL_fU"
+          }
         ],
-        milestone: "Build a cat vs dog image classifier",
-        completed: false,
+        "milestone": "Build a cat vs dog image classifier",
+        "completed": false
       },
       {
-        week: 10,
-        title: "Model Deployment",
-        description: "Deploy your ML models to production",
-        skills: ["Flask API", "Streamlit", "Docker", "Heroku/Render"],
-        resources: [
+        "week": 10,
+        "title": "Model Deployment",
+        "description": "Deploy your ML models to production",
+        "skills": ["Flask API", "Streamlit", "Docker", "Heroku/Render"],
+        "resources": [
           {
-            name: "MLOps - Machine Learning Engineering",
-            url: "https://madewithml.com/courses/mlops/",
+            "name": "MLOps - Machine Learning Engineering",
+            "url": "https://madewithml.com/courses/mlops/",
+            "yturl": "https://www.youtube.com/watch?v=w71RHxAWxaM"
           },
           {
-            name: "Streamlit Documentation",
-            url: "https://docs.streamlit.io/",
+            "name": "Streamlit Documentation",
+            "url": "https://docs.streamlit.io/",
+            "yturl": "https://www.youtube.com/watch?v=JwSS70SZdyM"
           },
           {
-            name: "Flask for ML Deployment",
-            url: "https://flask.palletsprojects.com/en/2.3.x/tutorial/",
-          },
+            "name": "Flask for ML Deployment",
+            "url": "https://flask.palletsprojects.com/en/2.3.x/tutorial/",
+            "yturl": "https://www.youtube.com/watch?v=qNF1HqBvpGE"
+          }
         ],
-        milestone: "Deploy a machine learning web app",
-        completed: false,
-      },
-    ],
-  },
-  {
-    role: "datascience",
-    description:
-      "Analyze data and build models to extract insights and drive decisions",
-    duration: "20 weeks",
-    difficulty: "Intermediate",
-    weeks: [
-      {
-        week: 1,
-        title: "Python for Data Analysis",
-        description: "Master data manipulation using Python libraries",
-        skills: ["Python Basics", "NumPy", "Pandas", "Jupyter Notebooks"],
-        resources: [
-          {
-            name: "Python.org - Data Analysis",
-            url: "https://docs.python.org/3/tutorial/",
-          },
-          {
-            name: "Pandas Documentation",
-            url: "https://pandas.pydata.org/docs/user_guide/",
-          },
-          {
-            name: "Kaggle Python Course",
-            url: "https://www.kaggle.com/learn/python",
-          },
-        ],
-        milestone: "Perform EDA on a real dataset",
-        completed: false,
-      },
-      {
-        week: 2,
-        title: "Statistics & Probability",
-        description: "Core statistical concepts for analysis and modeling",
-        skills: [
-          "Mean, Median, Mode",
-          "Variance & Standard Deviation",
-          "Bayes Theorem",
-          "Distributions",
-        ],
-        resources: [
-          {
-            name: "Khan Academy - Statistics",
-            url: "https://www.khanacademy.org/math/statistics-probability",
-          },
-          {
-            name: "StatQuest - YouTube",
-            url: "https://www.youtube.com/c/joshstarmer",
-          },
-          {
-            name: "OpenIntro Statistics",
-            url: "https://www.openintro.org/book/os/",
-          },
-        ],
-        milestone: "Write a report interpreting statistical metrics",
-        completed: false,
-      },
-      {
-        week: 3,
-        title: "Data Cleaning & Preprocessing",
-        description: "Prepare real-world data for modeling",
-        skills: [
-          "Handling Missing Values",
-          "Outliers",
-          "Scaling",
-          "Encoding Categorical Variables",
-        ],
-        resources: [
-          {
-            name: "Kaggle - Data Cleaning",
-            url: "https://www.kaggle.com/learn/data-cleaning",
-          },
-          {
-            name: "Scikit-learn Preprocessing",
-            url: "https://scikit-learn.org/stable/modules/preprocessing.html",
-          },
-          {
-            name: "Towards Data Science - Data Cleaning",
-            url: "https://towardsdatascience.com/the-ultimate-guide-to-data-cleaning-3969843991d4",
-          },
-        ],
-        milestone: "Clean a messy dataset end-to-end",
-        completed: false,
-      },
-      {
-        week: 4,
-        title: "Data Visualization",
-        description: "Visualize trends and patterns in data",
-        skills: ["Matplotlib", "Seaborn", "Plotly", "Interactive Dashboards"],
-        resources: [
-          {
-            name: "Seaborn Tutorial Gallery",
-            url: "https://seaborn.pydata.org/examples/index.html",
-          },
-          {
-            name: "Matplotlib Gallery",
-            url: "https://matplotlib.org/stable/gallery/index.html",
-          },
-          {
-            name: "Plotly Python Graphing Library",
-            url: "https://plotly.com/python/",
-          },
-        ],
-        milestone: "Build a dashboard to explore a dataset",
-        completed: false,
-      },
-      {
-        week: 5,
-        title: "Exploratory Data Analysis (EDA)",
-        description: "Find insights and trends using EDA",
-        skills: [
-          "Univariate Analysis",
-          "Bivariate Plots",
-          "Correlation Analysis",
-        ],
-        resources: [
-          {
-            name: "Kaggle EDA Notebooks",
-            url: "https://www.kaggle.com/code?search=exploratory+data+analysis",
-          },
-          {
-            name: "Krish Naik - EDA Playlist",
-            url: "https://www.youtube.com/playlist?list=PLZoTAELRMXVPzj1D0i_6ajJ6gyD22b3jh",
-          },
-          {
-            name: "Towards Data Science - EDA",
-            url: "https://towardsdatascience.com/exploratory-data-analysis-8fc1cb20fd15",
-          },
-        ],
-        milestone: "Submit a complete EDA notebook on Kaggle",
-        completed: false,
-      },
-      {
-        week: 6,
-        title: "Supervised Machine Learning",
-        description: "Apply models to predict outcomes",
-        skills: [
-          "Linear Regression",
-          "Decision Trees",
-          "Random Forest",
-          "Model Evaluation",
-        ],
-        resources: [
-          {
-            name: "Scikit-learn Supervised Learning",
-            url: "https://scikit-learn.org/stable/supervised_learning.html",
-          },
-          {
-            name: "Kaggle Machine Learning Course",
-            url: "https://www.kaggle.com/learn/machine-learning",
-          },
-          {
-            name: "Google ML Crash Course",
-            url: "https://developers.google.com/machine-learning/crash-course",
-          },
-        ],
-        milestone: "Predict housing prices using regression",
-        completed: false,
-      },
-      {
-        week: 7,
-        title: "Unsupervised Learning",
-        description: "Cluster and reduce data dimensions",
-        skills: [
-          "K-Means Clustering",
-          "PCA",
-          "DBSCAN",
-          "Hierarchical Clustering",
-        ],
-        resources: [
-          {
-            name: "Scikit-learn Clustering",
-            url: "https://scikit-learn.org/stable/modules/clustering.html",
-          },
-          {
-            name: "Analytics Vidhya - Clustering",
-            url: "https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/",
-          },
-          {
-            name: "StatQuest - Clustering",
-            url: "https://www.youtube.com/watch?v=4b5d3muPQmA",
-          },
-        ],
-        milestone: "Perform customer segmentation project",
-        completed: false,
-      },
-      {
-        week: 8,
-        title: "Time Series Analysis",
-        description: "Work with temporal data and trends",
-        skills: ["Moving Averages", "ARIMA", "Seasonality", "Forecasting"],
-        resources: [
-          {
-            name: "Kaggle Time Series Course",
-            url: "https://www.kaggle.com/learn/time-series",
-          },
-          {
-            name: "Statsmodels Documentation",
-            url: "https://www.statsmodels.org/stable/user-guide.html",
-          },
-          {
-            name: "Codebasics - Time Series",
-            url: "https://www.youtube.com/playlist?list=PLeo1K3hjS3uuKaU2nBDwr6zrSOTzNCs0l",
-          },
-        ],
-        milestone: "Build a stock price predictor",
-        completed: false,
-      },
-      {
-        week: 9,
-        title: "Natural Language Processing for Data Science",
-        description: "Use text data for prediction and insights",
-        skills: [
-          "Tokenization",
-          "TF-IDF",
-          "Text Classification",
-          "Basic NLP Models",
-        ],
-        resources: [
-          {
-            name: "NLTK Book - Processing Raw Text",
-            url: "https://www.nltk.org/book/ch03.html",
-          },
-          {
-            name: "Kaggle NLP Datasets",
-            url: "https://www.kaggle.com/datasets?search=nlp",
-          },
-          {
-            name: "TextBlob Documentation",
-            url: "https://textblob.readthedocs.io/en/dev/",
-          },
-        ],
-        milestone: "Classify news headlines by topic",
-        completed: false,
-      },
-      {
-        week: 10,
-        title: "Capstone Project & Model Deployment",
-        description: "Apply everything in a real-world project",
-        skills: [
-          "Data Pipeline",
-          "Model Building",
-          "Flask/Streamlit App",
-          "GitHub Hosting",
-        ],
-        resources: [
-          {
-            name: "Streamlit Documentation",
-            url: "https://docs.streamlit.io/library/get-started",
-          },
-          {
-            name: "Flask Mega-Tutorial",
-            url: "https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world",
-          },
-          {
-            name: "Render Deployment Guide",
-            url: "https://render.com/docs/deploy-flask",
-          },
-        ],
-        milestone: "Deploy a data science project with dashboard",
-        completed: false,
-      },
-    ],
-  },
-  {
-    role: "CybersecurityAnalyst",
-    description:
-      "Protect systems and data from cyber threats and vulnerabilities",
-    duration: "20 weeks",
-    difficulty: "Intermediate",
-    weeks: [
-      {
-        week: 1,
-        title: "Introduction to Cybersecurity",
-        description: "Understand core concepts, threats, and the CIA triad",
-        skills: [
-          "CIA Triad",
-          "Threat Modeling",
-          "Types of Attacks",
-          "Security Terminology",
-        ],
-        resources: [
-          {
-            name: "Cybrary Intro Course",
-            url: "https://www.cybrary.it/course/introduction-to-it-and-cybersecurity/",
-          },
-          {
-            name: "NIST Framework",
-            url: "https://www.nist.gov/cyberframework",
-          },
-          {
-            name: "SANS Cyber Aces",
-            url: "https://cyberaces.org/courses/security",
-          },
-        ],
-        milestone: "Create a threat model for a web app",
-        completed: false,
-      },
-      {
-        week: 2,
-        title: "Networking Fundamentals",
-        description: "Understand how data moves across the internet",
-        skills: ["OSI Model", "TCP/IP", "IP Addressing", "Ports & Protocols"],
-        resources: [
-          {
-            name: "Cisco NetAcad",
-            url: "https://www.netacad.com/courses/networking/introduction-networks",
-          },
-          {
-            name: "Professor Messer",
-            url: "https://www.professormesser.com/network-plus/",
-          },
-          {
-            name: "NetworkChuck",
-            url: "https://www.youtube.com/c/NetworkChuck",
-          },
-        ],
-        milestone: "Map and document a home network layout",
-        completed: false,
-      },
-      {
-        week: 3,
-        title: "Operating Systems Security",
-        description: "Study OS-level vulnerabilities and protections",
-        skills: [
-          "Windows Security",
-          "Linux Permissions",
-          "File Systems",
-          "User Roles",
-        ],
-        resources: [
-          {
-            name: "OverTheWire",
-            url: "https://overthewire.org/wargames/bandit/",
-          },
-          {
-            name: "TryHackMe",
-            url: "https://tryhackme.com/room/linuxfundamentalspart1",
-          },
-          { name: "Linux Journey", url: "https://linuxjourney.com/" },
-        ],
-        milestone: "Harden a Linux VM and enable basic firewall rules",
-        completed: false,
-      },
-      {
-        week: 4,
-        title: "Cryptography Basics",
-        description: "Learn encryption, hashing, and digital signatures",
-        skills: [
-          "Symmetric & Asymmetric Encryption",
-          "Hashing Algorithms",
-          "SSL/TLS",
-        ],
-        resources: [
-          { name: "Crypto101", url: "https://www.crypto101.io/" },
-          {
-            name: "Khan Academy Crypto",
-            url: "https://www.khanacademy.org/computing/computer-science/cryptography",
-          },
-          { name: "SSL Labs", url: "https://www.ssllabs.com/ssltest/" },
-        ],
-        milestone: "Implement a simple Caesar cipher and hash checker",
-        completed: false,
-      },
-      {
-        week: 5,
-        title: "Web Application Security",
-        description: "Identify and mitigate web-based attacks",
-        skills: ["XSS", "SQL Injection", "CSRF", "Authentication Flaws"],
-        resources: [
-          {
-            name: "OWASP Top 10",
-            url: "https://owasp.org/www-project-top-ten/",
-          },
-          {
-            name: "PortSwigger Academy",
-            url: "https://portswigger.net/web-security",
-          },
-          { name: "HackTheBox", url: "https://academy.hackthebox.com/" },
-        ],
-        milestone: "Perform XSS and SQLi in a test lab",
-        completed: false,
-      },
-      {
-        week: 6,
-        title: "Penetration Testing Basics",
-        description: "Explore ethical hacking and vulnerability scanning",
-        skills: ["Kali Linux", "Nmap", "Metasploit", "Burp Suite"],
-        resources: [
-          {
-            name: "TryHackMe",
-            url: "https://tryhackme.com/path/outline/beginner",
-          },
-          { name: "HTB Academy", url: "https://academy.hackthebox.com/" },
-          { name: "Kali Training", url: "https://kali.training/" },
-        ],
-        milestone: "Scan and exploit a vulnerable VM in a safe lab",
-        completed: false,
-      },
-      {
-        week: 7,
-        title: "Security Information & Event Management (SIEM)",
-        description: "Use tools to monitor and analyze system logs",
-        skills: [
-          "Splunk Basics",
-          "Log Analysis",
-          "Alerting & Rules",
-          "Incident Response",
-        ],
-        resources: [
-          {
-            name: "Splunk Training",
-            url: "https://www.splunk.com/en_us/training/",
-          },
-          { name: "Security Onion", url: "https://docs.securityonion.net/" },
-          { name: "Blue Team Labs", url: "https://blueteamlabs.online/" },
-        ],
-        milestone: "Create alerts and dashboards in Splunk",
-        completed: false,
-      },
-      {
-        week: 8,
-        title: "Incident Response & Forensics",
-        description: "Handle and investigate security breaches",
-        skills: [
-          "Incident Lifecycle",
-          "Disk Forensics",
-          "Memory Analysis",
-          "Chain of Custody",
-        ],
-        resources: [
-          { name: "DFIR Training", url: "https://www.dfir.training/" },
-          { name: "Autopsy", url: "https://www.autopsy.com/support/training/" },
-          {
-            name: "SANS DFIR",
-            url: "https://www.sans.org/digital-forensics-incident-response/",
-          },
-        ],
-        milestone: "Document and report a simulated incident",
-        completed: false,
-      },
-      {
-        week: 9,
-        title: "Cloud Security",
-        description: "Secure cloud services and infrastructure",
-        skills: [
-          "IAM Policies",
-          "S3 Bucket Security",
-          "Cloud Misconfigurations",
-          "Encryption at Rest",
-        ],
-        resources: [
-          {
-            name: "AWS Security",
-            url: "https://aws.amazon.com/training/digital/aws-security-fundamentals/",
-          },
-          {
-            name: "Azure Security",
-            url: "https://docs.microsoft.com/en-us/learn/paths/azure-security-technologies/",
-          },
-          {
-            name: "Cloud Security Alliance",
-            url: "https://cloudsecurityalliance.org/education/",
-          },
-        ],
-        milestone: "Set up IAM roles and secure an S3 bucket",
-        completed: false,
-      },
-      {
-        week: 10,
-        title: "Capstone Project & Resume Building",
-        description: "Complete a real-world scenario and build your portfolio",
-        skills: [
-          "Vulnerability Assessment",
-          "Report Writing",
-          "Security Documentation",
-          "Portfolio Projects",
-        ],
-        resources: [
-          { name: "TryHackMe", url: "https://tryhackme.com/" },
-          { name: "GitHub Pages", url: "https://pages.github.com/" },
-          {
-            name: "Cybersecurity Career Guide",
-            url: "https://www.cyberseek.org/pathway.html",
-          },
-        ],
-        milestone:
-          "Complete a full penetration test report and publish a portfolio project",
-        completed: false,
-      },
-    ],
-  },
+        "milestone": "Deploy a machine learning web app",
+        "completed": false
+      }
+    ]
+},
+{
+  "role": "datascience",
+  "description": "Analyze data and build models to extract insights and drive decisions",
+  "duration": "20 weeks",
+  "difficulty": "Intermediate",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Python for Data Analysis",
+      "description": "Master data manipulation using Python libraries",
+      "skills": ["Python Basics", "NumPy", "Pandas", "Jupyter Notebooks"],
+      "resources": [
+        {
+          "name": "Python.org - Data Analysis",
+          "url": "https://docs.python.org/3/tutorial/",
+          "yturl": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+        },
+        {
+          "name": "Pandas Documentation",
+          "url": "https://pandas.pydata.org/docs/user_guide/",
+          "yturl": "https://www.youtube.com/watch?v=vmEHCJofslg"
+        },
+        {
+          "name": "Kaggle Python Course",
+          "url": "https://www.kaggle.com/learn/python",
+          "yturl": "https://www.youtube.com/watch?v=QUT1VHiLmmI"
+        }
+      ],
+      "milestone": "Perform EDA on a real dataset",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "Statistics & Probability",
+      "description": "Core statistical concepts for analysis and modeling",
+      "skills": [
+        "Mean, Median, Mode",
+        "Variance & Standard Deviation",
+        "Bayes Theorem",
+        "Distributions"
+      ],
+      "resources": [
+        {
+          "name": "Khan Academy - Statistics",
+          "url": "https://www.khanacademy.org/math/statistics-probability",
+          "yturl": "https://www.youtube.com/watch?v=uhxtUt_-GyM"
+        },
+        {
+          "name": "StatQuest - YouTube",
+          "url": "https://www.youtube.com/c/joshstarmer",
+          "yturl": "https://www.youtube.com/watch?v=SzZ6GpcfoQY"
+        },
+        {
+          "name": "OpenIntro Statistics",
+          "url": "https://www.openintro.org/book/os/",
+          "yturl": "https://www.youtube.com/watch?v=XZo4xyJXCak"
+        }
+      ],
+      "milestone": "Write a report interpreting statistical metrics",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Data Cleaning & Preprocessing",
+      "description": "Prepare real-world data for modeling",
+      "skills": [
+        "Handling Missing Values",
+        "Outliers",
+        "Scaling",
+        "Encoding Categorical Variables"
+      ],
+      "resources": [
+        {
+          "name": "Kaggle - Data Cleaning",
+          "url": "https://www.kaggle.com/learn/data-cleaning",
+          "yturl": "https://www.youtube.com/watch?v=bDhvCp3_lYw"
+        },
+        {
+          "name": "Scikit-learn Preprocessing",
+          "url": "https://scikit-learn.org/stable/modules/preprocessing.html",
+          "yturl": "https://www.youtube.com/watch?v=0xVqLJe9_CY"
+        },
+        {
+          "name": "Towards Data Science - Data Cleaning",
+          "url": "https://towardsdatascience.com/the-ultimate-guide-to-data-cleaning-3969843991d4",
+          "yturl": "https://www.youtube.com/watch?v=ga5oZMXh0R8"
+        }
+      ],
+      "milestone": "Clean a messy dataset end-to-end",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Data Visualization",
+      "description": "Visualize trends and patterns in data",
+      "skills": ["Matplotlib", "Seaborn", "Plotly", "Interactive Dashboards"],
+      "resources": [
+        {
+          "name": "Seaborn Tutorial Gallery",
+          "url": "https://seaborn.pydata.org/examples/index.html",
+          "yturl": "https://www.youtube.com/watch?v=6GUZXDef2U0"
+        },
+        {
+          "name": "Matplotlib Gallery",
+          "url": "https://matplotlib.org/stable/gallery/index.html",
+          "yturl": "https://www.youtube.com/watch?v=wB9C0Mz9gSo"
+        },
+        {
+          "name": "Plotly Python Graphing Library",
+          "url": "https://plotly.com/python/",
+          "yturl": "https://www.youtube.com/watch?v=DFMh6liDRtk"
+        }
+      ],
+      "milestone": "Build a dashboard to explore a dataset",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "Exploratory Data Analysis (EDA)",
+      "description": "Find insights and trends using EDA",
+      "skills": [
+        "Univariate Analysis",
+        "Bivariate Plots",
+        "Correlation Analysis"
+      ],
+      "resources": [
+        {
+          "name": "Kaggle EDA Notebooks",
+          "url": "https://www.kaggle.com/code?search=exploratory+data+analysis",
+          "yturl": "https://www.youtube.com/watch?v=xi0vhXFPegw"
+        },
+        {
+          "name": "Krish Naik - EDA Playlist",
+          "url": "https://www.youtube.com/playlist?list=PLZoTAELRMXVPzj1D0i_6ajJ6gyD22b3jh",
+          "yturl": "https://www.youtube.com/playlist?list=PLZoTAELRMXVPzj1D0i_6ajJ6gyD22b3jh"
+        },
+        {
+          "name": "Towards Data Science - EDA",
+          "url": "https://towardsdatascience.com/exploratory-data-analysis-8fc1cb20fd15",
+          "yturl": "https://www.youtube.com/watch?v=OY4eQrekQvs"
+        }
+      ],
+      "milestone": "Submit a complete EDA notebook on Kaggle",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Supervised Machine Learning",
+      "description": "Apply models to predict outcomes",
+      "skills": [
+        "Linear Regression",
+        "Decision Trees",
+        "Random Forest",
+        "Model Evaluation"
+      ],
+      "resources": [
+        {
+          "name": "Scikit-learn Supervised Learning",
+          "url": "https://scikit-learn.org/stable/supervised_learning.html",
+          "yturl": "https://www.youtube.com/watch?v=pYiddo88zew"
+        },
+        {
+          "name": "Kaggle Machine Learning Course",
+          "url": "https://www.kaggle.com/learn/machine-learning",
+          "yturl": "https://www.youtube.com/watch?v=i_LwzRVP7bg"
+        },
+        {
+          "name": "Google ML Crash Course",
+          "url": "https://developers.google.com/machine-learning/crash-course",
+          "yturl": "https://www.youtube.com/watch?v=HcqpanDadyQ"
+        }
+      ],
+      "milestone": "Predict housing prices using regression",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Unsupervised Learning",
+      "description": "Cluster and reduce data dimensions",
+      "skills": [
+        "K-Means Clustering",
+        "PCA",
+        "DBSCAN",
+        "Hierarchical Clustering"
+      ],
+      "resources": [
+        {
+          "name": "Scikit-learn Clustering",
+          "url": "https://scikit-learn.org/stable/modules/clustering.html",
+          "yturl": "https://www.youtube.com/watch?v=4b5d3muPQmA"
+        },
+        {
+          "name": "Analytics Vidhya - Clustering",
+          "url": "https://www.analyticsvidhya.com/blog/2016/11/an-introduction-to-clustering-and-different-methods-of-clustering/",
+          "yturl": "https://www.youtube.com/watch?v=FgakZw6K1QQ"
+        },
+        {
+          "name": "StatQuest - Clustering",
+          "url": "https://www.youtube.com/watch?v=4b5d3muPQmA",
+          "yturl": "https://www.youtube.com/watch?v=4b5d3muPQmA"
+        }
+      ],
+      "milestone": "Perform customer segmentation project",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Time Series Analysis",
+      "description": "Work with temporal data and trends",
+      "skills": ["Moving Averages", "ARIMA", "Seasonality", "Forecasting"],
+      "resources": [
+        {
+          "name": "Kaggle Time Series Course",
+          "url": "https://www.kaggle.com/learn/time-series",
+          "yturl": "https://www.youtube.com/watch?v=e8Yw4alG16Q"
+        },
+        {
+          "name": "Statsmodels Documentation",
+          "url": "https://www.statsmodels.org/stable/user-guide.html",
+          "yturl": "https://www.youtube.com/watch?v=CY3T-CR6Z4I"
+        },
+        {
+          "name": "Codebasics - Time Series",
+          "url": "https://www.youtube.com/playlist?list=PLeo1K3hjS3uuKaU2nBDwr6zrSOTzNCs0l",
+          "yturl": "https://www.youtube.com/playlist?list=PLeo1K3hjS3uuKaU2nBDwr6zrSOTzNCs0l"
+        }
+      ],
+      "milestone": "Build a stock price predictor",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Natural Language Processing for Data Science",
+      "description": "Use text data for prediction and insights",
+      "skills": [
+        "Tokenization",
+        "TF-IDF",
+        "Text Classification",
+        "Basic NLP Models"
+      ],
+      "resources": [
+        {
+          "name": "NLTK Book - Processing Raw Text",
+          "url": "https://www.nltk.org/book/ch03.html",
+          "yturl": "https://www.youtube.com/watch?v=pr6ziftYXvA"
+        },
+        {
+          "name": "Kaggle NLP Datasets",
+          "url": "https://www.kaggle.com/datasets?search=nlp",
+          "yturl": "https://www.youtube.com/watch?v=X2vAabgKiuM"
+        },
+        {
+          "name": "TextBlob Documentation",
+          "url": "https://textblob.readthedocs.io/en/dev/",
+          "yturl": "https://www.youtube.com/watch?v=u2ylaVPfhIY"
+        }
+      ],
+      "milestone": "Classify news headlines by topic",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Capstone Project & Model Deployment",
+      "description": "Apply everything in a real-world project",
+      "skills": [
+        "Data Pipeline",
+        "Model Building",
+        "Flask/Streamlit App",
+        "GitHub Hosting"
+      ],
+      "resources": [
+        {
+          "name": "Streamlit Documentation",
+          "url": "https://docs.streamlit.io/library/get-started",
+          "yturl": "https://www.youtube.com/watch?v=JwSS70SZdyM"
+        },
+        {
+          "name": "Flask Mega-Tutorial",
+          "url": "https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world",
+          "yturl": "https://www.youtube.com/watch?v=qNF1HqBvpGE"
+        },
+        {
+          "name": "Render Deployment Guide",
+          "url": "https://render.com/docs/deploy-flask",
+          "yturl": "https://www.youtube.com/watch?v=w71RHxAWxaM"
+        }
+      ],
+      "milestone": "Deploy a data science project with dashboard",
+      "completed": false
+    }
+  ]
+},
+{
+  "role": "CybersecurityAnalyst",
+  "description": "Protect systems and data from cyber threats and vulnerabilities",
+  "duration": "10 weeks",
+  "difficulty": "Intermediate",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Introduction to Cybersecurity",
+      "description": "Understand core concepts, threats, and the CIA triad",
+      "skills": [
+        "CIA Triad",
+        "Threat Modeling",
+        "Types of Attacks",
+        "Security Terminology"
+      ],
+      "resources": [
+        {
+          "name": "Cybrary Intro Course",
+          "url": "https://www.cybrary.it/course/introduction-to-it-and-cybersecurity/",
+          "yturl": "https://www.youtube.com/watch?v=SBcDGb9l6yo"
+        },
+        {
+          "name": "NIST Framework",
+          "url": "https://www.nist.gov/cyberframework",
+          "yturl": "https://www.youtube.com/watch?v=J9ToNuwmyF0"
+        },
+        {
+          "name": "SANS Cyber Aces",
+          "url": "https://cyberaces.org/courses/security",
+          "yturl": "https://www.youtube.com/watch?v=vyqSdJLVQgg"
+        }
+      ],
+      "milestone": "Create a threat model for a web app",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "Networking Fundamentals",
+      "description": "Understand how data moves across the internet",
+      "skills": ["OSI Model", "TCP/IP", "IP Addressing", "Ports & Protocols"],
+      "resources": [
+        {
+          "name": "Cisco NetAcad",
+          "url": "https://www.netacad.com/courses/networking/introduction-networks",
+          "yturl": "https://www.youtube.com/watch?v=CRdL1PcherM"
+        },
+        {
+          "name": "Professor Messer",
+          "url": "https://www.professormesser.com/network-plus/",
+          "yturl": "https://www.youtube.com/watch?v=qiQR5rTSshw"
+        },
+        {
+          "name": "NetworkChuck",
+          "url": "https://www.youtube.com/c/NetworkChuck",
+          "yturl": "https://www.youtube.com/watch?v=3kfO61Mensg"
+        }
+      ],
+      "milestone": "Map and document a home network layout",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Operating Systems Security",
+      "description": "Study OS-level vulnerabilities and protections",
+      "skills": [
+        "Windows Security",
+        "Linux Permissions",
+        "File Systems",
+        "User Roles"
+      ],
+      "resources": [
+        {
+          "name": "OverTheWire",
+          "url": "https://overthewire.org/wargames/bandit/",
+          "yturl": "https://www.youtube.com/watch?v=RDzsrmMl48I"
+        },
+        {
+          "name": "TryHackMe",
+          "url": "https://tryhackme.com/room/linuxfundamentalspart1",
+          "yturl": "https://www.youtube.com/watch?v=ZtqBQ68cfJc"
+        },
+        {
+          "name": "Linux Journey",
+          "url": "https://linuxjourney.com/",
+          "yturl": "https://www.youtube.com/watch?v=sWbUDq4S6Y8"
+        }
+      ],
+      "milestone": "Harden a Linux VM and enable basic firewall rules",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Cryptography Basics",
+      "description": "Learn encryption, hashing, and digital signatures",
+      "skills": [
+        "Symmetric & Asymmetric Encryption",
+        "Hashing Algorithms",
+        "SSL/TLS"
+      ],
+      "resources": [
+        {
+          "name": "Crypto101",
+          "url": "https://www.crypto101.io/",
+          "yturl": "https://www.youtube.com/watch?v=AQDCe585Lnc"
+        },
+        {
+          "name": "Khan Academy Crypto",
+          "url": "https://www.khanacademy.org/computing/computer-science/cryptography",
+          "yturl": "https://www.youtube.com/watch?v=NmM9HA2MQGI"
+        },
+        {
+          "name": "SSL Labs",
+          "url": "https://www.ssllabs.com/ssltest/",
+          "yturl": "https://www.youtube.com/watch?v=0yw-z6f7Mb4"
+        }
+      ],
+      "milestone": "Implement a simple Caesar cipher and hash checker",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "Web Application Security",
+      "description": "Identify and mitigate web-based attacks",
+      "skills": ["XSS", "SQL Injection", "CSRF", "Authentication Flaws"],
+      "resources": [
+        {
+          "name": "OWASP Top 10",
+          "url": "https://owasp.org/www-project-top-ten/",
+          "yturl": "https://www.youtube.com/watch?v=hHIJ_1E_mT4"
+        },
+        {
+          "name": "PortSwigger Academy",
+          "url": "https://portswigger.net/web-security",
+          "yturl": "https://www.youtube.com/watch?v=9qgVPtlJbJU"
+        },
+        {
+          "name": "HackTheBox",
+          "url": "https://academy.hackthebox.com/",
+          "yturl": "https://www.youtube.com/watch?v=2_lswM1S264"
+        }
+      ],
+      "milestone": "Perform XSS and SQLi in a test lab",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Penetration Testing Basics",
+      "description": "Explore ethical hacking and vulnerability scanning",
+      "skills": ["Kali Linux", "Nmap", "Metasploit", "Burp Suite"],
+      "resources": [
+        {
+          "name": "TryHackMe",
+          "url": "https://tryhackme.com/path/outline/beginner",
+          "yturl": "https://www.youtube.com/watch?v=xl2Xx5YOKcI"
+        },
+        {
+          "name": "HTB Academy",
+          "url": "https://academy.hackthebox.com/",
+          "yturl": "https://www.youtube.com/watch?v=3Kq1MIfTWCE"
+        },
+        {
+          "name": "Kali Training",
+          "url": "https://kali.training/",
+          "yturl": "https://www.youtube.com/watch?v=lZAoFs75_cs"
+        }
+      ],
+      "milestone": "Scan and exploit a vulnerable VM in a safe lab",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Security Information & Event Management (SIEM)",
+      "description": "Use tools to monitor and analyze system logs",
+      "skills": [
+        "Splunk Basics",
+        "Log Analysis",
+        "Alerting & Rules",
+        "Incident Response"
+      ],
+      "resources": [
+        {
+          "name": "Splunk Training",
+          "url": "https://www.splunk.com/en_us/training/",
+          "yturl": "https://www.youtube.com/watch?v=SSbBqBMiOfg"
+        },
+        {
+          "name": "Security Onion",
+          "url": "https://docs.securityonion.net/",
+          "yturl": "https://www.youtube.com/watch?v=LBP4Pn8V_mU"
+        },
+        {
+          "name": "Blue Team Labs",
+          "url": "https://blueteamlabs.online/",
+          "yturl": "https://www.youtube.com/watch?v=6zh6hHT7DpY"
+        }
+      ],
+      "milestone": "Create alerts and dashboards in Splunk",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Incident Response & Forensics",
+      "description": "Handle and investigate security breaches",
+      "skills": [
+        "Incident Lifecycle",
+        "Disk Forensics",
+        "Memory Analysis",
+        "Chain of Custody"
+      ],
+      "resources": [
+        {
+          "name": "DFIR Training",
+          "url": "https://www.dfir.training/",
+          "yturl": "https://www.youtube.com/watch?v=iFiS0YClF2U"
+        },
+        {
+          "name": "Autopsy",
+          "url": "https://www.autopsy.com/support/training/",
+          "yturl": "https://www.youtube.com/watch?v=YG7Rvp4i62A"
+        },
+        {
+          "name": "SANS DFIR",
+          "url": "https://www.sans.org/digital-forensics-incident-response/",
+          "yturl": "https://www.youtube.com/watch?v=q4BFQwDCaEI"
+        }
+      ],
+      "milestone": "Document and report a simulated incident",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Cloud Security",
+      "description": "Secure cloud services and infrastructure",
+      "skills": [
+        "IAM Policies",
+        "S3 Bucket Security",
+        "Cloud Misconfigurations",
+        "Encryption at Rest"
+      ],
+      "resources": [
+        {
+          "name": "AWS Security",
+          "url": "https://aws.amazon.com/training/digital/aws-security-fundamentals/",
+          "yturl": "https://www.youtube.com/watch?v=9iKsoMVNP-k"
+        },
+        {
+          "name": "Azure Security",
+          "url": "https://docs.microsoft.com/en-us/learn/paths/azure-security-technologies/",
+          "yturl": "https://www.youtube.com/watch?v=q-Ie2PmpjCc"
+        },
+        {
+          "name": "Cloud Security Alliance",
+          "url": "https://cloudsecurityalliance.org/education/",
+          "yturl": "https://www.youtube.com/watch?v=0kk6k-VdllM"
+        }
+      ],
+      "milestone": "Set up IAM roles and secure an S3 bucket",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Capstone Project & Resume Building",
+      "description": "Complete a real-world scenario and build your portfolio",
+      "skills": [
+        "Vulnerability Assessment",
+        "Report Writing",
+        "Security Documentation",
+        "Portfolio Projects"
+      ],
+      "resources": [
+        {
+          "name": "TryHackMe",
+          "url": "https://tryhackme.com/",
+          "yturl": "https://www.youtube.com/watch?v=rI9FLOjasKQ"
+        },
+        {
+          "name": "GitHub Pages",
+          "url": "https://pages.github.com/",
+          "yturl": "https://www.youtube.com/watch?v=2MsN8gpT6jY"
+        },
+        {
+          "name": "Cybersecurity Career Guide",
+          "url": "https://www.cyberseek.org/pathway.html",
+          "yturl": "https://www.youtube.com/watch?v=YxFN0cJRsLI"
+        }
+      ],
+      "milestone": "Complete a full penetration test report and publish a portfolio project",
+      "completed": false
+    }
+  ]
+},
   {
     role: "MobileAppDeveloper",
     description:
