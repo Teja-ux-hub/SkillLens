@@ -22,14 +22,29 @@ export async function GET(request) {
 
     await dbConnect();
 
-    const user = await User.findOne({ userId });
+    // Check if querying for a specific user (e.g., teammate)
+    const { searchParams } = new URL(request.url);
+    const targetUserId = searchParams.get('userId') || userId;
+
+    const user = await User.findOne({ clerkUserId: targetUserId });
     if (!user) {
-      return NextResponse.json({ summary: null, githubUsername: null });
+      return NextResponse.json({ 
+        summary: null, 
+        githubUsername: null,
+        firstName: null,
+        lastName: null,
+        username: null
+      });
     }
 
     return NextResponse.json({
-      summary: user.summary || null,
-      githubUsername: user.githubUsername || null,
+      summary: user.github?.summary || null,
+      githubUsername: user.github?.username || null,
+      firstName: user.firstName || null,
+      lastName: user.lastName || null,
+      username: user.username || null,
+      email: user.email || null,
+      onboarding: user.onboarding || null,
     });
   } catch (error) {
     console.error("Error fetching user summary:", error);

@@ -322,7 +322,7 @@ const buildCompactProfileSummary = async (username) => {
 const updateUserGitHubSummary = async (userId, githubUsername) => {
   await connectDB();
 
-  const existingUser = await User.findOne({ userId });
+  const existingUser = await User.findOne({ clerkUserId: userId });
   if (!existingUser) {
     throw new Error("User not found. Please make sure you're logged in.");
   }
@@ -333,11 +333,12 @@ const updateUserGitHubSummary = async (userId, githubUsername) => {
   }
 
   const updatedUser = await User.findOneAndUpdate(
-    { userId },
+    { clerkUserId: userId },
     {
       $set: {
-        summary,
-        githubUsername,
+        'github.summary': summary,
+        'github.username': githubUsername,
+        'github.profileUrl': `https://github.com/${githubUsername}`,
         updatedAt: new Date(),
       },
     },
@@ -380,7 +381,7 @@ export async function GET(req) {
     
     if (saveToDb) {
       const updatedUser = await updateUserGitHubSummary(userId, githubUsername);
-      result = updatedUser.summary;
+      result = updatedUser.github?.summary;
     } else {
       result = await buildCompactProfileSummary(githubUsername);
     }
@@ -446,8 +447,8 @@ export async function POST(req) {
 
     await connectDB();
 
-    const user = await User.findOne({ userId });
-    if (!user || !user.githubUsername) {
+    const user = await User.findOne({ clerkUserId: userId });
+    if (!user || !user.github?.username) {
       return NextResponse.json({ 
         error: "User not found or no GitHub username stored" 
       }, { status: 404 });
@@ -455,9 +456,9 @@ export async function POST(req) {
 
     if (forceRefresh) {
       const cacheKeys = [
-        `summary:${user.githubUsername}`,
-        `profile:${user.githubUsername}`,
-        `repos:${user.githubUsername}`
+        `summary:${user.github.username}`,
+        `profile:${user.github.username}`,
+        `repos:${user.github.username}`
       ];
       
       await Promise.all(cacheKeys.map(key => 
@@ -465,16 +466,16 @@ export async function POST(req) {
       ));
     }
 
-    const updatedUser = await updateUserGitHubSummary(userId, user.githubUsername);
+    const updatedUser = await updateUserGitHubSummary(userId, user.github.username);
     
     let analysis = null;
     if (analyze && targetRole) {
-      analysis = await analyzeWithGemini(updatedUser.summary, targetRole);
+      analysis = await analyzeWithGemini(updatedUser.github?.summary, targetRole);
     }
 
     return NextResponse.json({ 
       success: true,
-      result: updatedUser.summary,
+      result: updatedUser.github?.summary,
       analysis,
       message: forceRefresh ? "GitHub summary force refreshed" : "GitHub summary regenerated"
     }, { status: 200 });

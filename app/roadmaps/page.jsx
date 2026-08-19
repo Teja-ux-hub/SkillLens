@@ -18,19 +18,167 @@ import {
   ExternalLink,
   Calendar,
   Youtube,
+  Lock,
+  Users,
 } from "lucide-react";
 import { careerRoadmaps } from "@/data/mockData";
 
 const CareerRoadmaps = () => {
   const router = useRouter();
   const { user } = useUser();
-  const [selectedRoadmap, setSelectedRoadmap] = useState(careerRoadmaps[0]);
+  const [selectedRoadmap, setSelectedRoadmap] = useState(null);
   const [expandedWeek, setExpandedWeek] = useState(null);
   const [showCompletion, setShowCompletion] = useState(false);
   const [animatingWeek, setAnimatingWeek] = useState(null);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isCheckingOnboarding, setIsCheckingOnboarding] = useState(true);
+  const [userOnboarding, setUserOnboarding] = useState(null);
+  const [teammate, setTeammate] = useState(null);
+  const [isPolling, setIsPolling] = useState(false);
 
   const [completedWeeks, setCompletedWeeks] = useState(new Set());
+
+  // Check onboarding status and fetch teammate info
+  useEffect(() => {
+    const checkOnboarding = async () => {
+      if (!user?.id) return;
+
+      try {
+        console.log('[ROADMAP] 🔍 Checking onboarding status...');
+        const response = await fetch('/api/roadmaps/check-onboarding');
+        if (response.ok) {
+          const data = await response.json();
+          console.log('[ROADMAP] 📊 Onboarding data:', data);
+          
+          if (!data.onboardingCompleted) {
+            console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
+            router.push('/roadmaps/onboarding');
+            return;
+          }
+          
+          setUserOnboarding(data);
+
+          // Auto-select the user's chosen role if they have one
+          if (data.selectedRole) {
+            const matchedRoadmap = careerRoadmaps.find(r => r.role === data.selectedRole);
+            if (matchedRoadmap) {
+              setSelectedRoadmap(matchedRoadmap);
+              console.log('[ROADMAP] 🎯 Auto-selected roadmap:', data.selectedRole);
+            }
+          } else {
+            // Default to first roadmap for solo mode
+            setSelectedRoadmap(careerRoadmaps[0]);
+          }
+
+          // Fetch teammate info if matched
+          if (data.matchingStatus === 'matched' && data.teammateId) {
+            console.log('[ROADMAP] 👥 Fetching teammate info:', data.teammateId);
+            const fetchTeammateInfo = async () => {
+              try {
+                const response = await fetch('/api/roadmaps/teammate');
+                if (response.ok) {
+                  const data = await response.json();
+                  if (data.teammate) {
+                    console.log('[ROADMAP] ✅ Teammate info loaded:', data.teammate);
+                    setTeammate(data.teammate);
+                  }
+                }
+              } catch (error) {
+                console.error("[ROADMAP] ❌ Error fetching teammate:", error);
+              }
+            };
+            fetchTeammateInfo();
+          } else if (data.matchingStatus === 'waiting') {
+            console.log('[ROADMAP] ⏳ User is waiting for a match - starting poll');
+            setIsPolling(true);
+          }
+        }
+      } catch (error) {
+        console.error("[ROADMAP] ❌ Error checking onboarding:", error);
+      } finally {
+        setIsCheckingOnboarding(false);
+      }
+    };
+
+    checkOnboarding();
+  }, [user?.id, router]);
+
+
+  // Fetch teammate information securely
+  const fetchTeammateInfo = async () => {
+    try {
+      const response = await fetch('/api/roadmaps/teammate');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.teammate) {
+          console.log('[ROADMAP] ✅ Teammate info loaded:', data.teammate);
+          setTeammate(data.teammate);
+        }
+      }
+    } catch (error) {
+      console.error("[ROADMAP] ❌ Error fetching teammate:", error);
+    }
+  };
+
+  // Polling effect - check for matches every 10 seconds
+  useEffect(() => {
+    if (!isPolling || !user?.id) return;
+
+    console.log('[ROADMAP] 🔄 Starting match polling...');
+    
+    const pollInterval = setInterval(async () => {
+      try {
+        console.log('[ROADMAP] 🔍 Polling for match...');
+        const response = await fetch('/api/roadmaps/check-match');
+        
+        if (response.ok) {
+          const data = await response.json();
+          
+          if (data.status === 'matched' && data.teammateId) {
+            console.log('[ROADMAP] 🎉 MATCH DETECTED! Partner:', data.teammateId);
+            
+            // Stop polling immediately
+            setIsPolling(false);
+            
+            // Update onboarding state
+            setUserOnboarding(prev => ({
+              ...prev,
+              matchingStatus: 'matched',
+              teammateId: data.teammateId
+            }));
+            
+            // Fetch teammate info
+            const fetchTeammateInfo = async () => {
+              try {
+                const response = await fetch('/api/roadmaps/teammate');
+                if (response.ok) {
+                  const data = await response.json();
+                  if (data.teammate) {
+                    console.log('[ROADMAP] ✅ Teammate info loaded:', data.teammate);
+                    setTeammate(data.teammate);
+                  }
+                }
+              } catch (error) {
+                console.error("[ROADMAP] ❌ Error fetching teammate:", error);
+              }
+            };
+            await fetchTeammateInfo();
+            
+            // Show success toast
+            toast.success('You\'ve been matched with a learning partner! 🎉');
+          }
+        }
+      } catch (error) {
+        console.error('[ROADMAP] ❌ Polling error:', error);
+      }
+    }, 10000); // Poll every 10 seconds
+
+    // Cleanup on unmount
+    return () => {
+      console.log('[ROADMAP] 🛑 Stopping poll interval');
+      clearInterval(pollInterval);
+    };
+  }, [isPolling, user?.id]);
 
   useEffect(() => {
     const loadCompletedWeeks = async () => {
@@ -81,10 +229,10 @@ const CareerRoadmaps = () => {
     };
   };
 
-  const roadmapProgress = getRoadmapProgress(
-    selectedRoadmap.role,
-    selectedRoadmap.weeks.length
-  );
+  // Safety check: ensure selectedRoadmap is set
+  const roadmapProgress = selectedRoadmap 
+    ? getRoadmapProgress(selectedRoadmap.role, selectedRoadmap.weeks.length)
+    : { completed: 0, total: 0, percentage: 0 };
   const progressPercentage = roadmapProgress.percentage;
 
   const getDifficultyColor = (difficulty) => {
@@ -217,6 +365,18 @@ const CareerRoadmaps = () => {
     </div>
   );
 
+  // Show loading while checking onboarding or roadmap not loaded
+  if (isCheckingOnboarding || !selectedRoadmap) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading your roadmaps...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -232,6 +392,62 @@ const CareerRoadmaps = () => {
               Welcome back, {user.firstName || user.username}! Your progress is
               automatically saved.
             </p>
+          )}
+
+          {/* Teammate Info Display or Waiting Message */}
+          {userOnboarding?.selectedRole && userOnboarding?.learningMode !== 'solo' && (
+            <div className="mt-4 bg-gradient-to-r from-purple-900/20 to-blue-900/20 border border-purple-500/30 rounded-lg p-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                  <Users className="w-5 h-5 text-white" />
+                </div>
+                {userOnboarding.matchingStatus === 'matched' && teammate ? (
+                  <>
+                    <div className="flex-1">
+                      <p className="text-sm text-gray-400">Learning Partner</p>
+                      <p className="text-white font-semibold">
+                        {teammate.firstName && teammate.lastName
+                          ? `${teammate.firstName} ${teammate.lastName}`
+                          : teammate.username || "Your Partner"}
+                      </p>
+                      <div className="text-xs text-gray-400 mt-1">
+                        {userOnboarding.learningMode === 'pair' 
+                          ? `Both learning: ${userOnboarding.selectedRole}`
+                          : `You: ${userOnboarding.selectedRole} | Partner: ${teammate.selectedRole || 'Unknown'}`
+                        }
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <span className="text-xs text-purple-400 text-right">
+                        {userOnboarding.learningMode === 'pair' ? 'Pair Programming' : 'Skill Exchange'}
+                      </span>
+                      <button
+                        onClick={() => router.push(`/progress?userId=${userOnboarding.teammateId}`)}
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg"
+                      >
+                        View Summary
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex-1">
+                    <p className="text-sm text-gray-400">Learning Mode</p>
+                    <p className="text-white font-semibold">
+                      {userOnboarding.learningMode === 'pair' ? 'Pair Programming' : 'Skill Exchange'}
+                    </p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+                      <p className="text-xs text-yellow-400">
+                        {userOnboarding.learningMode === 'pair' 
+                          ? `Looking for someone learning ${userOnboarding.selectedRole}...`
+                          : `Looking for someone with a complementary skill...`
+                        }
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           )}
         </div>
 
@@ -256,21 +472,37 @@ const CareerRoadmaps = () => {
                     roadmap.role,
                     roadmap.weeks.length
                   );
+                  
+                  // Check if this roadmap is locked
+                  const isLocked = userOnboarding?.selectedRole && 
+                                   userOnboarding.selectedRole !== roadmap.role &&
+                                   userOnboarding.learningMode !== 'solo';
+                  
                   return (
                     <button
                       key={index}
-                      onClick={() => setSelectedRoadmap(roadmap)}
-                      className={`w-full p-4 rounded-lg border-2 transition-all duration-300 text-left transform hover:scale-[1.02] ${
-                        selectedRoadmap.role === roadmap.role
-                          ? "border-blue-500 bg-blue-900/30 shadow-lg shadow-blue-500/20"
-                          : "border-gray-600/50 bg-gray-700/30 hover:border-blue-400 hover:bg-blue-900/20 hover:shadow-lg"
+                      onClick={() => !isLocked && setSelectedRoadmap(roadmap)}
+                      disabled={isLocked}
+                      className={`w-full p-4 rounded-lg border-2 transition-all duration-300 text-left ${
+                        isLocked 
+                          ? 'opacity-40 cursor-not-allowed border-gray-700/30 bg-gray-800/20' 
+                          : `transform hover:scale-[1.02] ${
+                              selectedRoadmap.role === roadmap.role
+                                ? "border-blue-500 bg-blue-900/30 shadow-lg shadow-blue-500/20"
+                                : "border-gray-600/50 bg-gray-700/30 hover:border-blue-400 hover:bg-blue-900/20 hover:shadow-lg"
+                            }`
                       }`}
                     >
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h3 className="font-semibold text-white mb-1">
-                            {roadmap.role}
-                          </h3>
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-semibold text-white">
+                              {roadmap.role}
+                            </h3>
+                            {isLocked && (
+                              <Lock className="w-4 h-4 text-gray-500" />
+                            )}
+                          </div>
                           <p className="text-sm text-gray-300 mb-3">
                             {roadmap.description}
                           </p>

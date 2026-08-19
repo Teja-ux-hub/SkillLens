@@ -30,7 +30,8 @@ export async function GET(req) {
 
     await dbConnect();
     
-    const userData = await User.findOne({ userId });
+    // Query by clerkUserId
+    const userData = await User.findOne({ clerkUserId: userId });
     
     if (!userData) {
       return NextResponse.json(
@@ -39,6 +40,7 @@ export async function GET(req) {
       );
     }
 
+    // Return full user data (frontend will extract needed fields)
     return NextResponse.json(userData);
 
   } catch (error) {

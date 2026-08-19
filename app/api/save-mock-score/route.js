@@ -21,62 +21,71 @@ export async function POST(request) {
     }
 
     const { roadmap, weekId, mockScore } = await request.json();
-    if (!roadmap || !weekId || mockScore === undefined) {
+    if (!roadmap || weekId === undefined || mockScore === undefined) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     await dbConnect();
 
-    // Find or create user
-    let user = await User.findOne({ userId });
+    // Find user by clerkUserId
+    let user = await User.findOne({ clerkUserId: userId });
     if (!user) {
-      user = new User({ userId });
+      user = new User({ 
+        clerkUserId: userId,
+        role: { student: true, hod: false, director: false },
+        status: 'active'
+      });
     }
 
-    // Initialize roadmapProgress as Map if it doesn't exist
-    if (!user.roadmapProgress) {
-      user.roadmapProgress = new Map();
-    }
-
-    // Convert weekId to 0-based index
-    const weekIndex = (weekId - 1).toString();
-        
-    // Get existing roadmap data or create new
-    let roadmapData = user.roadmapProgress.get(roadmap) || { weeks: {} };
-        
-    // Ensure weeks object exists
-    if (!roadmapData.weeks) {
-      roadmapData.weeks = {};
-    }
-
-    // Update ONLY the specific week (preserve other weeks)
-    roadmapData.weeks[weekIndex] = {
-      mockScore: mockScore,
-      date: new Date().toISOString().split('T')[0],
-      completed: mockScore >= 90,
-      completedAt: mockScore >= 90 ? new Date() : null
+    // Update roadmap current state
+    user.roadmap = user.roadmap || {};
+    user.roadmap.role = roadmap;
+    user.roadmap.currentWeek = weekId;
+    user.roadmap.currentStage = `Week ${weekId}`;
+    user.roadmap.lastActivityAt = new Date();
+    
+    // Calculate progress (assuming 8 weeks per roadmap)
+    const totalWeeks = 8;
+    user.roadmap.progress = Math.round((weekId / totalWeeks) * 100);
+    
+    // Update assessment summary
+    user.assessmentSummary = user.assessmentSummary || {
+      totalAttempts: 0,
+      totalCompleted: 0,
+      averageScore: 0
     };
-
-    // Save back to Map
-    user.roadmapProgress.set(roadmap, roadmapData);
-    user.markModified('roadmapProgress');
-    user.updatedAt = new Date();
-
-    console.log(`💾 About to save user with roadmapProgress:`, JSON.stringify(Object.fromEntries(user.roadmapProgress), null, 2));
+    
+    user.assessmentSummary.totalAttempts += 1;
+    user.assessmentSummary.latestScore = mockScore;
+    
+    if (mockScore >= 90) {
+      user.assessmentSummary.totalCompleted += 1;
+    }
+    
+    // Update best score
+    if (!user.assessmentSummary.bestScore || mockScore > user.assessmentSummary.bestScore) {
+      user.assessmentSummary.bestScore = mockScore;
+    }
+    
+    // Recalculate average score (running average)
+    const currentTotal = user.assessmentSummary.averageScore * (user.assessmentSummary.totalAttempts - 1);
+    user.assessmentSummary.averageScore = Math.round((currentTotal + mockScore) / user.assessmentSummary.totalAttempts);
+    
+    user.assessmentSummary.lastAttemptAt = new Date();
+    
+    user.markModified('roadmap');
+    user.markModified('assessmentSummary');
 
     await user.save();
 
     console.log(`✅ Saved mock score ${mockScore} for ${roadmap} week ${weekId}`);
-        
-    // Verify the save worked by re-fetching
-    const verifyUser = await User.findOne({ userId });
-    const verifyData = verifyUser.roadmapProgress.get(roadmap);
-    console.log(`🔍 Verification - DB now contains for ${roadmap}:`, JSON.stringify(verifyData, null, 2));
 
     return NextResponse.json({
       success: true,
       mockScore,
-      message: `Mock score saved successfully`
+      assessmentSummary: user.assessmentSummary,
+      roadmap: user.roadmap,
+      message: 'Mock score saved successfully'
     });
    
   } catch (error) {

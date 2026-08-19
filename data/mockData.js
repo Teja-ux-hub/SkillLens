@@ -19,7 +19,7 @@ export const careerRoadmaps = [
         {
           "name": "MDN Web Docs - HTML",
           "url": "https://developer.mozilla.org/en-US/docs/Web/HTML",
-          "yturl": "https://www.youtube.com/watch?v=pQN-pnXPaVg"
+          "yturl": "https://www.youtube.com/watch?v=kX3TfdUqpuU"
         },
         {
           "name": "CSS Tricks - Complete Guide",
@@ -54,12 +54,12 @@ export const careerRoadmaps = [
         {
           "name": "Eloquent JavaScript - Free Book",
           "url": "https://eloquentjavascript.net/",
-          "yturl": "https://www.youtube.com/watch?v=PkZNo7MFNFg"
+          "yturl": "https://www.youtube.com/watch?v=ajdRvxDWH4w"
         },
         {
           "name": "MDN JavaScript Guide",
           "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
-          "yturl": "https://www.youtube.com/watch?v=W6NZfCO5SIk"
+          "yturl": "https://www.youtube.com/watch?v=y17RuWkWdn8"
         }
       ],
       "milestone": "Create an interactive calculator",
@@ -78,18 +78,18 @@ export const careerRoadmaps = [
       "resources": [
         {
           "name": "ES6 Features - MDN",
-          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import",
-          "yturl": "https://www.youtube.com/watch?v=NCwa_xi0Uuc"
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_2015_support_in_Mozilla",
+          "yturl": "https://www.youtube.com/watch?v=h33Srr5J8nY"
         },
         {
           "name": "Async JavaScript - JavaScript.info",
           "url": "https://javascript.info/async",
-          "yturl": "https://www.youtube.com/watch?v=PoRJizFvM7s"
+          "yturl": "https://www.youtube.com/watch?v=PgZ9npYJZzU"
         },
         {
           "name": "You Don't Know JS - GitHub",
           "url": "https://github.com/getify/You-Dont-Know-JS",
-          "yturl": "https://www.youtube.com/watch?v=Oe421EPjeBE"
+          "yturl": "https://www.youtube.com/watch?v=cRHQNNcYf6s"
         }
       ],
       "milestone": "Build a weather app with API integration",
@@ -109,7 +109,7 @@ export const careerRoadmaps = [
         {
           "name": "React Official Documentation",
           "url": "https://react.dev/learn",
-          "yturl": "https://www.youtube.com/watch?v=bMknfKXIFA8"
+          "yturl": "https://www.youtube.com/watch?v=uvEAvxWvwOs"
         },
         {
           "name": "React Tutorial - Official",
@@ -139,12 +139,12 @@ export const careerRoadmaps = [
         {
           "name": "React Docs - Hooks",
           "url": "https://react.dev/reference/react",
-          "yturl": "https://www.youtube.com/watch?v=0ZJgIjIuY7U"
+          "yturl": "https://www.youtube.com/watch?v=-4XpG5_Lj_o"
         },
         {
           "name": "Kent C. Dodds Blog",
           "url": "https://kentcdodds.com/blog",
-          "yturl": "https://www.youtube.com/watch?v=TNhaISOUy6Q"
+          "yturl": "https://www.youtube.com/watch?v=J-g9ZJha8FE"
         },
         {
           "name": "React Performance Guide",
@@ -172,8 +172,8 @@ export const careerRoadmaps = [
         },
         {
           "name": "Web Dev Simplified - React Router",
-          "url": "https://www.youtube.com/watch?v=943D7U74_sQ",
-          "yturl": "https://www.youtube.com/watch?v=943D7U74_sQ"
+          "url": "https://www.youtube.com/watch?v=Ul3y1LXxzdU",
+          "yturl": "https://www.youtube.com/watch?v=Ul3y1LXxzdU"
         },
         {
           "name": "React Router Tutorial",
@@ -203,7 +203,7 @@ export const careerRoadmaps = [
         {
           "name": "Redux Toolkit Quick Start",
           "url": "https://redux-toolkit.js.org/tutorials/quick-start",
-          "yturl": "https://www.youtube.com/watch?v=bbkBuqC1rU4"
+          "yturl": "https://www.youtube.com/watch?v=QgK_-G-hWeA"
         },
         {
           "name": "Redux Essentials Tutorial",
@@ -228,12 +228,12 @@ export const careerRoadmaps = [
         {
           "name": "Node.js Official Documentation",
           "url": "https://nodejs.org/en/docs/",
-          "yturl": "https://www.youtube.com/watch?v=Oe421EPjeBE"
+          "yturl": "https://www.youtube.com/watch?v=fBNz5xF-Kx4"
         },
         {
           "name": "Express.js Documentation",
           "url": "https://expressjs.com/en/starter/installing.html",
-          "yturl": "https://www.youtube.com/watch?v=L72fhGm1tfE"
+          "yturl": "https://www.youtube.com/watch?v=A7xG4_BCE6M"
         },
         {
           "name": "Node.js Crash Course - Traversy Media",
@@ -257,7 +257,7 @@ export const careerRoadmaps = [
         {
           "name": "MongoDB University",
           "url": "https://www.mongodb.com/university",
-          "yturl": "https://www.youtube.com/watch?v=ofme2o29ngU"
+          "yturl": "https://www.youtube.com/watch?v=4yqu8YF29cU"
         },
         {
           "name": "Mongoose Docs",
@@ -266,8 +266,8 @@ export const careerRoadmaps = [
         },
         {
           "name": "The Net Ninja MongoDB Series",
-          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jpvoYriYIqi9XtqJ7Nl7KO",
-          "yturl": "https://www.youtube.com/watch?v=ofme2o29ngU"
+          "url": "https://www.youtube.com/playlist?list=PL4cUxeGkcC9jBcybHMTIia56aV21o2cZ8",
+          "yturl": "https://www.youtube.com/watch?v=9BIXcXHsj0A"
         }
       ],
       "milestone": "Build a backend for a user registration system",
@@ -291,8 +291,8 @@ export const careerRoadmaps = [
         },
         {
           "name": "Traversy Media Auth Tutorial",
-          "url": "https://www.youtube.com/watch?v=enopDSs3DRw",
-          "yturl": "https://www.youtube.com/watch?v=enopDSs3DRw"
+          "url": "https://www.youtube.com/watch?v=fxT54egxGxA",
+          "yturl": "https://www.youtube.com/watch?v=fxT54egxGxA"
         },
         {
           "name": "JWT.io Docs",
@@ -592,10 +592,325 @@ export const careerRoadmaps = [
       }
     ]
 },
+
+{
+  "role": "Agentic AI Engineer",
+  "description": "Master autonomous AI systems that reason, plan, use tools, maintain memory, and run production-grade workflows using LLMs.",
+  "duration": "10 weeks",
+  "difficulty": "Advanced",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Foundations & AI Hierarchy",
+      "description": "Build the programming and LLM foundation needed before learning agentic systems.",
+      "skills": [
+        "Python async and asyncio basics",
+        "LLM SDK usage",
+        "Generative AI vs Agentic AI",
+        "AI hierarchy from ML to Agentic AI"
+      ],
+      "resources": [
+        {
+          "name": "Python asyncio Official Docs",
+          "url": "https://docs.python.org/3/library/asyncio.html",
+          "yturl": "https://www.youtube.com/watch?v=oAkLSJNr5zY"
+        },
+        {
+          "name": "OpenAI Libraries Documentation",
+          "url": "https://platform.openai.com/docs/libraries",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        },
+        {
+          "name": "LangChain v0.2 Overview",
+          "url": "https://python.langchain.com/v0.2/docs/versions/overview/",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        }
+      ],
+      "milestone": "Build a simple async LLM app that validates user input and handles API errors.",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "Single Agents, Prompting & Tools",
+      "description": "Learn how a single agent reasons, follows prompts, and calls tools.",
+      "skills": [
+        "Prompt templates",
+        "Tool calling",
+        "Single-agent architecture",
+        "Basic agent execution flow"
+      ],
+      "resources": [
+        {
+          "name": "LangChain How-to Guides",
+          "url": "https://python.langchain.com/v0.2/docs/how_to/",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        },
+        {
+          "name": "LangGraph Introduction Tutorials",
+          "url": "https://langchain-ai.github.io/langgraph/tutorials/introduction/",
+          "yturl": "https://www.youtube.com/watch?v=cUfLrn3TM3M"
+        },
+        {
+          "name": "OpenAI Function Calling Guide",
+          "url": "https://platform.openai.com/docs/guides/function-calling",
+          "yturl": "https://www.youtube.com/watch?v=78x1dB4poaE"
+        }
+      ],
+      "milestone": "Create a single agent that uses at least two tools and returns a final response from tool outputs.",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Memory & State",
+      "description": "Add short-term and persistent memory and manage execution state cleanly.",
+      "skills": [
+        "Conversation memory",
+        "Persistent memory stores",
+        "State management",
+        "Context engineering"
+      ],
+      "resources": [
+        {
+          "name": "LangChain Memory API Reference",
+          "url": "https://python.langchain.com/v0.2/api_reference/langchain/memory/",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "LangGraph State Concepts",
+          "url": "https://langchain-ai.github.io/langgraph/concepts/low_level/#state",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "LangChain Memory Integrations",
+          "url": "https://python.langchain.com/v0.2/docs/integrations/memory/",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        }
+      ],
+      "milestone": "Build an agent that remembers previous conversations and persists state across sessions.",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Guardrails, Planning & Reflection",
+      "description": "Improve reliability using validation, planning, and self-correction loops.",
+      "skills": [
+        "Guardrails and output validation",
+        "Planning modules",
+        "Reflection loops",
+        "Conditional execution"
+      ],
+      "resources": [
+        {
+          "name": "LangGraph Conditional Edges",
+          "url": "https://langchain-ai.github.io/langgraph/how-tos/conditional-edges/",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "Guardrails Output Parser Example",
+          "url": "https://python.langchain.com/v0.1/docs/templates/guardrails-output-parser/",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "ReAct Paper",
+          "url": "https://arxiv.org/abs/2210.03629",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        }
+      ],
+      "milestone": "Build an agent that plans steps, validates outputs, and retries or reflects when results fail checks.",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "Deep Agents & Long-Horizon Tasks",
+      "description": "Handle complex tasks that require multi-step reasoning and deeper execution loops.",
+      "skills": [
+        "Long-horizon task execution",
+        "Hybrid deterministic-agentic flow",
+        "Tool reasoning",
+        "Deep agent design"
+      ],
+      "resources": [
+        {
+          "name": "LangGraph Multi-Agent Tutorials",
+          "url": "https://langchain-ai.github.io/langgraph/tutorials/multi_agent/",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "MRKL Paper",
+          "url": "https://arxiv.org/abs/2205.00445",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "Toolformer Paper",
+          "url": "https://arxiv.org/abs/2302.04761",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        }
+      ],
+      "milestone": "Build a research agent that breaks a task into multiple steps, uses tools, and produces a structured report.",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Multi-Agent Systems",
+      "description": "Learn collaboration patterns between multiple specialized agents.",
+      "skills": [
+        "Supervisor architecture",
+        "Hierarchical agents",
+        "Collaborative agents",
+        "Framework-level agent orchestration"
+      ],
+      "resources": [
+        {
+          "name": "LangGraph Multi-Agent Collaboration",
+          "url": "https://langchain-ai.github.io/langgraph/tutorials/multi_agent/multi-agent-collaboration/",
+          "yturl": "https://www.youtube.com/watch?v=dAXHHlzk4VY"
+        },
+        {
+          "name": "CrewAI Official Docs",
+          "url": "https://docs.crewai.com/",
+          "yturl": "https://www.youtube.com/watch?v=viH5CDG4vWM"
+        },
+        {
+          "name": "AutoGen AgentChat Docs",
+          "url": "https://microsoft.github.io/autogen/stable/",
+          "yturl": "https://www.youtube.com/watch?v=dAXHHlzk4VY"
+        }
+      ],
+      "milestone": "Build a multi-agent workflow with researcher, critic, and writer agents coordinated by a supervisor.",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Production AgentOps",
+      "description": "Deploy and operate agents with monitoring, scaling, and governance.",
+      "skills": [
+        "Deployment",
+        "Monitoring and tracing",
+        "Rate limiting",
+        "Cost and latency control"
+      ],
+      "resources": [
+        {
+          "name": "LangSmith",
+          "url": "https://smith.langchain.com/",
+          "yturl": "https://www.youtube.com/watch?v=V-Go18NlwHU"
+        },
+        {
+          "name": "Vertex AI Agent Engine Overview",
+          "url": "https://docs.cloud.google.com/agent-builder/agent-engine/overview",
+          "yturl": "https://www.youtube.com/watch?v=p0iMDGBMtrc"
+        },
+        {
+          "name": "Vertex AI Documentation",
+          "url": "https://docs.cloud.google.com/vertex-ai/docs",
+          "yturl": "https://www.youtube.com/watch?v=p0iMDGBMtrc"
+        }
+      ],
+      "milestone": "Deploy an agent workflow with observability, logs, and cost tracking.",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Primary Framework Mastery",
+      "description": "Go deep on the main framework stack recommended for serious agentic work.",
+      "skills": [
+        "LangGraph advanced patterns",
+        "Workflow composition",
+        "Streaming and orchestration",
+        "Framework internals"
+      ],
+      "resources": [
+        {
+          "name": "LangGraph Tutorials",
+          "url": "https://langchain-ai.github.io/langgraph/tutorials/",
+          "yturl": "https://www.youtube.com/watch?v=jGg_1h0qzaM"
+        },
+        {
+          "name": "LangChain LCEL Docs",
+          "url": "https://python.langchain.com/v0.2/docs/expression_language/",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        },
+        {
+          "name": "LangChain API Reference",
+          "url": "https://python.langchain.com/v0.2/api_reference/langchain/",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        }
+      ],
+      "milestone": "Implement a production-style customer support or internal copilot agent using LangChain plus LangGraph.",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Framework Comparison & Papers",
+      "description": "Study the main frameworks and research papers that shaped agentic AI patterns.",
+      "skills": [
+        "Framework evaluation",
+        "Paper reading",
+        "Architecture comparison",
+        "Pattern transfer"
+      ],
+      "resources": [
+        {
+          "name": "OpenAI Agents Guide",
+          "url": "https://platform.openai.com/docs/guides/agents",
+          "yturl": "https://www.youtube.com/watch?v=78x1dB4poaE"
+        },
+        {
+          "name": "Google Vertex AI Agent Builder",
+          "url": "https://docs.cloud.google.com/agent-builder/overview",
+          "yturl": "https://www.youtube.com/watch?v=p0iMDGBMtrc"
+        },
+        {
+          "name": "Reflection Paper",
+          "url": "https://arxiv.org/abs/2303.11366",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        },
+        {
+          "name": "Voyager Paper",
+          "url": "https://arxiv.org/abs/2305.16291",
+          "yturl": "https://www.youtube.com/watch?v=Hz21KVo0t4E"
+        }
+      ],
+      "milestone": "Recreate one paper-inspired agent pattern and compare it across at least two frameworks.",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Capstone Projects & Portfolio",
+      "description": "Convert everything into deployable portfolio-grade projects.",
+      "skills": [
+        "End-to-end project building",
+        "Portfolio packaging",
+        "GitHub documentation",
+        "Demo-driven presentation"
+      ],
+      "resources": [
+        {
+          "name": "LangChain Hub",
+          "url": "https://smith.langchain.com/hub",
+          "yturl": "https://www.youtube.com/watch?v=GiBlq7d8mn0"
+        },
+        {
+          "name": "GitHub Awesome AI Agents",
+          "url": "https://github.com/e2b-dev/awesome-ai-agents",
+          "yturl": "https://www.youtube.com/watch?v=GiBlq7d8mn0"
+        },
+        {
+          "name": "Vercel Templates",
+          "url": "https://vercel.com/templates",
+          "yturl": "https://www.youtube.com/watch?v=sO6NSSOWDO0"
+        }
+      ],
+      "milestone": "Ship 3 strong capstone projects: personal assistant, research analyst, and code-review agent with demos and READMEs.",
+      "completed": false
+    }
+  ]
+},
+
 {
   "role": "datascience",
   "description": "Analyze data and build models to extract insights and drive decisions",
-  "duration": "20 weeks",
+  "duration": "10 weeks",
   "difficulty": "Intermediate",
   "weeks": [
     {
@@ -1176,1349 +1491,1669 @@ export const careerRoadmaps = [
     }
   ]
 },
-  {
-    role: "MobileAppDeveloper",
-    description:
-      "Design and build high-performance mobile applications for Android and iOS",
-    duration: "20 weeks",
-    difficulty: "Intermediate",
-    weeks: [
-      {
-        week: 1,
-        title: "Mobile App Basics & Setup",
-        description:
-          "Understand mobile ecosystem, install tools, and set up environment",
-        skills: [
-          "Flutter Setup",
-          "Android Studio",
-          "Emulator & Real Device Testing",
-        ],
-        resources: [
-          {
-            name: "Flutter Official Documentation",
-            url: "https://docs.flutter.dev/get-started/install"
-          },
-          {
-            name: "Android Developers Guide",
-            url: "https://developer.android.com/guide"
-          },
-          {
-            name: "CodeWithChris Flutter Setup",
-            url: "https://www.youtube.com/watch?v=1gDhl4leEzA"
-          },
-          {
-            name: "Flutter Installation Guide",
-            url: "https://flutter.dev/docs/get-started/install"
-          }
-        ],
-        milestone: "Set up Flutter and run Hello World app",
-        completed: false,
-      },
-      {
-        week: 2,
-        title: "Dart Programming Fundamentals",
-        description: "Learn the Dart language used in Flutter",
-        skills: [
-          "Variables",
-          "Functions",
-          "OOP in Dart",
-          "Collections & Async",
-        ],
-        resources: [
-          {
-            name: "Dart Language Tour",
-            url: "https://dart.dev/guides/language/language-tour"
-          },
-          {
-            name: "Dart Programming Tutorial",
-            url: "https://dart.dev/tutorials"
-          },
-          {
-            name: "freeCodeCamp Dart Course",
-            url: "https://www.youtube.com/watch?v=Ej_Pcr4uC2Q"
-          },
-          {
-            name: "Flutter Dart Basics",
-            url: "https://www.youtube.com/watch?v=5xlVP04905w"
-          }
-        ],
-        milestone: "Create a command-line app in Dart",
-        completed: false,
-      },
-      {
-        week: 3,
-        title: "Flutter UI Components",
-        description:
-          "Design interfaces using Flutter widgets and layout systems",
-        skills: [
-          "Stateless vs Stateful Widgets",
-          "Row & Column",
-          "Container",
-          "Text, Image, Buttons",
-        ],
-        resources: [
-          {
-            name: "Flutter Widget Catalog",
-            url: "https://docs.flutter.dev/development/ui/widgets"
-          },
-          {
-            name: "Reso Coder Flutter UI",
-            url: "https://www.youtube.com/c/ResoCoder"
-          },
-          {
-            name: "Flutter UI Guide",
-            url: "https://docs.flutter.dev/development/ui"
-          },
-          {
-            name: "Flutter Layout Cheat Sheet",
-            url: "https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e"
-          }
-        ],
-        milestone: "Design a profile card UI",
-        completed: false,
-      },
-      {
-        week: 4,
-        title: "Navigation & Routing",
-        description: "Add multiple screens and manage app routes",
-        skills: ["Navigator", "Named Routes", "Route Arguments"],
-        resources: [
-          {
-            name: "Flutter Navigation and Routing",
-            url: "https://docs.flutter.dev/development/ui/navigation"
-          },
-          {
-            name: "Flutter Cookbook - Navigation",
-            url: "https://docs.flutter.dev/cookbook/navigation"
-          },
-          {
-            name: "Fireship Flutter Routing",
-            url: "https://www.youtube.com/watch?v=nyvwx7o277U"
-          },
-          {
-            name: "GoRouter Package",
-            url: "https://pub.dev/packages/go_router"
-          }
-        ],
-        milestone: "Create a multi-screen quiz app",
-        completed: false,
-      },
-      {
-        week: 5,
-        title: "State Management in Flutter",
-        description: "Handle UI state using various management techniques",
-        skills: ["setState", "Provider", "Riverpod Basics", "State Lifecycle"],
-        resources: [
-          {
-            name: "Flutter State Management Guide",
-            url: "https://docs.flutter.dev/development/data-and-backend/state-mgmt"
-          },
-          {
-            name: "Provider Package",
-            url: "https://pub.dev/packages/provider"
-          },
-          {
-            name: "Riverpod Documentation",
-            url: "https://riverpod.dev/"
-          },
-          {
-            name: "Reso Coder State Management",
-            url: "https://www.youtube.com/watch?v=d_m5csmrf7I"
-          }
-        ],
-        milestone: "Build a todo app using Provider",
-        completed: false,
-      },
-      {
-        week: 6,
-        title: "User Input & Forms",
-        description: "Accept, validate, and submit user input via forms",
-        skills: ["TextField", "Form Validation", "Controllers", "Snackbar"],
-        resources: [
-          {
-            name: "Flutter Forms Documentation",
-            url: "https://docs.flutter.dev/cookbook/forms"
-          },
-          {
-            name: "FilledStacks Form Tutorials",
-            url: "https://www.filledstacks.com/post/flutter-form-validation-tutorial/"
-          },
-          {
-            name: "Flutter Form Validation",
-            url: "https://docs.flutter.dev/cookbook/forms/validation"
-          },
-          {
-            name: "Form Builder Package",
-            url: "https://pub.dev/packages/flutter_form_builder"
-          }
-        ],
-        milestone: "Build a login/register UI with validation",
-        completed: false,
-      },
-      {
-        week: 7,
-        title: "Networking & APIs",
-        description: "Fetch and send data over the internet",
-        skills: ["HTTP Package", "FutureBuilder", "JSON Parsing", "REST APIs"],
-        resources: [
-          {
-            name: "Flutter Networking Guide",
-            url: "https://docs.flutter.dev/cookbook/networking/fetch-data"
-          },
-          {
-            name: "HTTP Package",
-            url: "https://pub.dev/packages/http"
-          },
-          {
-            name: "Dio Package (Advanced HTTP)",
-            url: "https://pub.dev/packages/dio"
-          },
-          {
-            name: "JSONPlaceholder API",
-            url: "https://jsonplaceholder.typicode.com/"
-          }
-        ],
-        milestone: "Build a weather app using OpenWeatherMap API",
-        completed: false,
-      },
-      {
-        week: 8,
-        title: "Firebase Integration",
-        description: "Use Firebase for backend services like auth and database",
-        skills: [
-          "Firebase Auth",
-          "Cloud Firestore",
-          "Push Notifications",
-          "Firebase Setup",
-        ],
-        resources: [
-          {
-            name: "FlutterFire Documentation",
-            url: "https://firebase.flutter.dev/"
-          },
-          {
-            name: "Firebase Console",
-            url: "https://console.firebase.google.com/"
-          },
-          {
-            name: "Fireship Firebase Flutter",
-            url: "https://www.youtube.com/watch?v=sfA3NWDBPZ4"
-          },
-          {
-            name: "Firebase Auth Package",
-            url: "https://pub.dev/packages/firebase_auth"
-          }
-        ],
-        milestone: "Create a real-time chat app",
-        completed: false,
-      },
-      {
-        week: 9,
-        title: "App Deployment & Store Publishing",
-        description: "Package and publish your app to Play Store and App Store",
-        skills: [
-          "App Bundles",
-          "Signing Keys",
-          "Play Console",
-          "iOS App Store Basics",
-        ],
-        resources: [
-          {
-            name: "Flutter Deployment Documentation",
-            url: "https://docs.flutter.dev/deployment"
-          },
-          {
-            name: "Google Play Console",
-            url: "https://play.google.com/console/"
-          },
-          {
-            name: "Apple App Store Connect",
-            url: "https://appstoreconnect.apple.com/"
-          },
-          {
-            name: "Flutter Build and Release",
-            url: "https://docs.flutter.dev/deployment/android"
-          }
-        ],
-        milestone: "Publish a test app to Google Play (internal track)",
-        completed: false,
-      },
-      {
-        week: 10,
-        title: "Capstone Project",
-        description:
-          "Combine all skills into a real-world, full-featured mobile app",
-        skills: [
-          "UI/UX Design",
-          "Authentication",
-          "State Management",
-          "API Integration",
-        ],
-        resources: [
-          {
-            name: "Flutter Samples",
-            url: "https://github.com/flutter/samples"
-          },
-          {
-            name: "Dribbble Mobile UI",
-            url: "https://dribbble.com/tags/mobile_ui"
-          },
-          {
-            name: "GitHub for Version Control",
-            url: "https://docs.github.com/en/get-started"
-          },
-          {
-            name: "Flutter Gallery App",
-            url: "https://github.com/flutter/gallery"
-          }
-        ],
-        milestone:
-          "Build and deploy a full mobile app (e.g., Expense Tracker or Task Manager)",
-        completed: false,
-      },
-    ],
-  },
+{
+  "role": "MobileAppDeveloper",
+  "description": "Design and build high-performance mobile applications for Android and iOS",
+  "duration": "20 weeks",
+  "difficulty": "Intermediate",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Mobile App Basics & Setup",
+      "description": "Understand mobile ecosystem, install tools, and set up environment",
+      "skills": [
+        "Flutter Setup",
+        "Android Studio",
+        "Emulator & Real Device Testing"
+      ],
+      "resources": [
+        {
+          "name": "Flutter Official Documentation",
+          "url": "https://docs.flutter.dev/get-started/install",
+          "yturl": "https://www.youtube.com/watch?v=1ukSR1GRtMU"
+        },
+        {
+          "name": "Android Developers Guide",
+          "url": "https://developer.android.com/guide",
+          "yturl": "https://www.youtube.com/watch?v=fis26HvvDII"
+        },
+        {
+          "name": "CodeWithChris Flutter Setup",
+          "url": "https://www.youtube.com/watch?v=1gDhl4leEzA",
+          "yturl": "https://www.youtube.com/watch?v=1gDhl4leEzA"
+        },
+        {
+          "name": "Flutter Installation Guide",
+          "url": "https://flutter.dev/docs/get-started/install",
+          "yturl": "https://www.youtube.com/watch?v=VFDbZk2xhO4"
+        }
+      ],
+      "milestone": "Set up Flutter and run Hello World app",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "Dart Programming Fundamentals",
+      "description": "Learn the Dart language used in Flutter",
+      "skills": [
+        "Variables",
+        "Functions",
+        "OOP in Dart",
+        "Collections & Async"
+      ],
+      "resources": [
+        {
+          "name": "Dart Language Tour",
+          "url": "https://dart.dev/guides/language/language-tour",
+          "yturl": "https://www.youtube.com/watch?v=Ej_Pcr4uC2Q"
+        },
+        {
+          "name": "Dart Programming Tutorial",
+          "url": "https://dart.dev/tutorials",
+          "yturl": "https://www.youtube.com/watch?v=5xlVP04905w"
+        },
+        {
+          "name": "freeCodeCamp Dart Course",
+          "url": "https://www.youtube.com/watch?v=Ej_Pcr4uC2Q",
+          "yturl": "https://www.youtube.com/watch?v=Ej_Pcr4uC2Q"
+        },
+        {
+          "name": "Flutter Dart Basics",
+          "url": "https://www.youtube.com/watch?v=5xlVP04905w",
+          "yturl": "https://www.youtube.com/watch?v=5xlVP04905w"
+        }
+      ],
+      "milestone": "Create a command-line app in Dart",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Flutter UI Components",
+      "description": "Design interfaces using Flutter widgets and layout systems",
+      "skills": [
+        "Stateless vs Stateful Widgets",
+        "Row & Column",
+        "Container",
+        "Text, Image, Buttons"
+      ],
+      "resources": [
+        {
+          "name": "Flutter Widget Catalog",
+          "url": "https://docs.flutter.dev/development/ui/widgets",
+          "yturl": "https://www.youtube.com/watch?v=b_sQ9bMltGU"
+        },
+        {
+          "name": "Reso Coder Flutter UI",
+          "url": "https://www.youtube.com/c/ResoCoder",
+          "yturl": "https://www.youtube.com/watch?v=x0uinJvhNxI"
+        },
+        {
+          "name": "Flutter UI Guide",
+          "url": "https://docs.flutter.dev/development/ui",
+          "yturl": "https://www.youtube.com/watch?v=TSIhiZ5jRB0"
+        },
+        {
+          "name": "Flutter Layout Cheat Sheet",
+          "url": "https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e",
+          "yturl": "https://www.youtube.com/watch?v=RJEnTRBxaSg"
+        }
+      ],
+      "milestone": "Design a profile card UI",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Navigation & Routing",
+      "description": "Add multiple screens and manage app routes",
+      "skills": ["Navigator", "Named Routes", "Route Arguments"],
+      "resources": [
+        {
+          "name": "Flutter Navigation and Routing",
+          "url": "https://docs.flutter.dev/development/ui/navigation",
+          "yturl": "https://www.youtube.com/watch?v=nyvwx7o277U"
+        },
+        {
+          "name": "Flutter Cookbook - Navigation",
+          "url": "https://docs.flutter.dev/cookbook/navigation",
+          "yturl": "https://www.youtube.com/watch?v=EFL8ZzB_Uak"
+        },
+        {
+          "name": "Fireship Flutter Routing",
+          "url": "https://www.youtube.com/watch?v=nyvwx7o277U",
+          "yturl": "https://www.youtube.com/watch?v=nyvwx7o277U"
+        },
+        {
+          "name": "GoRouter Package",
+          "url": "https://pub.dev/packages/go_router",
+          "yturl": "https://www.youtube.com/watch?v=iprUTSlialM"
+        }
+      ],
+      "milestone": "Create a multi-screen quiz app",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "State Management in Flutter",
+      "description": "Handle UI state using various management techniques",
+      "skills": ["setState", "Provider", "Riverpod Basics", "State Lifecycle"],
+      "resources": [
+        {
+          "name": "Flutter State Management Guide",
+          "url": "https://docs.flutter.dev/development/data-and-backend/state-mgmt",
+          "yturl": "https://www.youtube.com/watch?v=d_m5csmrf7I"
+        },
+        {
+          "name": "Provider Package",
+          "url": "https://pub.dev/packages/provider",
+          "yturl": "https://www.youtube.com/watch?v=O71rYKcxUgA"
+        },
+        {
+          "name": "Riverpod Documentation",
+          "url": "https://riverpod.dev/",
+          "yturl": "https://www.youtube.com/watch?v=vtGCteFkn44"
+        },
+        {
+          "name": "Reso Coder State Management",
+          "url": "https://www.youtube.com/watch?v=d_m5csmrf7I",
+          "yturl": "https://www.youtube.com/watch?v=d_m5csmrf7I"
+        }
+      ],
+      "milestone": "Build a todo app using Provider",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "User Input & Forms",
+      "description": "Accept, validate, and submit user input via forms",
+      "skills": ["TextField", "Form Validation", "Controllers", "Snackbar"],
+      "resources": [
+        {
+          "name": "Flutter Forms Documentation",
+          "url": "https://docs.flutter.dev/cookbook/forms",
+          "yturl": "https://www.youtube.com/watch?v=2rn3XbBijy4"
+        },
+        {
+          "name": "FilledStacks Form Tutorials",
+          "url": "https://www.filledstacks.com/post/flutter-form-validation-tutorial/",
+          "yturl": "https://www.youtube.com/watch?v=RiCZfh1GjFk"
+        },
+        {
+          "name": "Flutter Form Validation",
+          "url": "https://docs.flutter.dev/cookbook/forms/validation",
+          "yturl": "https://www.youtube.com/watch?v=x0uinJvhNxI"
+        },
+        {
+          "name": "Form Builder Package",
+          "url": "https://pub.dev/packages/flutter_form_builder",
+          "yturl": "https://www.youtube.com/watch?v=2pPBZZsRJkU"
+        }
+      ],
+      "milestone": "Build a login/register UI with validation",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Networking & APIs",
+      "description": "Fetch and send data over the internet",
+      "skills": ["HTTP Package", "FutureBuilder", "JSON Parsing", "REST APIs"],
+      "resources": [
+        {
+          "name": "Flutter Networking Guide",
+          "url": "https://docs.flutter.dev/cookbook/networking/fetch-data",
+          "yturl": "https://www.youtube.com/watch?v=LkOcXHY2XBs"
+        },
+        {
+          "name": "HTTP Package",
+          "url": "https://pub.dev/packages/http",
+          "yturl": "https://www.youtube.com/watch?v=nRmTl7k05k4"
+        },
+        {
+          "name": "Dio Package (Advanced HTTP)",
+          "url": "https://pub.dev/packages/dio",
+          "yturl": "https://www.youtube.com/watch?v=0KCFOsKWYQM"
+        },
+        {
+          "name": "JSONPlaceholder API",
+          "url": "https://jsonplaceholder.typicode.com/",
+          "yturl": "https://www.youtube.com/watch?v=13-jNF984C0"
+        }
+      ],
+      "milestone": "Build a weather app using OpenWeatherMap API",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Firebase Integration",
+      "description": "Use Firebase for backend services like auth and database",
+      "skills": [
+        "Firebase Auth",
+        "Cloud Firestore",
+        "Push Notifications",
+        "Firebase Setup"
+      ],
+      "resources": [
+        {
+          "name": "FlutterFire Documentation",
+          "url": "https://firebase.flutter.dev/",
+          "yturl": "https://www.youtube.com/watch?v=sfA3NWDBPZ4"
+        },
+        {
+          "name": "Firebase Console",
+          "url": "https://console.firebase.google.com/",
+          "yturl": "https://www.youtube.com/watch?v=aCqnyt5PTZY"
+        },
+        {
+          "name": "Fireship Firebase Flutter",
+          "url": "https://www.youtube.com/watch?v=sfA3NWDBPZ4",
+          "yturl": "https://www.youtube.com/watch?v=sfA3NWDBPZ4"
+        },
+        {
+          "name": "Firebase Auth Package",
+          "url": "https://pub.dev/packages/firebase_auth",
+          "yturl": "https://www.youtube.com/watch?v=Mj7Pyb6HHLU"
+        }
+      ],
+      "milestone": "Create a real-time chat app",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "App Deployment & Store Publishing",
+      "description": "Package and publish your app to Play Store and App Store",
+      "skills": [
+        "App Bundles",
+        "Signing Keys",
+        "Play Console",
+        "iOS App Store Basics"
+      ],
+      "resources": [
+        {
+          "name": "Flutter Deployment Documentation",
+          "url": "https://docs.flutter.dev/deployment",
+          "yturl": "https://www.youtube.com/watch?v=g0GNuoCOtaQ"
+        },
+        {
+          "name": "Google Play Console",
+          "url": "https://play.google.com/console/",
+          "yturl": "https://www.youtube.com/watch?v=5GHT4QtotE4"
+        },
+        {
+          "name": "Apple App Store Connect",
+          "url": "https://appstoreconnect.apple.com/",
+          "yturl": "https://www.youtube.com/watch?v=akFF1uJen2g"
+        },
+        {
+          "name": "Flutter Build and Release",
+          "url": "https://docs.flutter.dev/deployment/android",
+          "yturl": "https://www.youtube.com/watch?v=Vhm1Cv2uPko"
+        }
+      ],
+      "milestone": "Publish a test app to Google Play (internal track)",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Capstone Project",
+      "description": "Combine all skills into a real-world, full-featured mobile app",
+      "skills": [
+        "UI/UX Design",
+        "Authentication",
+        "State Management",
+        "API Integration"
+      ],
+      "resources": [
+        {
+          "name": "Flutter Samples",
+          "url": "https://github.com/flutter/samples",
+          "yturl": "https://www.youtube.com/watch?v=HQ_ytw58tC4"
+        },
+        {
+          "name": "Dribbble Mobile UI",
+          "url": "https://dribbble.com/tags/mobile_ui",
+          "yturl": "https://www.youtube.com/watch?v=LYQ-gPCbJiI"
+        },
+        {
+          "name": "GitHub for Version Control",
+          "url": "https://docs.github.com/en/get-started",
+          "yturl": "https://www.youtube.com/watch?v=2MsN8gpT6jY"
+        },
+        {
+          "name": "Flutter Gallery App",
+          "url": "https://github.com/flutter/gallery",
+          "yturl": "https://www.youtube.com/watch?v=ut4MHnfaRq8"
+        }
+      ],
+      "milestone": "Build and deploy a full mobile app (e.g., Expense Tracker or Task Manager)",
+      "completed": false
+    }
+  ]
+},
 
-  {
-    role: "CloudDevOpsEngineer",
-    description:
-      "Design, deploy, and manage cloud infrastructure and automate deployments",
-    duration: "20 weeks",
-    difficulty: "Advanced",
-    weeks: [
-      {
-        week: 1,
-        title: "Cloud Computing Fundamentals",
-        description: "Understand the basics of cloud services and providers",
-        skills: [
-          "IaaS, PaaS, SaaS",
-          "Public vs Private Cloud",
-          "Virtualization",
-          "Cloud Advantages",
-        ],
-        resources: [
-          {
-            name: "AWS Cloud Practitioner Essentials",
-            url: "https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/"
-          },
-          {
-            name: "Microsoft Learn - Azure Fundamentals",
-            url: "https://docs.microsoft.com/en-us/learn/paths/az-900-describe-cloud-concepts/"
-          },
-          {
-            name: "Google Cloud Fundamentals",
-            url: "https://www.cloudskillsboost.google/course_templates/60"
-          },
-          {
-            name: "Coursera Cloud Computing Basics",
-            url: "https://www.coursera.org/learn/cloud-computing-basics"
-          }
-        ],
-        milestone: "Compare services between AWS, Azure, and GCP",
-        completed: false,
-      },
-      {
-        week: 2,
-        title: "Getting Started with AWS",
-        description: "Work with core AWS services and the console",
-        skills: ["EC2", "S3", "IAM", "AWS CLI"],
-        resources: [
-          {
-            name: "AWS Free Tier",
-            url: "https://aws.amazon.com/free/"
-          },
-          {
-            name: "AWS Getting Started Documentation",
-            url: "https://docs.aws.amazon.com/gettingstarted/"
-          },
-          {
-            name: "freeCodeCamp AWS Course",
-            url: "https://www.youtube.com/watch?v=3hLmDS179YE"
-          },
-          {
-            name: "AWS CLI User Guide",
-            url: "https://docs.aws.amazon.com/cli/latest/userguide/"
-          }
-        ],
-        milestone: "Launch a web server using EC2 and store files in S3",
-        completed: false,
-      },
-      {
-        week: 3,
-        title: "Linux & Command Line Basics",
-        description: "Operate cloud servers via CLI and remote access",
-        skills: [
-          "Bash Commands",
-          "SSH",
-          "User Permissions",
-          "Package Managers",
-        ],
-        resources: [
-          {
-            name: "LinuxCommand.org",
-            url: "https://linuxcommand.org/"
-          },
-          {
-            name: "OverTheWire Bandit",
-            url: "https://overthewire.org/wargames/bandit/"
-          },
-          {
-            name: "DigitalOcean Linux Tutorials",
-            url: "https://www.digitalocean.com/community/tutorials"
-          },
-          {
-            name: "Linux Journey",
-            url: "https://linuxjourney.com/"
-          }
-        ],
-        milestone: "SSH into an EC2 instance and install a web app",
-        completed: false,
-      },
-      {
-        week: 4,
-        title: "Networking & Load Balancing in Cloud",
-        description: "Understand cloud networking and scalability",
-        skills: ["VPC", "Subnets", "Load Balancers", "Security Groups"],
-        resources: [
-          {
-            name: "AWS VPC Documentation",
-            url: "https://docs.aws.amazon.com/vpc/"
-          },
-          {
-            name: "Azure Virtual Network",
-            url: "https://docs.microsoft.com/en-us/azure/virtual-network/"
-          },
-          {
-            name: "Google Cloud VPC Guide",
-            url: "https://cloud.google.com/vpc/docs"
-          },
-          {
-            name: "AWS Load Balancing",
-            url: "https://aws.amazon.com/elasticloadbalancing/"
-          }
-        ],
-        milestone: "Create a public VPC and configure a load balancer",
-        completed: false,
-      },
-      {
-        week: 5,
-        title: "Storage & Databases in the Cloud",
-        description: "Use managed cloud storage and database services",
-        skills: [
-          "S3 Buckets",
-          "EBS",
-          "RDS (MySQL/PostgreSQL)",
-          "Backup & Snapshots",
-        ],
-        resources: [
-          {
-            name: "AWS RDS Documentation",
-            url: "https://docs.aws.amazon.com/rds/"
-          },
-          {
-            name: "AWS S3 User Guide",
-            url: "https://docs.aws.amazon.com/s3/"
-          },
-          {
-            name: "Cloud Academy Database Courses",
-            url: "https://cloudacademy.com/library/amazon-web-services/catalog/databases/"
-          },
-          {
-            name: "DigitalOcean Managed Databases",
-            url: "https://www.digitalocean.com/products/managed-databases/"
-          }
-        ],
-        milestone: "Host a blog on EC2 with a cloud database backend",
-        completed: false,
-      },
-      {
-        week: 6,
-        title: "Containers with Docker",
-        description: "Package applications using Docker",
-        skills: [
-          "Dockerfile",
-          "Volumes",
-          "Docker Compose",
-          "Container Networking",
-        ],
-        resources: [
-          {
-            name: "Docker Official Documentation",
-            url: "https://docs.docker.com/"
-          },
-          {
-            name: "Play With Docker",
-            url: "https://labs.play-with-docker.com/"
-          },
-          {
-            name: "TechWorld with Nana Docker",
-            url: "https://www.youtube.com/watch?v=3c-iBn73dDE"
-          },
-          {
-            name: "Docker Compose Documentation",
-            url: "https://docs.docker.com/compose/"
-          }
-        ],
-        milestone: "Containerize a Node.js or Python Flask app",
-        completed: false,
-      },
-      {
-        week: 7,
-        title: "Orchestration with Kubernetes",
-        description: "Manage containers at scale using Kubernetes",
-        skills: ["Pods", "Deployments", "Services", "Helm"],
-        resources: [
-          {
-            name: "Kubernetes Official Documentation",
-            url: "https://kubernetes.io/docs/"
-          },
-          {
-            name: "Kubernetes Interactive Tutorials",
-            url: "https://kubernetes.io/docs/tutorials/"
-          },
-          {
-            name: "Learnk8s.io",
-            url: "https://learnk8s.io/"
-          },
-          {
-            name: "Helm Documentation",
-            url: "https://helm.sh/docs/"
-          }
-        ],
-        milestone: "Deploy a multi-container app on Minikube or EKS",
-        completed: false,
-      },
-      {
-        week: 8,
-        title: "CI/CD Pipelines",
-        description: "Automate build and deployment using CI/CD tools",
-        skills: ["GitHub Actions", "Jenkins", "GitLab CI/CD", "YAML Workflows"],
-        resources: [
-          {
-            name: "GitHub Actions Documentation",
-            url: "https://docs.github.com/en/actions"
-          },
-          {
-            name: "Jenkins Documentation",
-            url: "https://www.jenkins.io/doc/"
-          },
-          {
-            name: "GitLab CI/CD Documentation",
-            url: "https://docs.gitlab.com/ee/ci/"
-          },
-          {
-            name: "freeCodeCamp DevOps Course",
-            url: "https://www.youtube.com/watch?v=j5Zsa_eOXeY"
-          }
-        ],
-        milestone: "Build and deploy a Docker app using GitHub Actions",
-        completed: false,
-      },
-      {
-        week: 9,
-        title: "Infrastructure as Code (IaC)",
-        description: "Manage cloud resources using code",
-        skills: ["Terraform Basics", "AWS CDK", "CloudFormation Templates"],
-        resources: [
-          {
-            name: "Terraform Documentation",
-            url: "https://www.terraform.io/docs"
-          },
-          {
-            name: "HashiCorp Learn Terraform",
-            url: "https://learn.hashicorp.com/terraform"
-          },
-          {
-            name: "AWS CloudFormation Documentation",
-            url: "https://docs.aws.amazon.com/cloudformation/"
-          },
-          {
-            name: "AWS CDK Documentation",
-            url: "https://docs.aws.amazon.com/cdk/"
-          }
-        ],
-        milestone: "Create infrastructure using Terraform on AWS",
-        completed: false,
-      },
-      {
-        week: 10,
-        title: "Monitoring, Logging & Capstone Project",
-        description: "Monitor cloud apps and complete a real-world deployment",
-        skills: ["CloudWatch", "Grafana", "Prometheus", "ELK Stack"],
-        resources: [
-          {
-            name: "AWS CloudWatch Documentation",
-            url: "https://docs.aws.amazon.com/cloudwatch/"
-          },
-          {
-            name: "Grafana Documentation",
-            url: "https://grafana.com/docs/"
-          },
-          {
-            name: "Prometheus Documentation",
-            url: "https://prometheus.io/docs/"
-          },
-          {
-            name: "Elastic Stack Documentation",
-            url: "https://www.elastic.co/guide/"
-          }
-        ],
-        milestone:
-          "Deploy a containerized app with CI/CD, IaC, and monitoring dashboard",
-        completed: false,
-      },
-    ],
-  },
-  {
-    role: "GameDeveloper",
-    description:
-      "Design and build interactive games using game engines and programming logic",
-    duration: "20 weeks",
-    difficulty: "Intermediate",
-    weeks: [
-      {
-        week: 1,
-        title: "Introduction to Game Development",
-        description:
-          "Understand the basics of how games are made and what tools are used",
-        skills: ["Game Genres", "Game Loop Concept", "Game Engines Overview"],
-        resources: [
-          {
-            name: "GDC Vault",
-            url: "https://www.gdcvault.com/"
-          },
-          {
-            name: "GameDev.tv Blog",
-            url: "https://www.gamedev.tv/blog"
-          },
-          {
-            name: "Coursera Game Design and Development",
-            url: "https://www.coursera.org/specializations/game-development"
-          },
-          {
-            name: "Extra Credits Game Design",
-            url: "https://www.youtube.com/extracredits"
-          }
-        ],
-        milestone: "Explore Unity/Unreal interface and build a basic 2D scene",
-        completed: false,
-      },
-      {
-        week: 2,
-        title: "C# Programming for Unity",
-        description:
-          "Learn the fundamentals of C# programming language for game logic",
-        skills: [
-          "Variables & Data Types",
-          "Conditionals",
-          "Loops",
-          "Classes & Methods",
-        ],
-        resources: [
-          {
-            name: "Microsoft C# Documentation",
-            url: "https://docs.microsoft.com/en-us/dotnet/csharp/"
-          },
-          {
-            name: "Brackeys C# Basics",
-            url: "https://www.youtube.com/watch?v=IFayQioG71A"
-          },
-          {
-            name: "Unity Learn C# Scripting",
-            url: "https://learn.unity.com/tutorial/introduction-to-c-sharp-scripting"
-          },
-          {
-            name: "C# Programming Yellow Book",
-            url: "https://www.robmiles.com/c-yellow-book/"
-          }
-        ],
-        milestone: "Build a basic console game like number guesser",
-        completed: false,
-      },
-      {
-        week: 3,
-        title: "Unity Engine Basics",
-        description: "Learn to work with the Unity interface and game objects",
-        skills: ["Scenes", "GameObjects", "Components", "Inspector"],
-        resources: [
-          {
-            name: "Unity Learn Pathways",
-            url: "https://learn.unity.com/"
-          },
-          {
-            name: "Brackeys Unity Beginner Tutorial",
-            url: "https://www.youtube.com/watch?v=j48LtUkZRjU"
-          },
-          {
-            name: "Unity Manual",
-            url: "https://docs.unity3d.com/Manual/"
-          },
-          {
-            name: "Unity Scripting Reference",
-            url: "https://docs.unity3d.com/ScriptReference/"
-          }
-        ],
-        milestone: "Create a 2D platformer scene with character and terrain",
-        completed: false,
-      },
-      {
-        week: 4,
-        title: "Player Controls & Scripting",
-        description: "Add interactivity and user input to control characters",
-        skills: [
-          "Input Handling",
-          "Character Movement",
-          "Physics",
-          "Rigidbodies",
-        ],
-        resources: [
-          {
-            name: "Unity Input System Documentation",
-            url: "https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/"
-          },
-          {
-            name: "Code Monkey Unity Tutorials",
-            url: "https://www.youtube.com/c/CodeMonkeyUnity"
-          },
-          {
-            name: "Brackeys Player Movement",
-            url: "https://www.youtube.com/watch?v=4HpC--2iowE"
-          },
-          {
-            name: "Unity Physics Documentation",
-            url: "https://docs.unity3d.com/Manual/PhysicsSection.html"
-          }
-        ],
-        milestone: "Add jump and move features to your character",
-        completed: false,
-      },
-      {
-        week: 5,
-        title: "Game Physics & Collisions",
-        description: "Implement realistic behavior using physics engine",
-        skills: ["Colliders", "Triggers", "Gravity", "Force Application"],
-        resources: [
-          {
-            name: "Unity Physics Documentation",
-            url: "https://docs.unity3d.com/Manual/PhysicsSection.html"
-          },
-          {
-            name: "Unity Colliders Tutorial",
-            url: "https://learn.unity.com/tutorial/collision-detection-with-colliders"
-          },
-          {
-            name: "Raycasting in Unity",
-            url: "https://docs.unity3d.com/ScriptReference/Physics.Raycast.html"
-          },
-          {
-            name: "Brackeys 2D Physics",
-            url: "https://www.youtube.com/watch?v=whzomFgjT50"
-          }
-        ],
-        milestone: "Create obstacles and win/lose conditions using physics",
-        completed: false,
-      },
-      {
-        week: 6,
-        title: "UI, Health & Scoring Systems",
-        description: "Build game interfaces and logic for score/health",
-        skills: ["Canvas System", "Health Bar", "Score Counter", "Menus"],
-        resources: [
-          {
-            name: "Unity UI Toolkit Documentation",
-            url: "https://docs.unity3d.com/Manual/UIElements.html"
-          },
-          {
-            name: "Unity UI System (Legacy)",
-            url: "https://docs.unity3d.com/Manual/UISystem.html"
-          },
-          {
-            name: "Brackeys Health System Tutorial",
-            url: "https://www.youtube.com/watch?v=BLfNP4Sc_iA"
-          },
-          {
-            name: "GameDev.tv Complete Unity Developer",
-            url: "https://www.gamedev.tv/p/complete-unity-developer"
-          }
-        ],
-        milestone: "Add score counter and health bar with game over screen",
-        completed: false,
-      },
-      {
-        week: 7,
-        title: "Sound & Animation",
-        description: "Make games engaging with visuals and audio",
-        skills: [
-          "Animator Controller",
-          "Transitions",
-          "2D/3D Animation",
-          "Sound Effects",
-        ],
-        resources: [
-          {
-            name: "Unity Animation System",
-            url: "https://docs.unity3d.com/Manual/AnimationSection.html"
-          },
-          {
-            name: "Mixamo for 3D Animations",
-            url: "https://www.mixamo.com/"
-          },
-          {
-            name: "OpenGameArt.org",
-            url: "https://opengameart.org/"
-          },
-          {
-            name: "Unity Audio Documentation",
-            url: "https://docs.unity3d.com/Manual/AudioFiles.html"
-          }
-        ],
-        milestone: "Animate player actions and add sound effects",
-        completed: false,
-      },
-      {
-        week: 8,
-        title: "Level Design & Game Mechanics",
-        description: "Design levels and introduce gameplay elements",
-        skills: ["Tilemaps", "Object Pooling", "Power-ups", "AI Enemies"],
-        resources: [
-          {
-            name: "Unity 2D Tilemap Documentation",
-            url: "https://docs.unity3d.com/Manual/class-Tilemap.html"
-          },
-          {
-            name: "Unity Object Pooling",
-            url: "https://learn.unity.com/tutorial/object-pooling"
-          },
-          {
-            name: "Game Programming Patterns",
-            url: "https://gameprogrammingpatterns.com/"
-          },
-          {
-            name: "Sebastian Lague AI Tutorial",
-            url: "https://www.youtube.com/watch?v=6BrZryMz-ac"
-          }
-        ],
-        milestone: "Design two playable levels with increasing difficulty",
-        completed: false,
-      },
-      {
-        week: 9,
-        title: "Polishing & Optimization",
-        description: "Improve user experience and performance",
-        skills: [
-          "Lighting",
-          "Particles",
-          "Mobile Optimization",
-          "Frame Rate Tuning",
-        ],
-        resources: [
-          {
-            name: "Unity Profiler Documentation",
-            url: "https://docs.unity3d.com/Manual/Profiler.html"
-          },
-          {
-            name: "Unity Performance Tips",
-            url: "https://unity.com/how-to/optimize-game-performance-mobile-devices"
-          },
-          {
-            name: "Unity Visual Effect Graph",
-            url: "https://unity.com/visual-effect-graph"
-          },
-          {
-            name: "Game Feel by Steve Swink",
-            url: "https://www.amazon.com/Game-Feel-Designers-Sensation-Purchase/dp/0123743281"
-          }
-        ],
-        milestone: "Make your game smooth and visually appealing",
-        completed: false,
-      },
-      {
-        week: 10,
-        title: "Capstone Project & Publishing",
-        description: "Finish your game and publish to a platform",
-        skills: [
-          "Building APK or WebGL",
-          "Play Store Submission",
-          "Itch.io Upload",
-        ],
-        resources: [
-          {
-            name: "Unity Build Settings Documentation",
-            url: "https://docs.unity3d.com/Manual/BuildSettings.html"
-          },
-          {
-            name: "Google Play Console Guide",
-            url: "https://support.google.com/googleplay/android-developer/"
-          },
-          {
-            name: "Itch.io Creator Documentation",
-            url: "https://itch.io/docs/creators/"
-          },
-          {
-            name: "Unity WebGL Publishing",
-            url: "https://docs.unity3d.com/Manual/webgl-building.html"
-          }
-        ],
-        milestone:
-          "Publish your final game project to itch.io or Android device",
-        completed: false,
-      },
-    ],
-  },
-  {
-    role: "BlockchainDeveloper",
-    description: "Build decentralized applications and smart contracts using blockchain technology",
-    duration: "20 weeks",
-    difficulty: "Advanced",
-    weeks: [
-      {
-        week: 1,
-        title: "Blockchain Fundamentals",
-        description: "Understand how blockchain works and why it matters",
-        skills: ["Distributed Ledger", "Consensus Mechanisms", "Hashing", "Blocks & Mining"],
-        resources: [
-          {
-            name: "Bitcoin Whitepaper",
-            url: "https://bitcoin.org/bitcoin.pdf"
-          },
-          {
-            name: "Blockchain Basics Course - Coursera",
-            url: "https://www.coursera.org/learn/blockchain-basics"
-          },
-          {
-            name: "Blockchain Demo - Anders Brownworth",
-            url: "https://andersbrownworth.com/blockchain/"
-          }
-        ],
-        milestone: "Simulate a basic blockchain using Python or JavaScript",
-        completed: false
-      },
-      {
-        week: 2,
-        title: "Cryptography & Wallets",
-        description: "Explore cryptography and wallet generation principles",
-        skills: ["Public/Private Key", "Digital Signatures", "Hash Functions", "Wallet Types"],
-        resources: [
-          {
-            name: "Khan Academy Cryptography",
-            url: "https://www.khanacademy.org/computing/computer-science/cryptography"
-          },
-          {
-            name: "Cryptography Course - Coursera Stanford",
-            url: "https://www.coursera.org/learn/crypto"
-          },
-          {
-            name: "Practical Cryptography for Developers",
-            url: "https://cryptobook.nakov.com/"
-          }
-        ],
-        milestone: "Generate wallet keys and sign a transaction",
-        completed: false
-      },
-      {
-        week: 3,
-        title: "Ethereum & Smart Contracts",
-        description: "Dive into Ethereum and write your first smart contract",
-        skills: ["Ethereum Virtual Machine (EVM)", "Gas & Transactions", "Remix IDE"],
-        resources: [
-          {
-            name: "Ethereum.org Developer Resources",
-            url: "https://ethereum.org/en/developers/"
-          },
-          {
-            name: "Remix IDE Documentation",
-            url: "https://remix-ide.readthedocs.io/en/latest/"
-          },
-          {
-            name: "Ethereum Whitepaper",
-            url: "https://ethereum.org/en/whitepaper/"
-          }
-        ],
-        milestone: "Deploy a Hello World contract on Remix",
-        completed: false
-      },
-      {
-        week: 4,
-        title: "Solidity Programming Language",
-        description: "Master the language used to write smart contracts",
-        skills: ["Data Types", "Functions", "Mappings", "Modifiers", "Inheritance"],
-        resources: [
-          {
-            name: "Solidity Documentation",
-            url: "https://docs.soliditylang.org/en/latest/"
-          },
-          {
-            name: "CryptoZombies - Learn Solidity",
-            url: "https://cryptozombies.io/"
-          },
-          {
-            name: "Solidity by Example",
-            url: "https://solidity-by-example.org/"
-          }
-        ],
-        milestone: "Build a simple voting contract",
-        completed: false
-      },
-      {
-        week: 5,
-        title: "Smart Contract Deployment",
-        description: "Deploy contracts to testnets and work with real networks",
-        skills: ["Truffle/Hardhat", "Ganache", "Metamask", "Testnet Faucets"],
-        resources: [
-          {
-            name: "Hardhat Documentation",
-            url: "https://hardhat.org/docs"
-          },
-          {
-            name: "Truffle Suite Documentation",
-            url: "https://trufflesuite.com/docs/"
-          },
-          {
-            name: "Alchemy Ethereum Development",
-            url: "https://docs.alchemy.com/docs"
-          }
-        ],
-        milestone: "Deploy a contract on Goerli or Sepolia testnet",
-        completed: false
-      },
-      {
-        week: 6,
-        title: "Interacting with Contracts using Web3.js",
-        description: "Build frontend DApps that interact with blockchain",
-        skills: ["Web3.js", "Ether.js", "Contract ABI", "Metamask Integration"],
-        resources: [
-          {
-            name: "Web3.js Documentation",
-            url: "https://web3js.readthedocs.io/en/v1.8.0/"
-          },
-          {
-            name: "Ethers.js Documentation",
-            url: "https://docs.ethers.io/v5/"
-          },
-          {
-            name: "MetaMask Developer Documentation",
-            url: "https://docs.metamask.io/"
-          }
-        ],
-        milestone: "Create a Web3 login and token balance viewer",
-        completed: false
-      },
-      {
-        week: 7,
-        title: "Tokens & Standards (ERC-20, ERC-721)",
-        description: "Create your own tokens and NFTs using Solidity",
-        skills: ["ERC-20 Tokens", "NFTs (ERC-721)", "OpenZeppelin Libraries"],
-        resources: [
-          {
-            name: "OpenZeppelin Documentation",
-            url: "https://docs.openzeppelin.com/"
-          },
-          {
-            name: "EIP-20: Token Standard",
-            url: "https://eips.ethereum.org/EIPS/eip-20"
-          },
-          {
-            name: "EIP-721: Non-Fungible Token Standard",
-            url: "https://eips.ethereum.org/EIPS/eip-721"
-          }
-        ],
-        milestone: "Deploy a custom ERC-20 token and NFT",
-        completed: false
-      },
-      {
-        week: 8,
-        title: "DeFi & Smart Contract Security",
-        description: "Explore DeFi protocols and secure smart contract development",
-        skills: ["Flash Loans", "Oracles", "Reentrancy Attacks", "Audit Tools"],
-        resources: [
-          {
-            name: "Ethernaut - Smart Contract Security",
-            url: "https://ethernaut.openzeppelin.com/"
-          },
-          {
-            name: "ConsenSys Smart Contract Best Practices",
-            url: "https://consensys.github.io/smart-contract-best-practices/"
-          },
-          {
-            name: "DeFiLlama - DeFi Analytics",
-            url: "https://defillama.com/"
-          }
-        ],
-        milestone: "Patch a reentrancy bug in a test contract",
-        completed: false
-      },
-      {
-        week: 9,
-        title: "Decentralized Storage & Identity",
-        description: "Implement Web3 storage and decentralized authentication",
-        skills: ["IPFS", "Filecoin", "ENS", "SSI (Self-Sovereign Identity)"],
-        resources: [
-          {
-            name: "IPFS Documentation",
-            url: "https://docs.ipfs.io/"
-          },
-          {
-            name: "Ethereum Name Service Documentation",
-            url: "https://docs.ens.domains/"
-          },
-          {
-            name: "Filecoin Documentation",
-            url: "https://docs.filecoin.io/"
-          }
-        ],
-        milestone: "Build a DApp to upload and retrieve files from IPFS",
-        completed: false
-      },
-      {
-        week: 10,
-        title: "Final Capstone DApp",
-        description: "Combine all skills to build and deploy a full-stack blockchain app",
-        skills: ["Frontend + Smart Contracts + Web3 Integration + Hosting"],
-        resources: [
-          {
-            name: "Fleek - Web3 Hosting",
-            url: "https://fleek.co/"
-          },
-          {
-            name: "Buildspace - Web3 Projects",
-            url: "https://buildspace.so/"
-          },
-          {
-            name: "Full Stack DApp Tutorial",
-            url: "https://ethereum.org/en/developers/tutorials/"
-          }
-        ],
-        milestone: "Deploy a full DApp (e.g., crowdfunding, NFT minting, DAO voting) to testnet or mainnet",
-        completed: false
-      }
-    ]
-  },
-  {
-    role: "UI/UXDesigner",
-    description: "Design intuitive and visually appealing user experiences for web and mobile apps",
-    duration: "20 weeks",
-    difficulty: "Intermediate",
-    weeks: [
-      {
-        week: 1,
-        title: "Introduction to UI/UX Design",
-        description: "Understand what UI/UX is and why it's important",
-        skills: ["UI vs UX", "Design Process", "Design Thinking", "User-Centered Design"],
-        resources: [
-          {
-            name: "Nielsen Norman Group",
-            url: "https://www.nngroup.com/articles/"
-          },
-          {
-            name: "Interaction Design Foundation",
-            url: "https://www.interaction-design.org/"
-          },
-          {
-            name: "Google Design - Material Design",
-            url: "https://material.io/design"
-          }
-        ],
-        milestone: "Define and document the UI/UX process in your own words",
-        completed: false
-      },
-      {
-        week: 2,
-        title: "UX Research & User Personas",
-        description: "Research user behavior and build user personas",
-        skills: ["User Interviews", "Surveys", "Empathy Maps", "Personas"],
-        resources: [
-          {
-            name: "UX Research Methods - Nielsen Norman Group",
-            url: "https://www.nngroup.com/articles/which-ux-research-methods/"
-          },
-          {
-            name: "User Persona Templates - Miro",
-            url: "https://miro.com/templates/persona/"
-          },
-          {
-            name: "UX Planet - User Research",
-            url: "https://uxplanet.org/tagged/user-research"
-          }
-        ],
-        milestone: "Create 2 detailed user personas for a fictional product",
-        completed: false
-      },
-      {
-        week: 3,
-        title: "Information Architecture & User Flows",
-        description: "Plan the structure and flow of an app or website",
-        skills: ["Sitemaps", "User Flows", "Card Sorting", "Task Flows"],
-        resources: [
-          {
-            name: "Information Architecture - UXBooth",
-            url: "https://www.uxbooth.com/articles/complete-beginners-guide-to-information-architecture/"
-          },
-          {
-            name: "User Flow Templates - Figma",
-            url: "https://www.figma.com/templates/user-flows/"
-          },
-          {
-            name: "Card Sorting Guide - Usability.gov",
-            url: "https://www.usability.gov/how-to-and-tools/methods/card-sorting.html"
-          }
-        ],
-        milestone: "Create a sitemap and user flow diagram for a login-based app",
-        completed: false
-      },
-      {
-        week: 4,
-        title: "Wireframing & Low-Fidelity Prototypes",
-        description: "Sketch and structure interface layout ideas",
-        skills: ["Lo-fi Wireframes", "Sketching", "Wireframing Tools", "UX Heuristics"],
-        resources: [
-          {
-            name: "Wireframing Guide - Balsamiq",
-            url: "https://balsamiq.com/learn/articles/what-are-wireframes/"
-          },
-          {
-            name: "Figma Wireframing Kit",
-            url: "https://www.figma.com/community/file/809275435084021733"
-          },
-          {
-            name: "UX Heuristics - Nielsen Norman Group",
-            url: "https://www.nngroup.com/articles/ten-usability-heuristics/"
-          }
-        ],
-        milestone: "Build a wireframe for a landing page and signup flow",
-        completed: false
-      },
-      {
-        week: 5,
-        title: "UI Design Principles",
-        description: "Learn key design principles for interfaces",
-        skills: ["Color Theory", "Typography", "Spacing & Layout", "Visual Hierarchy"],
-        resources: [
-          {
-            name: "Refactoring UI - Design Tips",
-            url: "https://refactoringui.com/"
-          },
-          {
-            name: "Canva Design School",
-            url: "https://www.canva.com/designschool/"
-          },
-          {
-            name: "Adobe Color Theory",
-            url: "https://color.adobe.com/create/color-wheel"
-          }
-        ],
-        milestone: "Design a mobile login screen using design principles",
-        completed: false
-      },
-      {
-        week: 6,
-        title: "Figma for UI Design",
-        description: "Master a key industry tool for UI design and prototyping",
-        skills: ["Auto Layout", "Components", "Design Systems", "Interactive Prototypes"],
-        resources: [
-          {
-            name: "Figma Academy",
-            url: "https://www.figma.com/academy/"
-          },
-          {
-            name: "Figma Design System Tutorial",
-            url: "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-design-systems-in-Figma"
-          },
-          {
-            name: "Figma Community Resources",
-            url: "https://www.figma.com/community"
-          }
-        ],
-        milestone: "Create a reusable design system in Figma",
-        completed: false
-      },
-      {
-        week: 7,
-        title: "High-Fidelity Prototypes",
-        description: "Build detailed, clickable prototypes to simulate real apps",
-        skills: ["Screen Linking", "Microinteractions", "Transitions", "Animations"],
-        resources: [
-          {
-            name: "Figma Prototyping Documentation",
-            url: "https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma"
-          },
-          {
-            name: "Microinteractions Guide - UX Planet",
-            url: "https://uxplanet.org/microinteractions-the-secret-to-great-app-design-4cfe70fbaccf"
-          },
-          {
-            name: "Framer Motion Documentation",
-            url: "https://www.framer.com/motion/"
-          }
-        ],
-        milestone: "Build a high-fidelity prototype of an e-commerce app",
-        completed: false
-      },
-      {
-        week: 8,
-        title: "Usability Testing & Feedback",
-        description: "Test your design with users and improve it",
-        skills: ["A/B Testing", "Usability Sessions", "Feedback Forms", "Observation"],
-        resources: [
-          {
-            name: "Usability Testing Guide - Usability.gov",
-            url: "https://www.usability.gov/how-to-and-tools/methods/usability-testing.html"
-          },
-          {
-            name: "Maze - User Testing Platform",
-            url: "https://maze.co/guides/"
-          },
-          {
-            name: "A/B Testing Guide - Optimizely",
-            url: "https://www.optimizely.com/optimization-glossary/ab-testing/"
-          }
-        ],
-        milestone: "Conduct a usability test on your prototype and revise based on feedback",
-        completed: false
-      },
-      {
-        week: 9,
-        title: "UX Writing & Accessibility",
-        description: "Improve product clarity and usability for all users",
-        skills: ["Microcopy", "Error Messaging", "WCAG Guidelines", "Alt Text & ARIA"],
-        resources: [
-          {
-            name: "UX Writing Hub",
-            url: "https://uxwritinghub.com/"
-          },
-          {
-            name: "WCAG Guidelines - W3C",
-            url: "https://www.w3.org/WAI/WCAG21/quickref/"
-          },
-          {
-            name: "Google UX Writing Guide",
-            url: "https://developers.google.com/style/tone"
-          }
-        ],
-        milestone: "Write microcopy and improve accessibility for a login form",
-        completed: false
-      },
-      {
-        week: 10,
-        title: "Capstone Design Project",
-        description: "Apply all your skills in a final end-to-end project",
-        skills: ["Research + Wireframes + UI + Prototype + Testing"],
-        resources: [
-          {
-            name: "Dribbble Design Inspiration",
-            url: "https://dribbble.com/"
-          },
-          {
-            name: "Behance Portfolio Examples",
-            url: "https://www.behance.net/"
-          },
-          {
-            name: "Design Portfolio Guide - Adobe",
-            url: "https://xd.adobe.com/ideas/career-tips/how-to-build-design-portfolio/"
-          }
-        ],
-        milestone: "Design a full app (e.g., Recipe App, Finance Tracker) and upload to Behance/Portfolio",
-        completed: false
-      }
-    ]
-  }
+{
+  "role": "CloudDevOpsEngineer",
+  "description": "Design, deploy, and manage cloud infrastructure and automate deployments",
+  "duration": "20 weeks",
+  "difficulty": "Advanced",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Cloud Computing Fundamentals",
+      "description": "Understand the basics of cloud services and providers",
+      "skills": [
+        "IaaS, PaaS, SaaS",
+        "Public vs Private Cloud",
+        "Virtualization",
+        "Cloud Advantages"
+      ],
+      "resources": [
+        {
+          "name": "AWS Cloud Practitioner Essentials",
+          "url": "https://aws.amazon.com/training/digital/aws-cloud-practitioner-essentials/",
+          "yturl": "https://www.youtube.com/watch?v=3hLmDS179YE"
+        },
+        {
+          "name": "Microsoft Learn - Azure Fundamentals",
+          "url": "https://learn.microsoft.com/en-us/learn/paths/az-900-describe-cloud-concepts/",
+          "yturl": "https://www.youtube.com/watch?v=-pX5PjIYTJs"
+        },
+        {
+          "name": "Google Cloud Fundamentals",
+          "url": "https://www.cloudskillsboost.google/course_templates/60",
+          "yturl": "https://www.youtube.com/watch?v=IUU6OR8yHCc"
+        },
+        {
+          "name": "Coursera Cloud Computing Basics",
+          "url": "https://www.coursera.org/learn/cloud-computing-basics",
+          "yturl": "https://www.youtube.com/watch?v=5abffC-K40c"
+        }
+      ],
+      "milestone": "Compare services between AWS, Azure, and GCP",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "Getting Started with AWS",
+      "description": "Work with core AWS services and the console",
+      "skills": [
+        "EC2",
+        "S3",
+        "IAM",
+        "AWS CLI"
+      ],
+      "resources": [
+        {
+          "name": "AWS Free Tier",
+          "url": "https://aws.amazon.com/free/",
+          "yturl": "https://www.youtube.com/watch?v=Nzv-tzU-UAw"
+        },
+        {
+          "name": "AWS Getting Started Documentation",
+          "url": "https://docs.aws.amazon.com/gettingstarted/",
+          "yturl": "https://www.youtube.com/watch?v=apPCtKpq8WM"
+        },
+        {
+          "name": "freeCodeCamp AWS Course (full)",
+          "url": "https://www.youtube.com/watch?v=3hLmDS179YE",
+          "yturl": "https://www.youtube.com/watch?v=3hLmDS179YE"
+        },
+        {
+          "name": "AWS CLI User Guide",
+          "url": "https://docs.aws.amazon.com/cli/latest/userguide/",
+          "yturl": "https://www.youtube.com/watch?v=W-q8Gf4MF9w"
+        }
+      ],
+      "milestone": "Launch a web server using EC2 and store files in S3",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Linux & Command Line Basics",
+      "description": "Operate cloud servers via CLI and remote access",
+      "skills": [
+        "Bash Commands",
+        "SSH",
+        "User Permissions",
+        "Package Managers"
+      ],
+      "resources": [
+        {
+          "name": "LinuxCommand.org",
+          "url": "https://linuxcommand.org/",
+          "yturl": "https://www.youtube.com/watch?v=16d2lHc0Pe8"
+        },
+        {
+          "name": "OverTheWire Bandit",
+          "url": "https://overthewire.org/wargames/bandit/",
+          "yturl": "https://www.youtube.com/watch?v=16d2lHc0Pe8"
+        },
+        {
+          "name": "DigitalOcean Linux Tutorials",
+          "url": "https://www.digitalocean.com/community/tutorials",
+          "yturl": "https://www.youtube.com/watch?v=16d2lHc0Pe8"
+        },
+        {
+          "name": "Linux Journey",
+          "url": "https://linuxjourney.com/",
+          "yturl": "https://www.youtube.com/watch?v=16d2lHc0Pe8"
+        }
+      ],
+      "milestone": "SSH into an EC2 instance and install a web app",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Networking & Load Balancing in Cloud",
+      "description": "Understand cloud networking and scalability",
+      "skills": [
+        "VPC",
+        "Subnets",
+        "Load Balancers",
+        "Security Groups"
+      ],
+      "resources": [
+        {
+          "name": "AWS VPC Documentation",
+          "url": "https://docs.aws.amazon.com/vpc/",
+          "yturl": "https://www.youtube.com/watch?v=g2JOHLHh4rI"
+        },
+        {
+          "name": "Azure Virtual Network",
+          "url": "https://learn.microsoft.com/en-us/azure/virtual-network/",
+          "yturl": "https://www.youtube.com/watch?v=-pX5PjIYTJs"
+        },
+        {
+          "name": "Google Cloud VPC Guide",
+          "url": "https://cloud.google.com/vpc/docs",
+          "yturl": "https://www.youtube.com/watch?v=IUU6OR8yHCc"
+        },
+        {
+          "name": "AWS Load Balancing (ELB/ALB/CLB)",
+          "url": "https://aws.amazon.com/elasticloadbalancing/",
+          "yturl": "https://www.youtube.com/watch?v=8SQnGqp3YZM"
+        }
+      ],
+      "milestone": "Create a public VPC and configure a load balancer",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "Storage & Databases in the Cloud",
+      "description": "Use managed cloud storage and database services",
+      "skills": [
+        "S3 Buckets",
+        "EBS",
+        "RDS (MySQL/PostgreSQL)",
+        "Backup & Snapshots"
+      ],
+      "resources": [
+        {
+          "name": "AWS RDS Documentation",
+          "url": "https://docs.aws.amazon.com/rds/",
+          "yturl": "https://www.youtube.com/watch?v=2kMGY-SZMGA"
+        },
+        {
+          "name": "AWS S3 User Guide",
+          "url": "https://docs.aws.amazon.com/s3/",
+          "yturl": "https://www.youtube.com/watch?v=Nzv-tzU-UAw"
+        },
+        {
+          "name": "Cloud Academy Database Courses",
+          "url": "https://cloudacademy.com/library/amazon-web-services/catalog/databases/",
+          "yturl": "https://www.youtube.com/watch?v=2kMGY-SZMGA"
+        },
+        {
+          "name": "DigitalOcean Managed Databases",
+          "url": "https://www.digitalocean.com/products/managed-databases/",
+          "yturl": "https://www.youtube.com/watch?v=2kMGY-SZMGA"
+        }
+      ],
+      "milestone": "Host a blog on EC2 with a cloud database backend",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Containers with Docker",
+      "description": "Package applications using Docker",
+      "skills": [
+        "Dockerfile",
+        "Volumes",
+        "Docker Compose",
+        "Container Networking"
+      ],
+      "resources": [
+        {
+          "name": "Docker Official Documentation",
+          "url": "https://docs.docker.com/",
+          "yturl": "https://www.youtube.com/watch?v=b0HMimUb4f0"
+        },
+        {
+          "name": "Play With Docker",
+          "url": "https://labs.play-with-docker.com/",
+          "yturl": "https://www.youtube.com/watch?v=pg19Z8LL06w"
+        },
+        {
+          "name": "TechWorld with Nana Docker Tutorial",
+          "url": "https://www.youtube.com/watch?v=3c-iBn73dDE",
+          "yturl": "https://www.youtube.com/watch?v=3c-iBn73dDE"
+        },
+        {
+          "name": "Docker Compose Documentation",
+          "url": "https://docs.docker.com/compose/",
+          "yturl": "https://www.youtube.com/watch?v=pg19Z8LL06w"
+        }
+      ],
+      "milestone": "Containerize a Node.js or Python Flask app",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Orchestration with Kubernetes",
+      "description": "Manage containers at scale using Kubernetes",
+      "skills": [
+        "Pods",
+        "Deployments",
+        "Services",
+        "Helm"
+      ],
+      "resources": [
+        {
+          "name": "Kubernetes Official Documentation",
+          "url": "https://kubernetes.io/docs/",
+          "yturl": "https://www.youtube.com/watch?v=X48VuDVv0do"
+        },
+        {
+          "name": "Kubernetes Interactive Tutorials",
+          "url": "https://kubernetes.io/docs/tutorials/",
+          "yturl": "https://www.youtube.com/watch?v=s_o8dwzRlu4"
+        },
+        {
+          "name": "Learnk8s Kubernetes Guide",
+          "url": "https://learnk8s.io/",
+          "yturl": "https://www.youtube.com/watch?v=PH-2FfFD2PU"
+        },
+        {
+          "name": "Helm Documentation",
+          "url": "https://helm.sh/docs/",
+          "yturl": "https://www.youtube.com/watch?v=-ykwb1d0DXU"
+        }
+      ],
+      "milestone": "Deploy a multi-container app on Minikube or EKS",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "CI/CD Pipelines",
+      "description": "Automate build and deployment using CI/CD tools",
+      "skills": [
+        "GitHub Actions",
+        "Jenkins",
+        "GitLab CI/CD",
+        "YAML Workflows"
+      ],
+      "resources": [
+        {
+          "name": "GitHub Actions Documentation",
+          "url": "https://docs.github.com/en/actions",
+          "yturl": "https://www.youtube.com/watch?v=YLtlz88zrLg"
+        },
+        {
+          "name": "Jenkins Documentation",
+          "url": "https://www.jenkins.io/doc/",
+          "yturl": "https://www.youtube.com/watch?v=soIpt3c7tVE"
+        },
+        {
+          "name": "GitLab CI/CD Documentation",
+          "url": "https://docs.gitlab.com/ee/ci/",
+          "yturl": "https://www.youtube.com/watch?v=7iCVWR5vO00"
+        },
+        {
+          "name": "freeCodeCamp DevOps Course",
+          "url": "https://www.youtube.com/watch?v=j5Zsa_eOXeY",
+          "yturl": "https://www.youtube.com/watch?v=j5Zsa_eOXeY"
+        }
+      ],
+      "milestone": "Build and deploy a Docker app using GitHub Actions",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Infrastructure as Code (IaC)",
+      "description": "Manage cloud resources using code",
+      "skills": [
+        "Terraform Basics",
+        "AWS CDK",
+        "CloudFormation Templates"
+      ],
+      "resources": [
+        {
+          "name": "Terraform Documentation",
+          "url": "https://developer.hashicorp.com/terraform",
+          "yturl": "https://www.youtube.com/watch?v=Bzccj0jjRBM"
+        },
+        {
+          "name": "HashiCorp Learn Terraform",
+          "url": "https://learn.hashicorp.com/terraform",
+          "yturl": "https://www.youtube.com/watch?v=bEXfPzoB4RE"
+        },
+        {
+          "name": "AWS CloudFormation Documentation",
+          "url": "https://docs.aws.amazon.com/cloudformation/",
+          "yturl": "https://www.youtube.com/watch?v=0m2gKjfh-Z0"
+        },
+        {
+          "name": "AWS CDK Documentation",
+          "url": "https://docs.aws.amazon.com/cdk/",
+          "yturl": "https://www.youtube.com/watch?v=0m2gKjfh-Z0"
+        }
+      ],
+      "milestone": "Create infrastructure using Terraform on AWS",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Monitoring, Logging & Capstone Project",
+      "description": "Monitor cloud apps and complete a real-world deployment",
+      "skills": [
+        "CloudWatch",
+        "Grafana",
+        "Prometheus",
+        "ELK Stack"
+      ],
+      "resources": [
+        {
+          "name": "AWS CloudWatch Documentation",
+          "url": "https://docs.aws.amazon.com/cloudwatch/",
+          "yturl": "https://www.youtube.com/watch?v=9TJx7QTrTyo"
+        },
+        {
+          "name": "Grafana Documentation",
+          "url": "https://grafana.com/docs/",
+          "yturl": "https://www.youtube.com/watch?v=9TJx7QTrTyo"
+        },
+        {
+          "name": "Prometheus Documentation",
+          "url": "https://prometheus.io/docs/",
+          "yturl": "https://www.youtube.com/watch?v=jlvh08DV9zE"
+        },
+        {
+          "name": "Elastic Stack (ELK) Documentation",
+          "url": "https://www.elastic.co/guide/",
+          "yturl": "https://www.youtube.com/watch?v=9TJx7QTrTyo"
+        }
+      ],
+      "milestone": "Deploy a containerized app with CI/CD, IaC, and monitoring dashboard",
+      "completed": false
+    }
+  ]
+},
+
+{
+  "role": "GameDeveloper",
+  "description": "Design and build interactive games using game engines and programming logic",
+  "duration": "20 weeks",
+  "difficulty": "Intermediate",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Introduction to Game Development",
+      "description": "Understand the basics of how games are made and what tools are used",
+      "skills": [
+        "Game Genres",
+        "Game Loop Concept",
+        "Game Engines Overview"
+      ],
+      "resources": [
+        {
+          "name": "GDC Vault",
+          "url": "https://gdcvault.com/",
+          "yturl": "https://www.youtube.com/watch?v=z06QR-tz1_o"
+        },
+        {
+          "name": "GameDev.tv Blog",
+          "url": "https://www.gamedev.tv/blog",
+          "yturl": "https://www.youtube.com/watch?v=AmGSEH7QcDg"
+        },
+        {
+          "name": "Coursera Game Design and Development",
+          "url": "https://www.coursera.org/specializations/game-development",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        },
+        {
+          "name": "Extra Credits Game Design",
+          "url": "https://www.youtube.com/playlist?list=PLhyKYa0YJ_5BkTruCmaBBZ8z6cP9KzPiX",
+          "yturl": "https://www.youtube.com/playlist?list=PLhyKYa0YJ_5BkTruCmaBBZ8z6cP9KzPiX"
+        }
+      ],
+      "milestone": "Explore Unity/Unreal interface and build a basic 2D scene",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "C# Programming for Unity",
+      "description": "Learn the fundamentals of C# programming language for game logic",
+      "skills": [
+        "Variables & Data Types",
+        "Conditionals",
+        "Loops",
+        "Classes & Methods"
+      ],
+      "resources": [
+        {
+          "name": "Microsoft C# Documentation",
+          "url": "https://docs.microsoft.com/en-us/dotnet/csharp/",
+          "yturl": "https://www.youtube.com/watch?v=Zrt0iEBBkRM"
+        },
+        {
+          "name": "Brackeys C# Basics",
+          "url": "https://www.youtube.com/watch?v=jGD0vn-QIkg",
+          "yturl": "https://www.youtube.com/watch?v=jGD0vn-QIkg"
+        },
+        {
+          "name": "Unity Learn C# Scripting",
+          "url": "https://learn.unity.com/tutorial/introduction-to-c-sharp-scripting",
+          "yturl": "https://www.youtube.com/watch?v=VEnZzwW_OJM"
+        },
+        {
+          "name": "C# Programming Yellow Book",
+          "url": "https://www.robmiles.com/c-yellow-book/",
+          "yturl": "https://www.youtube.com/watch?v=7K2SMZQRKnw"
+        }
+      ],
+      "milestone": "Build a basic console game like number guesser",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Unity Engine Basics",
+      "description": "Learn to work with the Unity interface and game objects",
+      "skills": [
+        "Scenes",
+        "GameObjects",
+        "Components",
+        "Inspector"
+      ],
+      "resources": [
+        {
+          "name": "Unity Learn Pathways",
+          "url": "https://learn.unity.com/",
+          "yturl": "https://www.youtube.com/watch?v=AmGSEH7QcDg"
+        },
+        {
+          "name": "Brackeys Unity Beginner Tutorial",
+          "url": "https://www.youtube.com/watch?v=j48LtUkZRjU",
+          "yturl": "https://www.youtube.com/watch?v=j48LtUkZRjU"
+        },
+        {
+          "name": "Unity Manual",
+          "url": "https://docs.unity3d.com/Manual/",
+          "yturl": "https://www.youtube.com/watch?v=AmGSEH7QcDg"
+        },
+        {
+          "name": "Unity Scripting Reference",
+          "url": "https://docs.unity3d.com/ScriptReference/",
+          "yturl": "https://www.youtube.com/watch?v=Zrt0iEBBkRM"
+        }
+      ],
+      "milestone": "Create a 2D platformer scene with character and terrain",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Player Controls & Scripting",
+      "description": "Add interactivity and user input to control characters",
+      "skills": [
+        "Input Handling",
+        "Character Movement",
+        "Physics",
+        "Rigidbodies"
+      ],
+      "resources": [
+        {
+          "name": "Unity Input System Documentation",
+          "url": "https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/",
+          "yturl": "https://www.youtube.com/watch?v=13TRK_YLv40"
+        },
+        {
+          "name": "Code Monkey Unity Tutorials",
+          "url": "https://www.youtube.com/c/CodeMonkeyUnity",
+          "yturl": "https://www.youtube.com/watch?v=uMohD4SuUpE"
+        },
+        {
+          "name": "Brackeys Player Movement",
+          "url": "https://www.youtube.com/watch?v=4HpC--2iowE",
+          "yturl": "https://www.youtube.com/watch?v=4HpC--2iowE"
+        },
+        {
+          "name": "Unity Physics Documentation",
+          "url": "https://docs.unity3d.com/Manual/PhysicsSection.html",
+          "yturl": "https://www.youtube.com/watch?v=zKu6bGc4yJg"
+        }
+      ],
+      "milestone": "Add jump and move features to your character",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "Game Physics & Collisions",
+      "description": "Implement realistic behavior using physics engine",
+      "skills": [
+        "Colliders",
+        "Triggers",
+        "Gravity",
+        "Force Application"
+      ],
+      "resources": [
+        {
+          "name": "Unity Physics Documentation",
+          "url": "https://docs.unity3d.com/Manual/PhysicsSection.html",
+          "yturl": "https://www.youtube.com/watch?v=MRmHRgJCoqU"
+        },
+        {
+          "name": "Unity Colliders Tutorial",
+          "url": "https://learn.unity.com/tutorial/collision-detection-with-colliders",
+          "yturl": "https://www.youtube.com/watch?v=qcGa_mzjc8Q"
+        },
+        {
+          "name": "Raycasting in Unity",
+          "url": "https://docs.unity3d.com/ScriptReference/Physics.Raycast.html",
+          "yturl": "https://www.youtube.com/watch?v=cybOhrDgM4M"
+        },
+        {
+          "name": "Brackeys 2D Physics Tutorial",
+          "url": "https://www.youtube.com/watch?v=whzomFgjT50",
+          "yturl": "https://www.youtube.com/watch?v=whzomFgjT50"
+        }
+      ],
+      "milestone": "Create obstacles and win/lose conditions using physics",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "UI, Health & Scoring Systems",
+      "description": "Build game interfaces and logic for score/health",
+      "skills": [
+        "Canvas System",
+        "Health Bar",
+        "Score Counter",
+        "Menus"
+      ],
+      "resources": [
+        {
+          "name": "Unity UI Toolkit Documentation",
+          "url": "https://docs.unity3d.com/Manual/UIElements.html",
+          "yturl": "https://www.youtube.com/watch?v=S0gmSDRXzgs"
+        },
+        {
+          "name": "Unity UI System (Legacy)",
+          "url": "https://docs.unity3d.com/Manual/UISystem.html",
+          "yturl": "https://www.youtube.com/watch?v=ow-dxjd5cDY"
+        },
+        {
+          "name": "Brackeys Health System Tutorial",
+          "url": "https://www.youtube.com/watch?v=BLfNP4Sc_iA",
+          "yturl": "https://www.youtube.com/watch?v=0T5ei9jN63M"
+        },
+        {
+          "name": "GameDev.tv Complete Unity Developer",
+          "url": "https://www.gamedev.tv/p/complete-unity-developer",
+          "yturl": "https://www.youtube.com/watch?v=AmGSEH7QcDg"
+        }
+      ],
+      "milestone": "Add score counter and health bar with game over screen",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Sound & Animation",
+      "description": "Make games engaging with visuals and audio",
+      "skills": [
+        "Animator Controller",
+        "Transitions",
+        "2D/3D Animation",
+        "Sound Effects"
+      ],
+      "resources": [
+        {
+          "name": "Unity Animation System",
+          "url": "https://docs.unity3d.com/Manual/AnimationSection.html",
+          "yturl": "https://learn.unity.com/tutorial/get-started-with-animation"
+        },
+        {
+          "name": "Mixamo for 3D Animations",
+          "url": "https://www.mixamo.com/",
+          "yturl": "https://www.youtube.com/watch?v=g5WT91Sn3hg"
+        },
+        {
+          "name": "OpenGameArt.org",
+          "url": "https://opengameart.org/",
+          "yturl": "https://www.youtube.com/watch?v=T78WxOx4ojU"
+        },
+        {
+          "name": "Unity Audio Documentation",
+          "url": "https://docs.unity3d.com/Manual/AudioFiles.html",
+          "yturl": "https://www.youtube.com/watch?v=T78WxOx4ojU"
+        }
+      ],
+      "milestone": "Animate player actions and add sound effects",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Level Design & Game Mechanics",
+      "description": "Design levels and introduce gameplay elements",
+      "skills": [
+        "Tilemaps",
+        "Object Pooling",
+        "Power-ups",
+        "AI Enemies"
+      ],
+      "resources": [
+        {
+          "name": "Unity 2D Tilemap Documentation",
+          "url": "https://docs.unity3d.com/Manual/class-Tilemap.html",
+          "yturl": "https://www.youtube.com/watch?v=DTp5zi8_u1U"
+        },
+        {
+          "name": "Unity Object Pooling",
+          "url": "https://learn.unity.com/tutorial/object-pooling",
+          "yturl": "https://www.youtube.com/watch?v=hx3ieBzVNg0"
+        },
+        {
+          "name": "Game Programming Patterns",
+          "url": "https://gameprogrammingpatterns.com/",
+          "yturl": "https://www.youtube.com/watch?v=AmGSEH7QcDg"
+        },
+        {
+          "name": "Sebastian Lague AI Tutorial",
+          "url": "https://www.youtube.com/watch?v=6BrZryMz-ac",
+          "yturl": "https://www.youtube.com/watch?v=6BrZryMz-ac"
+        }
+      ],
+      "milestone": "Design two playable levels with increasing difficulty",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Polishing & Optimization",
+      "description": "Improve user experience and performance",
+      "skills": [
+        "Lighting",
+        "Particles",
+        "Mobile Optimization",
+        "Frame Rate Tuning"
+      ],
+      "resources": [
+        {
+          "name": "Unity Profiler Documentation",
+          "url": "https://docs.unity3d.com/Manual/Profiler.html",
+          "yturl": "https://www.youtube.com/watch?v=ksZunek5CbY"
+        },
+        {
+          "name": "Unity Performance Tips",
+          "url": "https://unity.com/how-to/optimize-game-performance-mobile-devices",
+          "yturl": "https://www.youtube.com/watch?v=ksZunek5CbY"
+        },
+        {
+          "name": "Unity Visual Effect Graph",
+          "url": "https://unity.com/visual-effect-graph",
+          "yturl": "https://www.youtube.com/watch?v=ksZunek5CbY"
+        },
+        {
+          "name": "Game Feel by Steve Swink",
+          "url": "https://www.amazon.com/Game-Feel-Designers-Sensation-Purchase/dp/0123743281",
+          "yturl": "https://www.youtube.com/watch?v=z06QR-tz1_o"
+        }
+      ],
+      "milestone": "Make your game smooth and visually appealing",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Capstone Project & Publishing",
+      "description": "Finish your game and publish to a platform",
+      "skills": [
+        "Building APK or WebGL",
+        "Play Store Submission",
+        "Itch.io Upload"
+      ],
+      "resources": [
+        {
+          "name": "Unity Build Settings Documentation",
+          "url": "https://docs.unity3d.com/Manual/BuildSettings.html",
+          "yturl": "https://www.youtube.com/watch?v=gHZhZ9boG5A"
+        },
+        {
+          "name": "Google Play Console Guide",
+          "url": "https://support.google.com/googleplay/android-developer/",
+          "yturl": "https://www.youtube.com/watch?v=gHZhZ9boG5A"
+        },
+        {
+          "name": "Itch.io Creator Documentation",
+          "url": "https://itch.io/docs/creators/",
+          "yturl": "https://www.youtube.com/watch?v=8iApGVX--B0"
+        },
+        {
+          "name": "Unity WebGL Publishing",
+          "url": "https://docs.unity3d.com/Manual/webgl-building.html",
+          "yturl": "https://www.youtube.com/watch?v=X8Njwk4IRo0"
+        }
+      ],
+      "milestone": "Publish your final game project to itch.io or Android device",
+      "completed": false
+    }
+  ]
+},
+
+{
+  "role": "BlockchainDeveloper",
+  "description": "Build decentralized applications and smart contracts using blockchain technology",
+  "duration": "20 weeks",
+  "difficulty": "Advanced",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Blockchain Fundamentals",
+      "description": "Understand how blockchain works and why it matters",
+      "skills": [
+        "Distributed Ledger",
+        "Consensus Mechanisms",
+        "Hashing",
+        "Blocks & Mining"
+      ],
+      "resources": [
+        {
+          "name": "Bitcoin Whitepaper",
+          "url": "https://bitcoin.org/bitcoin.pdf",
+          "yturl": "https://www.youtube.com/watch?v=NoqNhWnjE1Q"
+        },
+        {
+          "name": "Blockchain Basics Course - Coursera",
+          "url": "https://www.coursera.org/learn/blockchain-basics",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        },
+        {
+          "name": "Blockchain Demo - Anders Brownworth",
+          "url": "https://andersbrownworth.com/blockchain/",
+          "yturl": "https://www.youtube.com/watch?v=_160oMzblY8"
+        }
+      ],
+      "milestone": "Simulate a basic blockchain using Python or JavaScript",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "Cryptography & Wallets",
+      "description": "Explore cryptography and wallet generation principles",
+      "skills": [
+        "Public/Private Key",
+        "Digital Signatures",
+        "Hash Functions",
+        "Wallet Types"
+      ],
+      "resources": [
+        {
+          "name": "Khan Academy Cryptography",
+          "url": "https://www.khanacademy.org/computing/computer-science/cryptography",
+          "yturl": "https://www.youtube.com/watch?v=2rE5c1vgq7U"
+        },
+        {
+          "name": "Cryptography Course - Coursera Stanford",
+          "url": "https://www.coursera.org/learn/crypto",
+          "yturl": "https://www.youtube.com/watch?v=2rE5c1vgq7U"
+        },
+        {
+          "name": "Practical Cryptography for Developers",
+          "url": "https://cryptobook.nakov.com/",
+          "yturl": "https://www.youtube.com/watch?v=FaZft904Mi8"
+        }
+      ],
+      "milestone": "Generate wallet keys and sign a transaction",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Ethereum & Smart Contracts",
+      "description": "Dive into Ethereum and write your first smart contract",
+      "skills": [
+        "Ethereum Virtual Machine (EVM)",
+        "Gas & Transactions",
+        "Remix IDE"
+      ],
+      "resources": [
+        {
+          "name": "Ethereum.org Developer Resources",
+          "url": "https://ethereum.org/en/developers/",
+          "yturl": "https://www.youtube.com/watch?v=_2_vsl82zAk"
+        },
+        {
+          "name": "Remix IDE Documentation",
+          "url": "https://remix-ide.readthedocs.io/en/latest/",
+          "yturl": "https://www.youtube.com/watch?v=E3KM1c7xeJM"
+        },
+        {
+          "name": "Ethereum Whitepaper",
+          "url": "https://ethereum.org/en/whitepaper/",
+          "yturl": "https://www.youtube.com/watch?v=4BlIq7V1_Mw"
+        }
+      ],
+      "milestone": "Deploy a Hello World contract on Remix",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Solidity Programming Language",
+      "description": "Master the language used to write smart contracts",
+      "skills": [
+        "Data Types",
+        "Functions",
+        "Mappings",
+        "Modifiers",
+        "Inheritance"
+      ],
+      "resources": [
+        {
+          "name": "Solidity Documentation",
+          "url": "https://docs.soliditylang.org/en/latest/",
+          "yturl": "https://www.youtube.com/watch?v=E3KM1c7xeJM"
+        },
+        {
+          "name": "CryptoZombies - Learn Solidity",
+          "url": "https://cryptozombies.io/",
+          "yturl": "https://www.youtube.com/watch?v=aGonv5DP910"
+        },
+        {
+          "name": "Solidity by Example",
+          "url": "https://solidity-by-example.org/",
+          "yturl": "https://www.youtube.com/watch?v=M576WGiDBdQ"
+        }
+      ],
+      "milestone": "Build a simple voting contract",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "Smart Contract Deployment",
+      "description": "Deploy contracts to testnets and work with real networks",
+      "skills": [
+        "Truffle/Hardhat",
+        "Ganache",
+        "Metamask",
+        "Testnet Faucets"
+      ],
+      "resources": [
+        {
+          "name": "Hardhat Documentation",
+          "url": "https://hardhat.org/docs",
+          "yturl": "https://hardhat.org/tutorial"
+        },
+        {
+          "name": "Truffle Suite Documentation",
+          "url": "https://trufflesuite.com/docs/",
+          "yturl": "https://www.youtube.com/watch?v=vhhpYCWvXqc"
+        },
+        {
+          "name": "Alchemy Ethereum Development",
+          "url": "https://docs.alchemy.com/docs",
+          "yturl": "https://www.youtube.com/watch?v=vhhpYCWvXqc"
+        }
+      ],
+      "milestone": "Deploy a contract on Goerli or Sepolia testnet",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Interacting with Contracts using Web3.js",
+      "description": "Build frontend DApps that interact with blockchain",
+      "skills": [
+        "Web3.js",
+        "Ether.js",
+        "Contract ABI",
+        "Metamask Integration"
+      ],
+      "resources": [
+        {
+          "name": "Web3.js Documentation",
+          "url": "https://web3js.readthedocs.io/en/v1.8.0/",
+          "yturl": "https://www.youtube.com/watch?v=BQ_bDH91S4k"
+        },
+        {
+          "name": "Ethers.js Documentation",
+          "url": "https://docs.ethers.io/v5/",
+          "yturl": "https://www.youtube.com/watch?v=C0QV3SfJCBE"
+        },
+        {
+          "name": "MetaMask Developer Documentation",
+          "url": "https://docs.metamask.io/",
+          "yturl": "https://www.youtube.com/watch?v=03lbmYrawV8"
+        }
+      ],
+      "milestone": "Create a Web3 login and token balance viewer",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "Tokens & Standards (ERC-20, ERC-721)",
+      "description": "Create your own tokens and NFTs using Solidity",
+      "skills": [
+        "ERC-20 Tokens",
+        "NFTs (ERC-721)",
+        "OpenZeppelin Libraries"
+      ],
+      "resources": [
+        {
+          "name": "OpenZeppelin Documentation",
+          "url": "https://docs.openzeppelin.com/",
+          "yturl": "https://www.youtube.com/playlist?list=PLDbgPtNOy-yBM7YFe218ohCoXvtPZlYjT"
+        },
+        {
+          "name": "EIP-20: Token Standard",
+          "url": "https://eips.ethereum.org/EIPS/eip-20",
+          "yturl": "https://www.youtube.com/watch?v=M576WGiDBdQ"
+        },
+        {
+          "name": "EIP-721: Non-Fungible Token Standard",
+          "url": "https://eips.ethereum.org/EIPS/eip-721",
+          "yturl": "https://www.youtube.com/watch?v=gWSYLbPH1KU"
+        }
+      ],
+      "milestone": "Deploy a custom ERC-20 token and NFT",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "DeFi & Smart Contract Security",
+      "description": "Explore DeFi protocols and secure smart contract development",
+      "skills": [
+        "Flash Loans",
+        "Oracles",
+        "Reentrancy Attacks",
+        "Audit Tools"
+      ],
+      "resources": [
+        {
+          "name": "Ethernaut - Smart Contract Security",
+          "url": "https://ethernaut.openzeppelin.com/",
+          "yturl": "https://www.youtube.com/watch?v=gWSYLbPH1KU"
+        },
+        {
+          "name": "Consensys Smart Contract Best Practices",
+          "url": "https://consensys.github.io/smart-contract-best-practices/",
+          "yturl": "https://www.youtube.com/watch?v=m8Wth6bU0es"
+        },
+        {
+          "name": "DeFiLlama - DeFi Analytics",
+          "url": "https://defillama.com/",
+          "yturl": "https://www.youtube.com/watch?v=m8Wth6bU0es"
+        }
+      ],
+      "milestone": "Patch a reentrancy bug in a test contract",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "Decentralized Storage & Identity",
+      "description": "Implement Web3 storage and decentralized authentication",
+      "skills": [
+        "IPFS",
+        "Filecoin",
+        "ENS",
+        "SSI (Self-Sovereign Identity)"
+      ],
+      "resources": [
+        {
+          "name": "IPFS Documentation",
+          "url": "https://docs.ipfs.io/",
+          "yturl": "https://www.youtube.com/watch?v=TbagkanDeiU"
+        },
+        {
+          "name": "Ethereum Name Service Documentation",
+          "url": "https://docs.ens.domains/",
+          "yturl": "https://www.youtube.com/watch?v=DmpXbmjnpec"
+        },
+        {
+          "name": "Filecoin Documentation",
+          "url": "https://docs.filecoin.io/",
+          "yturl": "https://www.youtube.com/watch?v=DmpXbmjnpec"
+        }
+      ],
+      "milestone": "Build a DApp to upload and retrieve files from IPFS",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Final Capstone DApp",
+      "description": "Combine all skills to build and deploy a full-stack blockchain app",
+      "skills": [
+        "Frontend + Smart Contracts + Web3 Integration + Hosting"
+      ],
+      "resources": [
+        {
+          "name": "Fleek - Web3 Hosting",
+          "url": "https://fleek.co/",
+          "yturl": "https://www.youtube.com/watch?v=DmpXbmjnpec"
+        },
+        {
+          "name": "Buildspace - Web3 Projects",
+          "url": "https://buildspace.so/",
+          "yturl": "https://www.youtube.com/watch?v=PaoqPHei7fE"
+        },
+        {
+          "name": "Full Stack DApp Tutorial",
+          "url": "https://ethereum.org/en/developers/tutorials/",
+          "yturl": "https://www.youtube.com/watch?v=a0osIaAOFSE"
+        }
+      ],
+      "milestone": "Deploy a full DApp (e.g., crowdfunding, NFT minting, DAO voting) to testnet or mainnet",
+      "completed": false
+    }
+  ]
+},
+
+{
+  "role": "UI/UXDesigner",
+  "description": "Design intuitive and visually appealing user experiences for web and mobile apps",
+  "duration": "20 weeks",
+  "difficulty": "Intermediate",
+  "weeks": [
+    {
+      "week": 1,
+      "title": "Introduction to UI/UX Design",
+      "description": "Understand what UI/UX is and why it's important",
+      "skills": [
+        "UI vs UX",
+        "Design Process",
+        "Design Thinking",
+        "User-Centered Design"
+      ],
+      "resources": [
+        {
+          "name": "Nielsen Norman Group",
+          "url": "https://www.nngroup.com/articles/",
+          "yturl": "https://www.nngroup.com/articles/ux-basics-study-guide/"
+        },
+        {
+          "name": "Interaction Design Foundation",
+          "url": "https://www.interaction-design.org/",
+          "yturl": "https://www.youtube.com/watch?v=5llgm9TPevM"
+        },
+        {
+          "name": "Google Design - Material Design",
+          "url": "https://material.io/design",
+          "yturl": "https://www.youtube.com/watch?v=h_JYW2hdI8U"
+        }
+      ],
+      "milestone": "Define and document the UI/UX process in your own words",
+      "completed": false
+    },
+    {
+      "week": 2,
+      "title": "UX Research & User Personas",
+      "description": "Research user behavior and build user personas",
+      "skills": [
+        "User Interviews",
+        "Surveys",
+        "Empathy Maps",
+        "Personas"
+      ],
+      "resources": [
+        {
+          "name": "UX Research Methods - Nielsen Norman Group",
+          "url": "https://www.nngroup.com/articles/which-ux-research-methods/",
+          "yturl": "https://www.youtube.com/watch?v=Fmg9_YDVFD0"
+        },
+        {
+          "name": "User Persona Templates - Miro",
+          "url": "https://miro.com/templates/persona/",
+          "yturl": "https://www.youtube.com/watch?v=vp5_rvrXd7U"
+        },
+        {
+          "name": "UX Planet - User Research",
+          "url": "https://uxplanet.org/tagged/user-research",
+          "yturl": "https://www.youtube.com/watch?v=Fmg9_YDVFD0"
+        }
+      ],
+      "milestone": "Create 2 detailed user personas for a fictional product",
+      "completed": false
+    },
+    {
+      "week": 3,
+      "title": "Information Architecture & User Flows",
+      "description": "Plan the structure and flow of an app or website",
+      "skills": [
+        "Sitemaps",
+        "User Flows",
+        "Card Sorting",
+        "Task Flows"
+      ],
+      "resources": [
+        {
+          "name": "Information Architecture - UXBooth",
+          "url": "https://www.uxbooth.com/articles/complete-beginners-guide-to-information-architecture/",
+          "yturl": "https://www.youtube.com/watch?v=V6nN3jJMbJY"
+        },
+        {
+          "name": "User Flow Templates - Figma",
+          "url": "https://www.figma.com/templates/user-flows/",
+          "yturl": "https://www.youtube.com/watch?v=V6nN3jJMbJY"
+        },
+        {
+          "name": "Card Sorting Guide - Usability.gov",
+          "url": "https://www.usability.gov/how-to-and-tools/methods/card-sorting.html",
+          "yturl": "https://www.youtube.com/watch?v=V6nN3jJMbJY"
+        }
+      ],
+      "milestone": "Create a sitemap and user flow diagram for a login-based app",
+      "completed": false
+    },
+    {
+      "week": 4,
+      "title": "Wireframing & Low-Fidelity Prototypes",
+      "description": "Sketch and structure interface layout ideas",
+      "skills": [
+        "Lo-fi Wireframes",
+        "Sketching",
+        "Wireframing Tools",
+        "UX Heuristics"
+      ],
+      "resources": [
+        {
+          "name": "Wireframing Guide - Balsamiq",
+          "url": "https://balsamiq.com/learn/articles/what-are-wireframes/",
+          "yturl": "https://www.youtube.com/watch?v=iyrEStiTZh0"
+        },
+        {
+          "name": "Figma Wireframing Kit",
+          "url": "https://www.figma.com/community/file/809275435084021733",
+          "yturl": "https://www.youtube.com/watch?v=D4NyQ5iOMF0"
+        },
+        {
+          "name": "UX Heuristics - Nielsen Norman Group",
+          "url": "https://www.nngroup.com/articles/ten-usability-heuristics/",
+          "yturl": "https://www.youtube.com/watch?v=c9Wg6Cb_YlU"
+        }
+      ],
+      "milestone": "Build a wireframe for a landing page and signup flow",
+      "completed": false
+    },
+    {
+      "week": 5,
+      "title": "UI Design Principles",
+      "description": "Learn key design principles for interfaces",
+      "skills": [
+        "Color Theory",
+        "Typography",
+        "Spacing & Layout",
+        "Visual Hierarchy"
+      ],
+      "resources": [
+        {
+          "name": "Refactoring UI - Design Tips",
+          "url": "https://refactoringui.com/",
+          "yturl": "https://www.youtube.com/watch?v=UzsaAgQ4cs8"
+        },
+        {
+          "name": "Canva Design School",
+          "url": "https://www.canva.com/designschool/",
+          "yturl": "https://www.youtube.com/watch?v=UzsaAgQ4cs8"
+        },
+        {
+          "name": "Adobe Color Theory",
+          "url": "https://color.adobe.com/create/color-wheel",
+          "yturl": "https://www.youtube.com/watch?v=UzsaAgQ4cs8"
+        }
+      ],
+      "milestone": "Design a mobile login screen using design principles",
+      "completed": false
+    },
+    {
+      "week": 6,
+      "title": "Figma for UI Design",
+      "description": "Master a key industry tool for UI design and prototyping",
+      "skills": [
+        "Auto Layout",
+        "Components",
+        "Design Systems",
+        "Interactive Prototypes"
+      ],
+      "resources": [
+        {
+          "name": "Figma Academy",
+          "url": "https://www.figma.com/academy/",
+          "yturl": "https://www.youtube.com/watch?v=hyXR1erIhoQ"
+        },
+        {
+          "name": "Figma Design System Tutorial",
+          "url": "https://help.figma.com/hc/en-us/articles/360038662654-Guide-to-design-systems-in-Figma",
+          "yturl": "https://www.youtube.com/watch?v=SuJOdt-BP-I"
+        },
+        {
+          "name": "Figma Community Resources",
+          "url": "https://www.figma.com/community",
+          "yturl": "https://www.youtube.com/watch?v=HwiHqfax7Uk"
+        }
+      ],
+      "milestone": "Create a reusable design system in Figma",
+      "completed": false
+    },
+    {
+      "week": 7,
+      "title": "High-Fidelity Prototypes",
+      "description": "Build detailed, clickable prototypes to simulate real apps",
+      "skills": [
+        "Screen Linking",
+        "Microinteractions",
+        "Transitions",
+        "Animations"
+      ],
+      "resources": [
+        {
+          "name": "Figma Prototyping Documentation",
+          "url": "https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma",
+          "yturl": "https://www.youtube.com/watch?v=1ucLq6JTxac"
+        },
+        {
+          "name": "Microinteractions Guide - UX Planet",
+          "url": "https://uxplanet.org/microinteractions-the-secret-to-great-app-design-4cfe70fbaccf",
+          "yturl": "https://www.youtube.com/watch?v=2xkjnY1t0xQ"
+        },
+        {
+          "name": "Framer Motion Documentation",
+          "url": "https://www.framer.com/motion/",
+          "yturl": "https://www.youtube.com/watch?v=RImCkKMDBJI"
+        }
+      ],
+      "milestone": "Build a high-fidelity prototype of an e-commerce app",
+      "completed": false
+    },
+    {
+      "week": 8,
+      "title": "Usability Testing & Feedback",
+      "description": "Test your design with users and improve it",
+      "skills": [
+        "A/B Testing",
+        "Usability Sessions",
+        "Feedback Forms",
+        "Observation"
+      ],
+      "resources": [
+        {
+          "name": "Usability Testing Guide - Usability.gov",
+          "url": "https://www.usability.gov/how-to-and-tools/methods/usability-testing.html",
+          "yturl": "https://www.youtube.com/watch?v=N-34Q9mhwvs"
+        },
+        {
+          "name": "Maze - User Testing Platform",
+          "url": "https://maze.co/guides/",
+          "yturl": "https://www.youtube.com/watch?v=EOmlOXPJh4k"
+        },
+        {
+          "name": "A/B Testing Guide - Optimizely",
+          "url": "https://www.optimizely.com/optimization-glossary/ab-testing/",
+          "yturl": "https://www.youtube.com/watch?v=N-34Q9mhwvs"
+        }
+      ],
+      "milestone": "Conduct a usability test on your prototype and revise based on feedback",
+      "completed": false
+    },
+    {
+      "week": 9,
+      "title": "UX Writing & Accessibility",
+      "description": "Improve product clarity and usability for all users",
+      "skills": [
+        "Microcopy",
+        "Error Messaging",
+        "WCAG Guidelines",
+        "Alt Text & ARIA"
+      ],
+      "resources": [
+        {
+          "name": "UX Writing Hub",
+          "url": "https://uxwritinghub.com/",
+          "yturl": "https://www.youtube.com/watch?v=N-34Q9mhwvs"
+        },
+        {
+          "name": "WCAG Guidelines - W3C",
+          "url": "https://www.w3.org/WAI/WCAG21/quickref/",
+          "yturl": "https://www.youtube.com/watch?v=N-34Q9mhwvs"
+        },
+        {
+          "name": "Google UX Writing Guide",
+          "url": "https://developers.google.com/style/tone",
+          "yturl": "https://www.youtube.com/watch?v=N-34Q9mhwvs"
+        }
+      ],
+      "milestone": "Write microcopy and improve accessibility for a login form",
+      "completed": false
+    },
+    {
+      "week": 10,
+      "title": "Capstone Design Project",
+      "description": "Apply all your skills in a final end-to-end project",
+      "skills": [
+        "Research + Wireframes + UI + Prototype + Testing"
+      ],
+      "resources": [
+        {
+          "name": "Dribbble Design Inspiration",
+          "url": "https://dribbble.com/",
+          "yturl": "https://www.youtube.com/watch?v=Auo8Y_dY7G4"
+        },
+        {
+          "name": "Behance Portfolio Examples",
+          "url": "https://www.behance.net/",
+          "yturl": "https://www.youtube.com/watch?v=V9OpWwiEDuk"
+        },
+        {
+          "name": "Design Portfolio Guide - Adobe",
+          "url": "https://xd.adobe.com/ideas/career-tips/how-to-build-design-portfolio/",
+          "yturl": "https://www.youtube.com/watch?v=Q2IupOJHrzM"
+        }
+      ],
+      "milestone": "Design a full app (e.g., Recipe App, Finance Tracker) and upload to Behance/Portfolio",
+      "completed": false
+    }
+  ]
+}
+
+
 ];

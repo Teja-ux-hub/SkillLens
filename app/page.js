@@ -10,6 +10,7 @@ import { User, Star, Quote } from "lucide-react";
 
 import HeroSection from "@/components/heroSection";
 import Roadmap from "@/components/roadmap";
+import RoleBasedRedirect from "@/components/RoleBasedRedirect";
 import { faqs } from "@/data/faqs";
 
 const testimonials = [
@@ -142,9 +143,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-black text-white min-h-screen">
-      {/* Hero Section */}
-      <HeroSection />
+    <>
+      {/* Role-based redirect - HOD users go to /hod immediately */}
+      <RoleBasedRedirect />
+      
+      <div className="bg-black text-white min-h-screen">
+        {/* Hero Section */}
+        <HeroSection />
       
       {/* Roadmap Section */}
       <div className="px-6 py-20">
@@ -255,6 +260,7 @@ export default function Home() {
         
         
       `}</style>
-    </div>
+      </div>
+    </>
   );
 }

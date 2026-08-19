@@ -22,7 +22,7 @@ export async function GET(request) {
 
     await dbConnect();
 
-    const user = await User.findOne({ userId });
+    const user = await User.findOne({ clerkUserId: userId });
     if (!user) {
       return NextResponse.json({
         overallProgress: 0,
@@ -37,107 +37,120 @@ export async function GET(request) {
       });
     }
 
-    // Calculate overall progress
-    let totalWeeksCompleted = 0;
-    let totalMockInterviews = [];
-    let roadmapProgress = {};
-    let completedWeeks = {};
-    let nextSteps = [];
+    // Get progress from new schema structure
+    const overallProgress = user.roadmap?.progress || 0;
+    const currentWeek = user.roadmap?.currentWeek || 0;
+    const totalWeeks = 8; // Standard roadmap length
 
-    if (user.roadmapProgress) {
-      for (const [roadmapName, roadmapData] of user.roadmapProgress.entries()) {
-        if (roadmapData.weeks) {
-          roadmapProgress[roadmapName] = roadmapData;
-          
-          for (const [weekIndex, weekData] of Object.entries(roadmapData.weeks)) {
-            const weekNumber = parseInt(weekIndex) + 1;
-            
-            if (weekData.mockScore !== undefined) {
-              totalMockInterviews.push({
-                id: `${roadmapName}-${weekIndex}`,
-                date: weekData.date || new Date().toISOString().split('T')[0],
-                score: weekData.mockScore,
-                roadmap: roadmapName,
-                week: weekNumber,
-                topics: [roadmapName, `Week ${weekNumber}`],
-                feedback: weekData.mockScore >= 90 ? 'Excellent performance! Keep up the great work.' :
-                         weekData.mockScore >= 70 ? 'Good job! Consider reviewing areas for improvement.' :
-                         weekData.mockScore >= 50 ? 'Fair performance. Focus on practicing more.' :
-                         'Needs improvement. Consider additional study and practice.'
-              });
-            }
+    // Build mock interviews from assessmentSummary
+    const mockInterviews = [];
+    if (user.assessmentSummary?.latestScore !== undefined) {
+      mockInterviews.push({
+        id: `${user.roadmap?.role || 'roadmap'}-latest`,
+        date: user.assessmentSummary.lastAttemptAt 
+          ? new Date(user.assessmentSummary.lastAttemptAt).toISOString().split('T')[0]
+          : new Date().toISOString().split('T')[0],
+        score: user.assessmentSummary.latestScore,
+        roadmap: user.roadmap?.role || 'Current Roadmap',
+        week: currentWeek,
+        topics: [user.roadmap?.role || 'Roadmap', `Week ${currentWeek}`],
+        feedback: user.assessmentSummary.latestScore >= 90 
+          ? 'Excellent performance! Keep up the great work.' 
+          : user.assessmentSummary.latestScore >= 70 
+          ? 'Good job! Consider reviewing areas for improvement.' 
+          : user.assessmentSummary.latestScore >= 50 
+          ? 'Fair performance. Focus on practicing more.' 
+          : 'Needs improvement. Consider additional study and practice.'
+      });
 
-            if (weekData.completed) {
-              totalWeeksCompleted++;
-              completedWeeks[`${roadmapName}-${weekIndex}`] = true;
-            }
-          }
-        }
+      // Add best score if different from latest
+      if (user.assessmentSummary.bestScore && user.assessmentSummary.bestScore !== user.assessmentSummary.latestScore) {
+        mockInterviews.push({
+          id: `${user.roadmap?.role || 'roadmap'}-best`,
+          date: new Date().toISOString().split('T')[0],
+          score: user.assessmentSummary.bestScore,
+          roadmap: user.roadmap?.role || 'Current Roadmap',
+          week: currentWeek,
+          topics: [user.roadmap?.role || 'Roadmap', 'Best Performance'],
+          feedback: 'Your best performance to date!'
+        });
       }
     }
 
-    // Sort mock interviews by date (most recent first)
-    totalMockInterviews.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // Calculate overall progress percentage
-    const totalPossibleWeeks = 8; // Assuming 8 weeks per roadmap
-    const overallProgress = Math.min(Math.round((totalWeeksCompleted / totalPossibleWeeks) * 100), 100);
+    // Build roadmap progress display
+    const roadmapProgress = {};
+    if (user.roadmap?.role) {
+      roadmapProgress[user.roadmap.role] = {
+        weeks: {}
+      };
+      
+      // Mark completed weeks based on current progress
+      for (let i = 0; i < currentWeek; i++) {
+        roadmapProgress[user.roadmap.role].weeks[i] = {
+          completed: true,
+          mockScore: i === currentWeek - 1 ? user.assessmentSummary?.latestScore : undefined
+        };
+      }
+    }
 
     // Determine next milestone
-    let nextMilestone = 'Week 1: Introduction to UI/UX Design';
-    if (totalWeeksCompleted < 8) {
-      const nextWeek = totalWeeksCompleted + 1;
+    let nextMilestone = 'Week 1: Introduction';
+    if (currentWeek < totalWeeks) {
+      const nextWeek = currentWeek + 1;
       const milestones = {
-        1: 'Week 1: Introduction to UI/UX Design',
-        2: 'Week 2: User Research & Personas',
-        3: 'Week 3: Information Architecture',
-        4: 'Week 4: Wireframing & Sketching',
-        5: 'Week 5: UI Design Principles',
-        6: 'Week 6: Figma Mastery',
-        7: 'Week 7: High-Fidelity Prototypes',
-        8: 'Week 8: Usability Testing'
+        1: 'Week 1: Introduction',
+        2: 'Week 2: Fundamentals',
+        3: 'Week 3: Core Concepts',
+        4: 'Week 4: Intermediate Skills',
+        5: 'Week 5: Advanced Topics',
+        6: 'Week 6: Specialization',
+        7: 'Week 7: Project Work',
+        8: 'Week 8: Final Assessment'
       };
       nextMilestone = milestones[nextWeek] || 'Complete Roadmap';
     } else {
       nextMilestone = 'Roadmap Complete!';
     }
 
-    // Generate next steps based on progress
-    if (totalWeeksCompleted === 0) {
-      nextSteps = [
-        'Start with Week 1: Introduction to UI/UX Design',
+    // Generate next steps
+    const nextSteps = [];
+    if (currentWeek === 0) {
+      nextSteps.push(
+        'Start with Week 1',
         'Set up your learning environment',
         'Review the course materials and resources'
-      ];
-    } else if (totalWeeksCompleted < 4) {
-      nextSteps = [
-        `Continue with Week ${totalWeeksCompleted + 1}`,
+      );
+    } else if (currentWeek < 4) {
+      nextSteps.push(
+        `Continue with Week ${currentWeek + 1}`,
         'Practice the concepts from previous weeks',
         'Schedule regular study sessions'
-      ];
-    } else if (totalWeeksCompleted < 8) {
-      nextSteps = [
-        `Advance to Week ${totalWeeksCompleted + 1}`,
+      );
+    } else if (currentWeek < totalWeeks) {
+      nextSteps.push(
+        `Advance to Week ${currentWeek + 1}`,
         'Build a portfolio project using learned skills',
-        'Connect with other UI/UX learners'
-      ];
+        'Connect with other learners'
+      );
     } else {
-      nextSteps = [
+      nextSteps.push(
         'Apply your skills to real projects',
         'Build a comprehensive portfolio',
-        'Consider advanced UI/UX courses'
-      ];
+        'Consider advanced courses'
+      );
     }
 
     return NextResponse.json({
       overallProgress,
-      weeksCompleted: totalWeeksCompleted,
-      totalWeeks: totalPossibleWeeks,
+      weeksCompleted: currentWeek,
+      totalWeeks,
       nextMilestone,
-      lastUpdated: user.updatedAt ? user.updatedAt.toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-      mockInterviews: totalMockInterviews.slice(0, 5), // Return last 5 interviews
+      lastUpdated: user.updatedAt 
+        ? new Date(user.updatedAt).toISOString().split('T')[0] 
+        : new Date().toISOString().split('T')[0],
+      mockInterviews,
       roadmapProgress,
-      completedWeeks,
+      completedWeeks: {},
       nextSteps
     });
 

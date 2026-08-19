@@ -20,9 +20,28 @@ export async function POST() {
 
   if (!userId) return NextResponse.json({ error: "Not signed in" }, { status: 401 });
 
-  const existing = await User.findOne({ userId });
+  // Check if user already exists using clerkUserId
+  const existing = await User.findOne({ clerkUserId: userId });
+  
   if (!existing) {
-    await User.create({ userId, roadmapProgress: new Map() }); 
+    // Create new user with proper defaults
+    await User.create({
+      clerkUserId: userId,
+      role: {
+        student: true,
+        hod: false,
+        director: false
+      },
+      roadmap: {
+        progress: 0
+      },
+      assessmentSummary: {
+        totalAttempts: 0,
+        totalCompleted: 0,
+        averageScore: 0
+      },
+      status: 'active'
+    });
   }
 
   return NextResponse.json({ saved: true });

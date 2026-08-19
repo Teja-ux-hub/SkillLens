@@ -26,8 +26,8 @@ export async function GET(request) {
 
     await dbConnect();
 
-    const user = await User.findOne({ userId });
-    if (!user?.roadmapProgress) {
+    const user = await User.findOne({ clerkUserId: userId });
+    if (!user) {
       // If requesting specific week, return null
       if (roadmap && weekId) {
         return NextResponse.json({ mockScore: null, completed: false, date: null });
@@ -36,34 +36,30 @@ export async function GET(request) {
       return NextResponse.json({ completedWeeks: {} });
     }
 
-    // If requesting specific week data (replaces old get-mock-score)
+    // If requesting specific week data
     if (roadmap && weekId) {
-      const roadmapData = user.roadmapProgress.get(roadmap);
-      if (!roadmapData?.weeks) {
-        return NextResponse.json({ mockScore: null, completed: false, date: null });
+      // Check if current roadmap matches and week is <= currentWeek
+      if (user.roadmap?.role === roadmap && user.roadmap?.currentWeek >= parseInt(weekId)) {
+        const isCurrentWeek = user.roadmap.currentWeek === parseInt(weekId);
+        return NextResponse.json({
+          mockScore: isCurrentWeek ? (user.assessmentSummary?.latestScore || null) : null,
+          completed: user.roadmap.currentWeek > parseInt(weekId),
+          date: isCurrentWeek && user.assessmentSummary?.lastAttemptAt 
+            ? new Date(user.assessmentSummary.lastAttemptAt).toISOString().split('T')[0]
+            : null
+        });
       }
-
-      const weekIndex = (parseInt(weekId) - 1).toString();
-      const weekData = roadmapData.weeks[weekIndex];
-
-      return NextResponse.json({
-        mockScore: weekData?.mockScore || null,
-        completed: weekData?.completed || false,
-        date: weekData?.date || null
-      });
+      
+      return NextResponse.json({ mockScore: null, completed: false, date: null });
     }
 
-    // Return all completed weeks (for roadmaps page)
+    // Return all completed weeks based on current roadmap state
     const completedWeeks = {};
     
-    for (const [roadmapName, roadmapData] of user.roadmapProgress.entries()) {
-      if (roadmapData.weeks) {
-        for (const [weekIndex, weekData] of Object.entries(roadmapData.weeks)) {
-          if (weekData.completed) {
-            const key = `${roadmapName}-${weekIndex}`;
-            completedWeeks[key] = true;
-          }
-        }
+    if (user.roadmap?.role && user.roadmap?.currentWeek) {
+      for (let i = 0; i < user.roadmap.currentWeek; i++) {
+        const key = `${user.roadmap.role}-${i}`;
+        completedWeeks[key] = true;
       }
     }
 
