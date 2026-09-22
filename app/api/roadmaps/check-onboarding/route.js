@@ -15,6 +15,10 @@ export async function GET() {
 
     const user = await User.findOne({ clerkUserId: userId }).lean();
 
+    console.log(`[CHECK-ONBOARDING] 🔍 User ${userId}`);
+    console.log(`[CHECK-ONBOARDING] 📊 Matching status: ${user?.matching?.status}`);
+    console.log(`[CHECK-ONBOARDING] 👥 TeammateId in DB: ${user?.matching?.teammateId}`);
+
     if (!user) {
       // New user - needs onboarding
       return NextResponse.json({ onboardingCompleted: false });
@@ -22,6 +26,8 @@ export async function GET() {
 
     // Check if onboarding is completed
     const onboardingCompleted = user.onboarding?.completed || false;
+
+    console.log(`[CHECK-ONBOARDING] User ${userId} - teammate: ${user.matching?.teammateId}`);
 
     return NextResponse.json({ 
       onboardingCompleted,

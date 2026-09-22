@@ -35,6 +35,9 @@ const CareerRoadmaps = () => {
   const [userOnboarding, setUserOnboarding] = useState(null);
   const [teammate, setTeammate] = useState(null);
   const [isPolling, setIsPolling] = useState(false);
+  const [showTeammateModal, setShowTeammateModal] = useState(false);
+  const [teammateProgress, setTeammateProgress] = useState(null);
+  const [loadingTeammateData, setLoadingTeammateData] = useState(false);
 
   const [completedWeeks, setCompletedWeeks] = useState(new Set());
 
@@ -405,11 +408,14 @@ const CareerRoadmaps = () => {
                   <>
                     <div className="flex-1">
                       <p className="text-sm text-gray-400">Learning Partner</p>
-                      <p className="text-white font-semibold">
-                        {teammate.firstName && teammate.lastName
-                          ? `${teammate.firstName} ${teammate.lastName}`
-                          : teammate.username || "Your Partner"}
+                      <p className="text-white font-semibold text-lg">
+                        {teammate.username || `${teammate.firstName || ''} ${teammate.lastName || ''}`.trim() || "Your Partner"}
                       </p>
+                      {teammate.email && (
+                        <p className="text-xs text-gray-300 mt-0.5">
+                          {teammate.email}
+                        </p>
+                      )}
                       <div className="text-xs text-gray-400 mt-1">
                         {userOnboarding.learningMode === 'pair' 
                           ? `Both learning: ${userOnboarding.selectedRole}`
@@ -422,7 +428,60 @@ const CareerRoadmaps = () => {
                         {userOnboarding.learningMode === 'pair' ? 'Pair Programming' : 'Skill Exchange'}
                       </span>
                       <button
-                        onClick={() => router.push(`/progress?userId=${userOnboarding.teammateId}`)}
+                        onClick={async () => {
+                          const teammateIdToFetch = teammate?.clerkUserId || teammate?.userId || userOnboarding?.teammateId;
+                          console.log('[VIEW SUMMARY] 🔍 Starting fetch...');
+                          console.log('[VIEW SUMMARY] 👤 Current user ID:', user?.id);
+                          console.log('[VIEW SUMMARY] 🤝 Teammate object:', teammate);
+                          console.log('[VIEW SUMMARY] 🎯 Teammate ID to fetch:', teammateIdToFetch);
+                          
+                          if (!teammateIdToFetch) {
+                            console.error('[VIEW SUMMARY] ❌ No teammate ID available!');
+                            toast.error('Unable to load teammate data - partner ID missing');
+                            return;
+                          }
+                          
+                          setLoadingTeammateData(true);
+                          setShowTeammateModal(true);
+                          
+                          try {
+                            const progressUrl = `/api/get-all-progress?userId=${teammateIdToFetch}`;
+                            const summaryUrl = `/api/get-progress-summary?userId=${teammateIdToFetch}`;
+                            
+                            console.log('[VIEW SUMMARY] 📡 Calling API:', progressUrl);
+                            console.log('[VIEW SUMMARY] 📡 Calling API:', summaryUrl);
+                            
+                            const [progressRes, summaryRes] = await Promise.all([
+                              fetch(progressUrl),
+                              fetch(summaryUrl)
+                            ]);
+                            
+                            console.log('[VIEW SUMMARY] 📊 Progress API status:', progressRes.status, progressRes.ok);
+                            console.log('[VIEW SUMMARY] 📊 Summary API status:', summaryRes.status, summaryRes.ok);
+                            
+                            if (progressRes.ok && summaryRes.ok) {
+                              const progress = await progressRes.json();
+                              const summary = await summaryRes.json();
+                              
+                              console.log('[VIEW SUMMARY] 📦 Progress data received:', progress);
+                              console.log('[VIEW SUMMARY] 📦 Summary data received:', summary);
+                              
+                              const combinedData = { ...progress, ...summary };
+                              console.log('[VIEW SUMMARY] ✅ Combined teammate data set:', combinedData);
+                              
+                              setTeammateProgress(combinedData);
+                            } else {
+                              console.error('[VIEW SUMMARY] ❌ API call failed');
+                              toast.error('Failed to fetch teammate progress');
+                            }
+                          } catch (error) {
+                            console.error('[VIEW SUMMARY] ❌ Error fetching teammate data:', error);
+                            toast.error('Error loading teammate data');
+                          } finally {
+                            console.log('[VIEW SUMMARY] ✅ Fetch complete');
+                            setLoadingTeammateData(false);
+                          }
+                        }}
                         className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg"
                       >
                         View Summary
@@ -829,6 +888,172 @@ const CareerRoadmaps = () => {
         </div>
       </div>
       {showCompletion && <FireworksPopup />}
+      
+      {/* Teammate Modal */}
+      {showTeammateModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
+          <div className="bg-gray-800 rounded-xl shadow-2xl border border-gray-700 max-w-4xl w-full mx-4 max-h-[90vh] overflow-hidden flex flex-col">
+            {/* Modal Header */}
+            <div className="p-6 border-b border-gray-700 bg-gradient-to-r from-purple-900/30 to-blue-900/30 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center font-bold text-lg text-white">
+                  {((teammateProgress?.userProfile?.firstName || teammate?.firstName || teammate?.username || 'T')[0]).toUpperCase()}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                    {teammateProgress?.userProfile?.firstName && teammateProgress?.userProfile?.lastName
+                      ? `${teammateProgress.userProfile.firstName} ${teammateProgress.userProfile.lastName}`
+                      : teammate?.username || teammateProgress?.userProfile?.username || 'Teammate Progress'}
+                    <span className="text-xs bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2.5 py-0.5 rounded-full font-normal">
+                      Partner Progress
+                    </span>
+                  </h2>
+                  <p className="text-sm text-gray-300">
+                    {teammate?.email || teammateProgress?.userProfile?.email || 'Learning Partner'}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setShowTeammateModal(false);
+                  setTeammateProgress(null);
+                }}
+                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-lg"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto flex-1">
+              {loadingTeammateData ? (
+                <div className="flex items-center justify-center h-64">
+                  <div className="text-center">
+                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-gray-400">Loading teammate progress & exam statistics...</p>
+                  </div>
+                </div>
+              ) : teammateProgress ? (
+                <div className="space-y-6">
+                  {/* Progress Overview */}
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div className="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 border border-blue-500/30 rounded-lg p-4">
+                      <div className="text-sm text-gray-400 mb-1">Overall Progress</div>
+                      <div className="text-3xl font-bold text-blue-400">{teammateProgress.overallProgress || 0}%</div>
+                      <div className="w-full bg-gray-700/50 rounded-full h-1.5 mt-2">
+                        <div className="bg-blue-400 h-1.5 rounded-full" style={{ width: `${teammateProgress.overallProgress || 0}%` }}></div>
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border border-purple-500/30 rounded-lg p-4">
+                      <div className="text-sm text-gray-400 mb-1">Weeks Completed</div>
+                      <div className="text-3xl font-bold text-purple-400">{teammateProgress.weeksCompleted || 0} / {teammateProgress.totalWeeks || 8}</div>
+                      <p className="text-xs text-purple-300 mt-1">Roadmap Milestones</p>
+                    </div>
+                    <div className="bg-gradient-to-br from-amber-900/30 to-orange-900/30 border border-amber-500/30 rounded-lg p-4">
+                      <div className="text-sm text-gray-400 mb-1">Exams Wrote</div>
+                      <div className="text-3xl font-bold text-amber-400">{teammateProgress.assessmentSummary?.totalAttempts || teammateProgress.mockInterviews?.length || 0}</div>
+                      <p className="text-xs text-amber-300 mt-1">
+                        {teammateProgress.assessmentSummary?.totalCompleted || 0} Passed (≥90%)
+                      </p>
+                    </div>
+                    <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-lg p-4">
+                      <div className="text-sm text-gray-400 mb-1">Average / Best Marks</div>
+                      <div className="text-2xl font-bold text-green-400">
+                        {teammateProgress.assessmentSummary?.averageScore || 0}% <span className="text-xs font-normal text-gray-400">/ {teammateProgress.assessmentSummary?.bestScore || 0}%</span>
+                      </div>
+                      <p className="text-xs text-green-300 mt-1">
+                        Latest Score: {teammateProgress.assessmentSummary?.latestScore !== undefined ? `${teammateProgress.assessmentSummary.latestScore}%` : 'N/A'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Exam & Mock Interview Results */}
+                  <div className="bg-gray-700/30 border border-gray-600/50 rounded-lg p-5">
+                    <h3 className="text-lg font-semibold text-white mb-4 flex items-center justify-between">
+                      <span className="flex items-center gap-2">
+                        <Target className="w-5 h-5 text-amber-400" />
+                        Teammate Exam & Assessment Marks
+                      </span>
+                      <span className="text-xs bg-amber-500/10 text-amber-300 border border-amber-500/20 px-3 py-1 rounded-full font-normal">
+                        {teammateProgress.assessmentSummary?.totalAttempts || 0} Exams Attempted
+                      </span>
+                    </h3>
+
+                    {teammateProgress.mockInterviews && teammateProgress.mockInterviews.length > 0 ? (
+                      <div className="space-y-3">
+                        {teammateProgress.mockInterviews.map((interview, idx) => (
+                          <div key={idx} className="bg-gray-800/60 border border-gray-600/40 rounded-lg p-4 transition-all hover:border-gray-500">
+                            <div className="flex items-center justify-between mb-2">
+                              <div>
+                                <div className="text-white font-semibold text-base">{interview.roadmap} — Week {interview.week} Exam</div>
+                                <div className="text-xs text-gray-400">Date: {interview.date}</div>
+                              </div>
+                              <div className="text-right">
+                                <span className={`text-2xl font-extrabold ${
+                                  interview.score >= 90 ? 'text-green-400' :
+                                  interview.score >= 70 ? 'text-blue-400' :
+                                  interview.score >= 50 ? 'text-amber-400' : 'text-red-400'
+                                }`}>
+                                  {interview.score}%
+                                </span>
+                                <div className="text-[10px] text-gray-400">
+                                  {interview.score >= 90 ? 'Passed ✅' : 'Needs Retake ⚠️'}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="text-sm text-gray-300 bg-gray-900/40 p-2.5 rounded border border-gray-700/30 mb-2">
+                              {interview.feedback}
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {interview.topics?.map((topic, topicIdx) => (
+                                <span key={topicIdx} className="px-2 py-0.5 bg-blue-900/30 border border-blue-500/30 rounded text-xs text-blue-300 font-medium">
+                                  {topic}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="bg-gray-800/40 border border-gray-700/50 rounded-lg p-6 text-center text-gray-400">
+                        No exam records found for this teammate yet.
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Next Steps */}
+                  {teammateProgress.nextSteps && teammateProgress.nextSteps.length > 0 && (
+                    <div className="bg-gray-700/30 border border-gray-600/50 rounded-lg p-4">
+                      <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                        <ArrowRight className="w-5 h-5 text-purple-400" />
+                        Teammate Next Action Items
+                      </h3>
+                      <div className="space-y-2">
+                        {teammateProgress.nextSteps.map((step, idx) => (
+                          <div key={idx} className="flex items-center gap-3 text-gray-300 text-sm">
+                            <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            <span>{step}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="text-center text-xs text-gray-400 pt-2">
+                    Last updated: {teammateProgress.lastUpdated || 'N/A'}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-center text-gray-400 h-64 flex items-center justify-center">
+                  No teammate progress data available.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
