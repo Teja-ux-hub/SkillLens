@@ -16,6 +16,7 @@ const isProtectedRoute = createRouteMatcher([
   "/roadmaps(.*)",
   "/newones(.*)",
   "/hackathons(.*)",
+  "/exam(.*)",
 ]);
 
 const isHODRoute      = createRouteMatcher(["/hod(.*)"]);

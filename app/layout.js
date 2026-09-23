@@ -8,6 +8,7 @@ import LenisProvider from '@/lib/LenisProvider';
 import RouteLoader from '@/components/RouteLoader';
 import ConditionalHeader from '@/components/ConditionalHeader';
 import ConditionalWrapper from '@/components/ConditionalWrapper';
+import ExamNotificationListener from '@/components/ExamNotificationListener';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -49,6 +50,8 @@ export default function RootLayout({ children }) {
             
             {/* Toast Notifications */}
             <Toaster />
+            {/* Live Exam Invitation Listener */}
+            <ExamNotificationListener />
           </body>
         </html>
       </ClerkProvider>

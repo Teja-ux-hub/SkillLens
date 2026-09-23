@@ -22,6 +22,14 @@ import {
   Users,
 } from "lucide-react";
 import { careerRoadmaps } from "@/data/mockData";
+import {
+  getOnboardingCache,
+  setOnboardingCache,
+  getTeammateDetailsCache,
+  setTeammateDetailsCache,
+  getTeammateProgressCache,
+  setTeammateProgressCache,
+} from "@/lib/client-cache";
 
 const CareerRoadmaps = () => {
   const router = useRouter();
@@ -41,24 +49,69 @@ const CareerRoadmaps = () => {
 
   const [completedWeeks, setCompletedWeeks] = useState(new Set());
 
-  // Check onboarding status and fetch teammate info
+  // Check onboarding status and fetch teammate info with 24h localStorage cache
   useEffect(() => {
     const checkOnboarding = async () => {
       if (!user?.id) return;
 
+      // 1. FAST PATH: Check localStorage cache first to avoid API call
+      const cachedOnboarding = getOnboardingCache(user.id);
+      if (cachedOnboarding) {
+        console.log('[ROADMAP] ⚡ Loaded onboarding data instantly from 24h localStorage cache:', cachedOnboarding);
+
+        if (!cachedOnboarding.onboardingCompleted) {
+          console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
+          router.push('/roadmaps/onboarding');
+          return;
+        }
+
+        setUserOnboarding(cachedOnboarding);
+
+        // Auto-select chosen role
+        if (cachedOnboarding.selectedRole) {
+          const matchedRoadmap = careerRoadmaps.find(r => r.role === cachedOnboarding.selectedRole);
+          if (matchedRoadmap) {
+            setSelectedRoadmap(matchedRoadmap);
+            console.log('[ROADMAP] 🎯 Auto-selected roadmap from cache:', cachedOnboarding.selectedRole);
+          }
+        } else {
+          setSelectedRoadmap(careerRoadmaps[0]);
+        }
+
+        // Fast load teammate info from localStorage if matched
+        if (cachedOnboarding.matchingStatus === 'matched' && cachedOnboarding.teammateId) {
+          const cachedTeammate = getTeammateDetailsCache(user.id);
+          if (cachedTeammate) {
+            console.log('[ROADMAP] ⚡ Loaded teammate details instantly from 24h localStorage cache:', cachedTeammate);
+            setTeammate(cachedTeammate);
+          } else {
+            // Teammate not in cache yet, fetch & cache
+            fetchTeammateInfo(false);
+          }
+        } else if (cachedOnboarding.matchingStatus === 'waiting') {
+          setIsPolling(true);
+        }
+
+        setIsCheckingOnboarding(false);
+        return;
+      }
+
+      // 2. NETWORK FALLBACK: If not in localStorage, fetch from API and cache for 24 hours
       try {
-        console.log('[ROADMAP] 🔍 Checking onboarding status...');
+        console.log('[ROADMAP] 🔍 Cache miss. Fetching onboarding status from API...');
         const response = await fetch('/api/roadmaps/check-onboarding');
         if (response.ok) {
           const data = await response.json();
-          console.log('[ROADMAP] 📊 Onboarding data:', data);
-          
+          console.log('[ROADMAP] 📊 Onboarding data from API:', data);
+
           if (!data.onboardingCompleted) {
             console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
             router.push('/roadmaps/onboarding');
             return;
           }
-          
+
+          // Persist in localStorage for 24h
+          setOnboardingCache(user.id, data);
           setUserOnboarding(data);
 
           // Auto-select the user's chosen role if they have one
@@ -69,28 +122,12 @@ const CareerRoadmaps = () => {
               console.log('[ROADMAP] 🎯 Auto-selected roadmap:', data.selectedRole);
             }
           } else {
-            // Default to first roadmap for solo mode
             setSelectedRoadmap(careerRoadmaps[0]);
           }
 
           // Fetch teammate info if matched
           if (data.matchingStatus === 'matched' && data.teammateId) {
-            console.log('[ROADMAP] 👥 Fetching teammate info:', data.teammateId);
-            const fetchTeammateInfo = async () => {
-              try {
-                const response = await fetch('/api/roadmaps/teammate');
-                if (response.ok) {
-                  const data = await response.json();
-                  if (data.teammate) {
-                    console.log('[ROADMAP] ✅ Teammate info loaded:', data.teammate);
-                    setTeammate(data.teammate);
-                  }
-                }
-              } catch (error) {
-                console.error("[ROADMAP] ❌ Error fetching teammate:", error);
-              }
-            };
-            fetchTeammateInfo();
+            fetchTeammateInfo(false);
           } else if (data.matchingStatus === 'waiting') {
             console.log('[ROADMAP] ⏳ User is waiting for a match - starting poll');
             setIsPolling(true);
@@ -106,20 +143,123 @@ const CareerRoadmaps = () => {
     checkOnboarding();
   }, [user?.id, router]);
 
+  // Fetch teammate information with 24h localStorage caching
+  const fetchTeammateInfo = async (forceRefresh = false) => {
+    if (!user?.id) return;
 
-  // Fetch teammate information securely
-  const fetchTeammateInfo = async () => {
+    // Check localStorage cache unless forceRefresh
+    if (!forceRefresh) {
+      const cachedTeammate = getTeammateDetailsCache(user.id);
+      if (cachedTeammate) {
+        console.log('[ROADMAP] ⚡ Loaded teammate from 24h localStorage cache:', cachedTeammate);
+        setTeammate(cachedTeammate);
+        return;
+      }
+    }
+
     try {
+      console.log('[ROADMAP] 📡 Fetching fresh teammate info from API...');
       const response = await fetch('/api/roadmaps/teammate');
       if (response.ok) {
         const data = await response.json();
         if (data.teammate) {
-          console.log('[ROADMAP] ✅ Teammate info loaded:', data.teammate);
+          console.log('[ROADMAP] ✅ Teammate info loaded and stored in localStorage:', data.teammate);
           setTeammate(data.teammate);
+          setTeammateDetailsCache(user.id, data.teammate);
         }
       }
     } catch (error) {
       console.error("[ROADMAP] ❌ Error fetching teammate:", error);
+    }
+  };
+
+  // Fetch teammate progress summary with 24-hour localStorage caching
+  const fetchTeammateProgressWithCache = async (forceRefresh = false) => {
+    const teammateIdToFetch = teammate?.clerkUserId || teammate?.userId || userOnboarding?.teammateId;
+    console.log('[VIEW SUMMARY] 🔍 Target teammate ID:', teammateIdToFetch);
+
+    if (!teammateIdToFetch) {
+      console.error('[VIEW SUMMARY] ❌ No teammate ID available!');
+      toast.error('Unable to load teammate data - partner ID missing');
+      return;
+    }
+
+    setShowTeammateModal(true);
+
+    const cacheKey = `skilllens_teammate_progress_${teammateIdToFetch}`;
+    const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
+
+    // Check localStorage cache unless forceRefresh is explicitly requested
+    if (!forceRefresh) {
+      try {
+        const cachedItem = localStorage.getItem(cacheKey);
+        if (cachedItem) {
+          const parsed = JSON.parse(cachedItem);
+          const now = Date.now();
+          const age = now - (parsed.timestamp || 0);
+
+          if (age < TWENTY_FOUR_HOURS_MS && parsed.data) {
+            console.log('[VIEW SUMMARY] ⚡ Loaded teammate data from 24h localStorage cache');
+            setTeammateProgress({
+              ...parsed.data,
+              isFromCache: true,
+              cachedAt: new Date(parsed.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
+            setLoadingTeammateData(false);
+            return;
+          } else {
+            console.log('[VIEW SUMMARY] ⏰ LocalStorage cache expired (>24h). Re-fetching from API...');
+          }
+        }
+      } catch (err) {
+        console.warn('[VIEW SUMMARY] ⚠️ Error reading cache from localStorage:', err);
+      }
+    }
+
+    setLoadingTeammateData(true);
+
+    try {
+      const progressUrl = `/api/get-all-progress?userId=${teammateIdToFetch}`;
+      const summaryUrl = `/api/get-progress-summary?userId=${teammateIdToFetch}`;
+
+      console.log('[VIEW SUMMARY] 📡 Fetching fresh data from API...');
+      const [progressRes, summaryRes] = await Promise.all([
+        fetch(progressUrl),
+        fetch(summaryUrl)
+      ]);
+
+      if (progressRes.ok && summaryRes.ok) {
+        const progress = await progressRes.json();
+        const summary = await summaryRes.json();
+
+        const combinedData = { ...progress, ...summary };
+        const timestamp = Date.now();
+
+        // Save to localStorage with timestamp for 24-hour expiration
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify({
+            timestamp,
+            data: combinedData
+          }));
+          console.log('[VIEW SUMMARY] 💾 Cached fresh teammate progress in localStorage (valid for 24h)');
+        } catch (e) {
+          console.warn('[VIEW SUMMARY] ⚠️ Could not save to localStorage:', e);
+        }
+
+        setTeammateProgress({
+          ...combinedData,
+          isFromCache: false,
+          cachedAt: new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+      } else {
+        console.error('[VIEW SUMMARY] ❌ API call failed');
+        toast.error('Failed to fetch teammate progress');
+      }
+    } catch (error) {
+      console.error('[VIEW SUMMARY] ❌ Error fetching teammate data:', error);
+      toast.error('Error loading teammate data');
+    } finally {
+      setLoadingTeammateData(false);
     }
   };
 
@@ -143,29 +283,19 @@ const CareerRoadmaps = () => {
             // Stop polling immediately
             setIsPolling(false);
             
-            // Update onboarding state
-            setUserOnboarding(prev => ({
-              ...prev,
-              matchingStatus: 'matched',
-              teammateId: data.teammateId
-            }));
+            // Update onboarding state and cache
+            setUserOnboarding(prev => {
+              const updated = {
+                ...prev,
+                matchingStatus: 'matched',
+                teammateId: data.teammateId
+              };
+              setOnboardingCache(user.id, updated);
+              return updated;
+            });
             
-            // Fetch teammate info
-            const fetchTeammateInfo = async () => {
-              try {
-                const response = await fetch('/api/roadmaps/teammate');
-                if (response.ok) {
-                  const data = await response.json();
-                  if (data.teammate) {
-                    console.log('[ROADMAP] ✅ Teammate info loaded:', data.teammate);
-                    setTeammate(data.teammate);
-                  }
-                }
-              } catch (error) {
-                console.error("[ROADMAP] ❌ Error fetching teammate:", error);
-              }
-            };
-            await fetchTeammateInfo();
+            // Fetch teammate info and store in localStorage
+            await fetchTeammateInfo(true);
             
             // Show success toast
             toast.success('You\'ve been matched with a learning partner! 🎉');
@@ -311,10 +441,6 @@ const CareerRoadmaps = () => {
     setExpandedWeek(expandedWeek === weekIndex ? null : weekIndex);
   };
 
-  const handleWeekNavigation = (week) => {
-    router.push(`/mock/week/${week.week}?roadmap=${selectedRoadmap.role}`);
-  };
-
   const FireworksPopup = () => (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
       <div className="relative">
@@ -423,68 +549,19 @@ const CareerRoadmaps = () => {
                         }
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <span className="text-xs text-purple-400 text-right">
-                        {userOnboarding.learningMode === 'pair' ? 'Pair Programming' : 'Skill Exchange'}
-                      </span>
+                    <div className="flex flex-col sm:flex-row gap-2">
                       <button
-                        onClick={async () => {
-                          const teammateIdToFetch = teammate?.clerkUserId || teammate?.userId || userOnboarding?.teammateId;
-                          console.log('[VIEW SUMMARY] 🔍 Starting fetch...');
-                          console.log('[VIEW SUMMARY] 👤 Current user ID:', user?.id);
-                          console.log('[VIEW SUMMARY] 🤝 Teammate object:', teammate);
-                          console.log('[VIEW SUMMARY] 🎯 Teammate ID to fetch:', teammateIdToFetch);
-                          
-                          if (!teammateIdToFetch) {
-                            console.error('[VIEW SUMMARY] ❌ No teammate ID available!');
-                            toast.error('Unable to load teammate data - partner ID missing');
-                            return;
-                          }
-                          
-                          setLoadingTeammateData(true);
-                          setShowTeammateModal(true);
-                          
-                          try {
-                            const progressUrl = `/api/get-all-progress?userId=${teammateIdToFetch}`;
-                            const summaryUrl = `/api/get-progress-summary?userId=${teammateIdToFetch}`;
-                            
-                            console.log('[VIEW SUMMARY] 📡 Calling API:', progressUrl);
-                            console.log('[VIEW SUMMARY] 📡 Calling API:', summaryUrl);
-                            
-                            const [progressRes, summaryRes] = await Promise.all([
-                              fetch(progressUrl),
-                              fetch(summaryUrl)
-                            ]);
-                            
-                            console.log('[VIEW SUMMARY] 📊 Progress API status:', progressRes.status, progressRes.ok);
-                            console.log('[VIEW SUMMARY] 📊 Summary API status:', summaryRes.status, summaryRes.ok);
-                            
-                            if (progressRes.ok && summaryRes.ok) {
-                              const progress = await progressRes.json();
-                              const summary = await summaryRes.json();
-                              
-                              console.log('[VIEW SUMMARY] 📦 Progress data received:', progress);
-                              console.log('[VIEW SUMMARY] 📦 Summary data received:', summary);
-                              
-                              const combinedData = { ...progress, ...summary };
-                              console.log('[VIEW SUMMARY] ✅ Combined teammate data set:', combinedData);
-                              
-                              setTeammateProgress(combinedData);
-                            } else {
-                              console.error('[VIEW SUMMARY] ❌ API call failed');
-                              toast.error('Failed to fetch teammate progress');
-                            }
-                          } catch (error) {
-                            console.error('[VIEW SUMMARY] ❌ Error fetching teammate data:', error);
-                            toast.error('Error loading teammate data');
-                          } finally {
-                            console.log('[VIEW SUMMARY] ✅ Fetch complete');
-                            setLoadingTeammateData(false);
-                          }
-                        }}
-                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg"
+                        onClick={() => router.push('/exam/week/1')}
+                        className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center gap-1.5"
                       >
-                        View Summary
+                        <Sparkles className="w-4 h-4 text-emerald-300" />
+                        <span>Pair Exam</span>
+                      </button>
+                      <button
+                        onClick={() => fetchTeammateProgressWithCache(false)}
+                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center gap-1.5"
+                      >
+                        <span>View Summary</span>
                       </button>
                     </div>
                   </>
@@ -717,12 +794,12 @@ const CareerRoadmaps = () => {
                                   <button
                                     onClick={(e) => {
                                       e.stopPropagation();
-                                      handleWeekNavigation(week);
+                                      router.push(`/exam/week/${week.week}`);
                                     }}
-                                    className="p-2 text-blue-400 hover:text-blue-300 transition-all duration-200 rounded-lg hover:bg-blue-900/30 border border-blue-500/30 hover:border-blue-400/50 shadow-sm hover:shadow-blue-500/20"
-                                    title="Take Mock Interview"
+                                    className="p-2 text-emerald-400 hover:text-emerald-300 transition-all duration-200 rounded-lg hover:bg-emerald-900/30 border border-emerald-500/30 hover:border-emerald-400/50 shadow-sm hover:shadow-emerald-500/20"
+                                    title="Take Weekly Pair Exam"
                                   >
-                                    <ExternalLink className="w-5 h-5" />
+                                    <Sparkles className="w-5 h-5" />
                                   </button>
                                   {isExpanded ? (
                                     <ChevronUp className="w-5 h-5 text-gray-400" />
@@ -847,10 +924,11 @@ const CareerRoadmaps = () => {
                                   )}
                                 </div>
                                 <button
-                                  onClick={() => handleWeekNavigation(week)}
-                                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 flex items-center space-x-2"
+                                  onClick={() => router.push(`/exam/week/${week.week}`)}
+                                  className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 transform hover:scale-105 flex items-center space-x-2 shadow-lg shadow-emerald-500/20"
                                 >
-                                  <span>Start Learning</span>
+                                  <Sparkles className="w-4 h-4 text-emerald-300" />
+                                  <span>Start Pair Exam</span>
                                   <ArrowRight className="w-4 h-4" />
                                 </button>
                               </div>
@@ -913,17 +991,42 @@ const CareerRoadmaps = () => {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={() => {
-                  setShowTeammateModal(false);
-                  setTeammateProgress(null);
-                }}
-                className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-lg"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              <div className="flex items-center gap-3">
+                {teammateProgress && (
+                  <div className="flex items-center gap-2">
+                    {teammateProgress.isFromCache ? (
+                      <span className="text-[11px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2.5 py-1 rounded-full font-normal flex items-center gap-1">
+                        ⚡ Cached (Refreshes 24h)
+                      </span>
+                    ) : (
+                      <span className="text-[11px] bg-green-500/20 text-green-300 border border-green-500/30 px-2.5 py-1 rounded-full font-normal flex items-center gap-1">
+                        🟢 Live Data
+                      </span>
+                    )}
+                    <button
+                      onClick={() => fetchTeammateProgressWithCache(true)}
+                      title="Force refresh data from API"
+                      className="p-1.5 bg-gray-700 hover:bg-gray-600 text-gray-300 hover:text-white rounded-lg transition-colors text-xs flex items-center gap-1"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                      Refresh
+                    </button>
+                  </div>
+                )}
+                <button
+                  onClick={() => {
+                    setShowTeammateModal(false);
+                    setTeammateProgress(null);
+                  }}
+                  className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-700 rounded-lg"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* Modal Body */}

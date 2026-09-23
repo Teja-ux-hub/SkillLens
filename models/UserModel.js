@@ -142,6 +142,13 @@ const userSchema = new mongoose.Schema({
       type: Date,
       default: null
     }
+  },
+
+  // Reliability tracking for weekly pair exams
+  reliability: {
+    missedExams: { type: Number, default: 0 },
+    isFlagged: { type: Boolean, default: false },
+    cooldownUntil: { type: Date, default: null }
   }
 }, {
   timestamps: true // Automatically manages createdAt and updatedAt

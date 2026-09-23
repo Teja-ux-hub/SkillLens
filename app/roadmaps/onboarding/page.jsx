@@ -15,6 +15,8 @@ import {
 import { toast } from "sonner";
 import { careerRoadmaps } from "@/data/mockData";
 
+import { setOnboardingCache } from "@/lib/client-cache";
+
 export default function RoadmapOnboarding() {
   const router = useRouter();
   const { user } = useUser();
@@ -94,6 +96,16 @@ export default function RoadmapOnboarding() {
       const data = await response.json();
 
       if (response.ok) {
+        if (user?.id) {
+          setOnboardingCache(user.id, {
+            onboardingCompleted: true,
+            learningMode: selectedMode,
+            selectedRole: selectedMode === "solo" ? null : selectedRole,
+            matchingStatus: selectedMode === "solo" ? "none" : (data.paired ? "matched" : "waiting"),
+            teammateId: data.partnerId || null,
+          });
+        }
+
         if (selectedMode === "solo") {
           toast.success("Welcome to your Solo Journey! 🚀");
           router.push("/roadmaps");
