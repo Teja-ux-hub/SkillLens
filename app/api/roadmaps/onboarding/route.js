@@ -188,6 +188,21 @@ export async function POST(request) {
         { upsert: true }
       );
 
+      // Fetch partner user document for safe details
+      const partnerUser = await User.findOne({ clerkUserId: partnerId }).lean();
+      var safePartnerData = {
+        clerkUserId: partnerId,
+        userId: partnerId,
+        firstName: partnerUser?.firstName || null,
+        lastName: partnerUser?.lastName || null,
+        username: partnerUser?.username || partnerName,
+        email: matchedCandidate.email || partnerUser?.email || null,
+        selectedRole: partnerRole,
+        learningMode: learningMode,
+        githubUsername: partnerUser?.github?.username || null,
+        roadmapProgress: partnerUser?.roadmap?.progress || 0,
+      };
+
       console.log(`[ONBOARDING-${requestId}] ✅ Both users updated with match`);
     } 
     // ========== NO MATCH - ADD TO QUEUE ==========
@@ -231,8 +246,10 @@ export async function POST(request) {
     return NextResponse.json({
       success: true,
       paired,
+      partnerId,
       partnerName,
       partnerRole,
+      teammate: paired ? safePartnerData : null,
       message: paired 
         ? "Successfully paired!" 
         : "Added to waiting queue"

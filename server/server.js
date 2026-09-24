@@ -254,11 +254,9 @@ io.on("connection", (socket) => {
 });
 
 app.get("/health", (req, res) => {
-  res.json({
+  res.status(200).json({
     status: "ok",
     service: "SkillLens Real-Time Socket Server",
-    connections: io.engine.clientsCount,
-    timestamp: new Date().toISOString(),
   });
 });
 

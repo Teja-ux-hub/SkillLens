@@ -27,6 +27,7 @@ import {
   setOnboardingCache,
   getTeammateDetailsCache,
   setTeammateDetailsCache,
+  clearTeammateCache,
   getTeammateProgressCache,
   setTeammateProgressCache,
 } from "@/lib/client-cache";
@@ -49,15 +50,17 @@ const CareerRoadmaps = () => {
 
   const [completedWeeks, setCompletedWeeks] = useState(new Set());
 
-  // Check onboarding status and fetch teammate info with 24h localStorage cache
+  // Check onboarding status and fetch teammate info with cache + live server sync
   useEffect(() => {
+    let isMounted = true;
+
     const checkOnboarding = async () => {
       if (!user?.id) return;
 
-      // 1. FAST PATH: Check localStorage cache first to avoid API call
+      // 1. FAST PATH (Instant UI): Render cached data immediately if available
       const cachedOnboarding = getOnboardingCache(user.id);
       if (cachedOnboarding) {
-        console.log('[ROADMAP] ⚡ Loaded onboarding data instantly from 24h localStorage cache:', cachedOnboarding);
+        console.log('[ROADMAP] ⚡ Loaded onboarding data instantly from cache:', cachedOnboarding);
 
         if (!cachedOnboarding.onboardingCompleted) {
           console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
@@ -79,30 +82,31 @@ const CareerRoadmaps = () => {
         }
 
         // Fast load teammate info from localStorage if matched
-        if (cachedOnboarding.matchingStatus === 'matched' && cachedOnboarding.teammateId) {
+        if (cachedOnboarding.matchingStatus === 'matched') {
           const cachedTeammate = getTeammateDetailsCache(user.id);
-          if (cachedTeammate) {
-            console.log('[ROADMAP] ⚡ Loaded teammate details instantly from 24h localStorage cache:', cachedTeammate);
+          if (cachedTeammate && (!cachedOnboarding.teammateId || cachedTeammate.clerkUserId === cachedOnboarding.teammateId)) {
+            console.log('[ROADMAP] ⚡ Loaded teammate details instantly from cache:', cachedTeammate);
             setTeammate(cachedTeammate);
           } else {
-            // Teammate not in cache yet, fetch & cache
-            fetchTeammateInfo(false);
+            // Teammate not in cache or missing, fetch immediately
+            fetchTeammateInfo(true);
           }
         } else if (cachedOnboarding.matchingStatus === 'waiting') {
           setIsPolling(true);
         }
 
         setIsCheckingOnboarding(false);
-        return;
+        // Note: Do NOT return here! Always verify live DB status with server below to prevent stale cache lockouts.
       }
 
-      // 2. NETWORK FALLBACK: If not in localStorage, fetch from API and cache for 24 hours
+      // 2. NETWORK REVALIDATION: Always sync with live server DB
       try {
-        console.log('[ROADMAP] 🔍 Cache miss. Fetching onboarding status from API...');
+        console.log('[ROADMAP] 🔄 Verifying live onboarding & matching status with server API...');
         const response = await fetch('/api/roadmaps/check-onboarding');
         if (response.ok) {
           const data = await response.json();
-          console.log('[ROADMAP] 📊 Onboarding data from API:', data);
+          if (!isMounted) return;
+          console.log('[ROADMAP] 📊 Live onboarding data from API:', data);
 
           if (!data.onboardingCompleted) {
             console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
@@ -110,7 +114,7 @@ const CareerRoadmaps = () => {
             return;
           }
 
-          // Persist in localStorage for 24h
+          // Persist in localStorage and state
           setOnboardingCache(user.id, data);
           setUserOnboarding(data);
 
@@ -125,25 +129,44 @@ const CareerRoadmaps = () => {
             setSelectedRoadmap(careerRoadmaps[0]);
           }
 
-          // Fetch teammate info if matched
-          if (data.matchingStatus === 'matched' && data.teammateId) {
-            fetchTeammateInfo(false);
+          // Handle live matching status
+          if (data.matchingStatus === 'matched') {
+            setIsPolling(false);
+            const cachedTeammate = getTeammateDetailsCache(user.id);
+            if (!cachedTeammate || (data.teammateId && cachedTeammate.clerkUserId !== data.teammateId)) {
+              console.log('[ROADMAP] 📡 Fetching fresh teammate info for matched user...');
+              fetchTeammateInfo(true);
+            } else {
+              setTeammate(cachedTeammate);
+            }
           } else if (data.matchingStatus === 'waiting') {
             console.log('[ROADMAP] ⏳ User is waiting for a match - starting poll');
+            setTeammate(null);
+            clearTeammateCache(user.id);
             setIsPolling(true);
+          } else {
+            setTeammate(null);
+            clearTeammateCache(user.id);
+            setIsPolling(false);
           }
         }
       } catch (error) {
         console.error("[ROADMAP] ❌ Error checking onboarding:", error);
       } finally {
-        setIsCheckingOnboarding(false);
+        if (isMounted) {
+          setIsCheckingOnboarding(false);
+        }
       }
     };
 
     checkOnboarding();
+
+    return () => {
+      isMounted = false;
+    };
   }, [user?.id, router]);
 
-  // Fetch teammate information with 24h localStorage caching
+  // Fetch teammate information with caching + forceRefresh option
   const fetchTeammateInfo = async (forceRefresh = false) => {
     if (!user?.id) return;
 
@@ -151,7 +174,7 @@ const CareerRoadmaps = () => {
     if (!forceRefresh) {
       const cachedTeammate = getTeammateDetailsCache(user.id);
       if (cachedTeammate) {
-        console.log('[ROADMAP] ⚡ Loaded teammate from 24h localStorage cache:', cachedTeammate);
+        console.log('[ROADMAP] ⚡ Loaded teammate from localStorage cache:', cachedTeammate);
         setTeammate(cachedTeammate);
         return;
       }
@@ -166,6 +189,23 @@ const CareerRoadmaps = () => {
           console.log('[ROADMAP] ✅ Teammate info loaded and stored in localStorage:', data.teammate);
           setTeammate(data.teammate);
           setTeammateDetailsCache(user.id, data.teammate);
+
+          // Keep userOnboarding in sync with teammateId
+          setUserOnboarding(prev => {
+            if (prev && (!prev.teammateId || prev.teammateId !== data.teammate.clerkUserId)) {
+              const updated = {
+                ...prev,
+                matchingStatus: 'matched',
+                teammateId: data.teammate.clerkUserId
+              };
+              setOnboardingCache(user.id, updated);
+              return updated;
+            }
+            return prev;
+          });
+        } else {
+          setTeammate(null);
+          clearTeammateCache(user.id);
         }
       }
     } catch (error) {
@@ -530,41 +570,51 @@ const CareerRoadmaps = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
                   <Users className="w-5 h-5 text-white" />
                 </div>
-                {userOnboarding.matchingStatus === 'matched' && teammate ? (
-                  <>
+                {userOnboarding.matchingStatus === 'matched' ? (
+                  teammate ? (
+                    <>
+                      <div className="flex-1">
+                        <p className="text-sm text-gray-400">Learning Partner</p>
+                        <p className="text-white font-semibold text-lg">
+                          {teammate.username || `${teammate.firstName || ''} ${teammate.lastName || ''}`.trim() || "Your Partner"}
+                        </p>
+                        {teammate.email && (
+                          <p className="text-xs text-gray-300 mt-0.5">
+                            {teammate.email}
+                          </p>
+                        )}
+                        <div className="text-xs text-gray-400 mt-1">
+                          {userOnboarding.learningMode === 'pair' 
+                            ? `Both learning: ${userOnboarding.selectedRole}`
+                            : `You: ${userOnboarding.selectedRole} | Partner: ${teammate.selectedRole || 'Unknown'}`
+                          }
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <button
+                          onClick={() => router.push('/exam/week/1')}
+                          className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center gap-1.5"
+                        >
+                          <Sparkles className="w-4 h-4 text-emerald-300" />
+                          <span>Pair Exam</span>
+                        </button>
+                        <button
+                          onClick={() => fetchTeammateProgressWithCache(false)}
+                          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center gap-1.5"
+                        >
+                          <span>View Summary</span>
+                        </button>
+                      </div>
+                    </>
+                  ) : (
                     <div className="flex-1">
                       <p className="text-sm text-gray-400">Learning Partner</p>
-                      <p className="text-white font-semibold text-lg">
-                        {teammate.username || `${teammate.firstName || ''} ${teammate.lastName || ''}`.trim() || "Your Partner"}
-                      </p>
-                      {teammate.email && (
-                        <p className="text-xs text-gray-300 mt-0.5">
-                          {teammate.email}
-                        </p>
-                      )}
-                      <div className="text-xs text-gray-400 mt-1">
-                        {userOnboarding.learningMode === 'pair' 
-                          ? `Both learning: ${userOnboarding.selectedRole}`
-                          : `You: ${userOnboarding.selectedRole} | Partner: ${teammate.selectedRole || 'Unknown'}`
-                        }
+                      <div className="flex items-center gap-2 mt-1">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                        <p className="text-xs text-emerald-400">Connecting to matched partner...</p>
                       </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      <button
-                        onClick={() => router.push('/exam/week/1')}
-                        className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center gap-1.5"
-                      >
-                        <Sparkles className="w-4 h-4 text-emerald-300" />
-                        <span>Pair Exam</span>
-                      </button>
-                      <button
-                        onClick={() => fetchTeammateProgressWithCache(false)}
-                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center gap-1.5"
-                      >
-                        <span>View Summary</span>
-                      </button>
-                    </div>
-                  </>
+                  )
                 ) : (
                   <div className="flex-1">
                     <p className="text-sm text-gray-400">Learning Mode</p>

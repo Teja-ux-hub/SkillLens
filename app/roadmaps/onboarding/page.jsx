@@ -15,7 +15,7 @@ import {
 import { toast } from "sonner";
 import { careerRoadmaps } from "@/data/mockData";
 
-import { setOnboardingCache } from "@/lib/client-cache";
+import { setOnboardingCache, setTeammateDetailsCache, clearTeammateCache } from "@/lib/client-cache";
 
 export default function RoadmapOnboarding() {
   const router = useRouter();
@@ -104,6 +104,12 @@ export default function RoadmapOnboarding() {
             matchingStatus: selectedMode === "solo" ? "none" : (data.paired ? "matched" : "waiting"),
             teammateId: data.partnerId || null,
           });
+
+          if (data.paired && data.partnerId && data.teammate) {
+            setTeammateDetailsCache(user.id, data.teammate);
+          } else {
+            clearTeammateCache(user.id);
+          }
         }
 
         if (selectedMode === "solo") {

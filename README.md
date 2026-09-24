@@ -34,3 +34,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Socket.IO Server & External Uptime Monitor
+
+The SkillLens real-time Socket.IO server is deployed on Render Free tier. Render automatically spins down free instances after 15 minutes of inactivity. To keep the service warm and eliminate cold-start connection latency for pair exams, configure an external uptime monitor (such as UptimeRobot, Cron-Job.org, or Better Uptime) to ping the lightweight health check endpoint:
+
+- **Endpoint**: `https://skilllens-socket.onrender.com/health`
+- **Monitor Type**: HTTP(s)
+- **Method**: GET
+- **Interval**: 10 minutes
+- **Expected Status**: 200 OK
+- **Expected Response**:
+  ```json
+  {
+    "status": "ok",
+    "service": "SkillLens Real-Time Socket Server"
+  }
+  ```
+
