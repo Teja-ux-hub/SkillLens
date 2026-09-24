@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect, useRef, use } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
@@ -29,6 +29,10 @@ export default function ExamLobbyPage({ params }) {
   const unwrappedParams = use(params);
   const weekId = parseInt(unwrappedParams.weekid) || 1;
   const router = useRouter();
+  const routerRef = useRef(router);
+  useEffect(() => {
+    routerRef.current = router;
+  }, [router]);
   const { user, isLoaded } = useUser();
 
   const [loading, setLoading] = useState(true);
@@ -97,7 +101,7 @@ export default function ExamLobbyPage({ params }) {
         {
           action: {
             label: "Join Exam",
-            onClick: () => router.push(`/exam/session/${data.sessionId}`),
+            onClick: () => routerRef.current.push(`/exam/session/${data.sessionId}`),
           },
           duration: 15000,
         }
@@ -109,7 +113,7 @@ export default function ExamLobbyPage({ params }) {
     return () => {
       socket.off("exam:invitation-received", handleInviteReceived);
     };
-  }, [user?.id, router]);
+  }, [user?.id]);
 
   // Start Exam Handler
   const handleStartExam = async (mode = "PAIRED") => {

@@ -87,7 +87,7 @@ export async function GET(request) {
         roadmap: user.roadmap?.role || 'Current Roadmap',
         week: currentWeek,
         topics: [user.roadmap?.role || 'Roadmap', `Week ${currentWeek}`],
-        feedback: user.assessmentSummary.latestScore >= 90 
+        feedback: user.assessmentSummary.latestScore >= 80 
           ? 'Excellent performance!' 
           : user.assessmentSummary.latestScore >= 70 
           ? 'Good job!' 

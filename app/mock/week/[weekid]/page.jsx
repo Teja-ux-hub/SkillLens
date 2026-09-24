@@ -1,15 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import { CheckCircle, XCircle, Clock, BookOpen, Target, Trophy, RotateCcw, ArrowLeft } from 'lucide-react';
-import { useParams, useSearchParams } from 'next/navigation';
+import { CheckCircle, XCircle, Clock, BookOpen, Target, Trophy, RotateCcw, ArrowLeft, AlertTriangle, Check, Shield } from 'lucide-react';
+import { useParams, useSearchParams, useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 // Import your MCQ datasets - replace these imports with your actual data files
-import { mcqsWebdev, aiMlMcqs,cyberMCQ, DataAnaMCQ } from '@/data/mockQuesitons';
+import { mcqsWebdev, aiMlMcqs, cyberMCQ, DataAnaMCQ, agenticAiMCQ } from '@/data/mockQuesitons';
 import { mobiledevMCQ, cloudMcqs, gameMcqs, blockchainMcqs } from '@/data/mockQuestions2';
 import { uiuxMCQ } from '@/data/mockdata3';
-
-
-
 
 const allMCQs = {
   'webdeveloper': mcqsWebdev,
@@ -20,7 +18,8 @@ const allMCQs = {
   'CloudDevOpsEngineer': cloudMcqs,
   'GameDeveloper': gameMcqs,
   'BlockchainDeveloper': blockchainMcqs,
-  'UIUXDesigner':uiuxMCQ
+  'UIUXDesigner': uiuxMCQ,
+  'agenticaiengineer': agenticAiMCQ,
   // ... other roadmaps
 };
 
@@ -42,6 +41,7 @@ const getRoadmapKey = (roadmapName) => {
 };
 
 const QuizPage = () => {
+  const router = useRouter();
   const params = useParams();
   const searchParams = useSearchParams();
   
@@ -52,10 +52,59 @@ const QuizPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [userAnswers, setUserAnswers] = useState([]);
-  const [showResults, setShowResults] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(600);
   const [quizStarted, setQuizStarted] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes
+  const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showExitConfirmModal, setShowExitConfirmModal] = useState(false);
+
+  // Strict Exam Guard: Prevent Accidental Exit, Browser Back, Page Refresh, and Monitor Tab Switching
+  useEffect(() => {
+    if (!quizStarted || showResults) return;
+
+    // 1. Native Browser Close / Refresh Warning
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "Quiz is currently in progress! If you leave or refresh, your current quiz attempt and score will not be saved.";
+      return e.returnValue;
+    };
+
+    // 2. Browser Back / Forward History Trap
+    window.history.pushState({ inQuiz: true }, "", window.location.href);
+
+    const handlePopState = () => {
+      // Re-push current state to trap navigation
+      window.history.pushState({ inQuiz: true }, "", window.location.href);
+
+      // Flash top toast
+      toast.error("⚠️ Quiz in progress! You cannot go back while writing the quiz.", {
+        description: "Please submit your quiz to record your progress, or use the exit dialog to abandon it.",
+        duration: 5000,
+      });
+
+      // Open strict confirmation modal
+      setShowExitConfirmModal(true);
+    };
+
+    // 3. Tab Switching Alert
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        toast.warning("⚠️ Attention: Leaving or switching tabs during the quiz is strictly monitored!", {
+          duration: 4500,
+        });
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handlePopState);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [quizStarted, showResults]);
 
   // Load questions for the specific week and roadmap
   useEffect(() => {
@@ -268,7 +317,7 @@ const QuizPage = () => {
               <Trophy className="w-20 h-20 text-yellow-400 mx-auto mb-6 animate-bounce" />
               <h1 className="text-3xl font-bold text-white mb-4">Quiz Completed!</h1>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-green-900/30 border border-green-500/20 rounded-lg p-6">
                   <div className="text-3xl font-bold text-green-400 mb-2">{score}/{questions.length}</div>
                   <div className="text-green-300">Correct Answers</div>
@@ -281,6 +330,29 @@ const QuizPage = () => {
                   <div className="text-3xl font-bold text-yellow-400 mb-2">{points}/20</div>
                   <div className="text-yellow-300">Points Earned</div>
                 </div>
+              </div>
+
+              {/* 80% Passing Status Banner */}
+              <div className={`p-4 rounded-xl border mb-8 text-sm flex items-center justify-center gap-2.5 ${
+                percentage >= 80 
+                  ? "bg-green-950/40 border-green-500/40 text-green-300"
+                  : "bg-amber-950/40 border-amber-500/40 text-amber-300"
+              }`}>
+                {percentage >= 80 ? (
+                  <>
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="font-semibold">
+                      Passing Grade Achieved (≥80%)! You can now mark Week {weekId} as completed on your roadmap! ✅
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <AlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                    <span className="font-semibold">
+                      Score: {percentage}% — You need at least 80% to mark Week {weekId} as completed. Please retake to improve! ⚠️
+                    </span>
+                  </>
+                )}
               </div>
             </div>
 
@@ -367,6 +439,14 @@ const QuizPage = () => {
               <div className="text-gray-300">
                 {currentQuestion + 1} / {questions.length}
               </div>
+              <button
+                onClick={() => setShowExitConfirmModal(true)}
+                className="flex items-center gap-1 text-gray-400 hover:text-red-400 hover:bg-red-500/10 text-xs font-semibold px-2.5 py-1.5 rounded-lg border border-gray-700 hover:border-red-500/30 transition-all"
+                title="Exit Quiz"
+              >
+                <AlertTriangle className="w-3.5 h-3.5 text-red-400" />
+                <span>Exit</span>
+              </button>
             </div>
           </div>
           
@@ -471,7 +551,64 @@ const QuizPage = () => {
           </div>
         </div>
       </div>
+      {/* Strict Quiz Exit Confirmation Modal */}
+      {showExitConfirmModal && (
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-gray-900 border border-red-500/40 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
+            <div className="flex items-start gap-3.5">
+              <div className="p-3 rounded-full bg-red-500/15 text-red-400 border border-red-500/30 flex-shrink-0">
+                <AlertTriangle className="w-6 h-6 animate-pulse" />
+              </div>
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  <span>Quiz In Progress</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30">
+                    Strict Mode
+                  </span>
+                </h3>
+                <p className="text-xs text-gray-300 leading-relaxed">
+                  You are currently writing the Week {weekId} quiz. If you leave now, your quiz progress and answers will be lost.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-gray-950/80 border border-red-500/20 rounded-xl p-3.5 space-y-2 text-xs">
+              <div className="flex items-center justify-between text-gray-300 font-medium">
+                <span>Progress:</span>
+                <span className="text-cyan-400 font-bold">{currentQuestion + 1} / {questions.length} Questions</span>
+              </div>
+              <div className="flex items-center justify-between text-gray-300 font-medium">
+                <span>Time Remaining:</span>
+                <span className="text-amber-400 font-mono font-bold">{formatTime(timeLeft)}</span>
+              </div>
+              <p className="text-[11px] text-gray-400 pt-1 border-t border-gray-800">
+                Are you sure you still want to exit?
+              </p>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-1">
+              <button
+                onClick={() => setShowExitConfirmModal(false)}
+                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white transition-all shadow-md hover:shadow-cyan-500/20 flex items-center gap-1.5"
+              >
+                <Check className="w-4 h-4" />
+                Stay & Continue Quiz
+              </button>
+              <button
+                onClick={() => {
+                  setShowExitConfirmModal(false);
+                  router.push('/roadmaps');
+                }}
+                className="px-4 py-2.5 rounded-xl text-xs font-semibold text-red-400 hover:text-red-300 hover:bg-red-500/10 border border-red-500/30 transition-colors"
+              >
+                Yes, Abandon & Exit
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
+
   );
 };
 

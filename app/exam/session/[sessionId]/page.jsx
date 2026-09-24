@@ -32,6 +32,10 @@ export default function ExamSessionPage({ params }) {
   const unwrappedParams = use(params);
   const sessionId = unwrappedParams.sessionId;
   const router = useRouter();
+  const routerRef = useRef(router);
+  useEffect(() => {
+    routerRef.current = router;
+  }, [router]);
   const { user, isLoaded } = useUser();
 
   // Core State
@@ -73,8 +77,57 @@ export default function ExamSessionPage({ params }) {
   const [discussionSaveStatus, setDiscussionSaveStatus] = useState("Saved"); // "Saving..." | "Saved"
   const typingTimeoutRef = useRef(null);
 
-  // Confirmation Modal
+  // Confirmation Modals
   const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [showExitConfirmModal, setShowExitConfirmModal] = useState(false);
+
+  // Strict Exam Guard: Prevent Accidental Exit, Browser Back, Page Refresh, and Monitor Tab Switching
+  useEffect(() => {
+    if (isSubmitted || !session) return;
+
+    // 1. Native Browser Close / Refresh Warning
+    const handleBeforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = "Exam is currently in progress! If you leave, your exam session will be terminated and your answers will not be saved.";
+      return e.returnValue;
+    };
+
+    // 2. Browser Back / Forward History Trap
+    window.history.pushState({ inExam: true }, "", window.location.href);
+
+    const handlePopState = () => {
+      // Re-push current state to trap navigation
+      window.history.pushState({ inExam: true }, "", window.location.href);
+
+      // Flash top toast
+      toast.error("⚠️ Exam in progress! You cannot go back.", {
+        description: "Please complete or submit your exam. Use the exit dialog if you must abandon it.",
+        duration: 5000,
+      });
+
+      // Open strict confirmation modal
+      setShowExitConfirmModal(true);
+    };
+
+    // 3. Tab Switching / Proctoring Alert
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        toast.warning("⚠️ Proctoring Notice: Leaving or switching tabs during the examination is strictly monitored!", {
+          duration: 4500,
+        });
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handlePopState);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isSubmitted, session]);
 
   // 1. Fetch Exam Session Data on Load
   useEffect(() => {
@@ -88,7 +141,7 @@ export default function ExamSessionPage({ params }) {
 
         if (!res.ok) {
           toast.error(data.error || "Failed to load exam session.");
-          router.push("/roadmaps");
+          routerRef.current.push("/roadmaps");
           return;
         }
 
@@ -132,7 +185,7 @@ export default function ExamSessionPage({ params }) {
     };
 
     fetchSession();
-  }, [sessionId, user?.id, isLoaded, router]);
+  }, [sessionId, user?.id, isLoaded]);
 
   // 2. Socket.IO Real-Time Synchronization
   useEffect(() => {
@@ -900,6 +953,15 @@ export default function ExamSessionPage({ params }) {
           )}
 
           <button
+            onClick={() => setShowExitConfirmModal(true)}
+            className="flex items-center gap-1.5 text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-800 hover:border-rose-500/40 transition-all"
+            title="Exit Exam"
+          >
+            <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+            <span>Exit Exam</span>
+          </button>
+
+          <button
             onClick={() => setShowSubmitModal(true)}
             disabled={submitting}
             className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm px-4 py-1.5 rounded-lg transition-colors shadow-sm"
@@ -1440,6 +1502,63 @@ export default function ExamSessionPage({ params }) {
                 className="px-5 py-2 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-md"
               >
                 {submitting ? "Grading..." : "Yes, Submit Now"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Strict Exam Exit Confirmation Modal */}
+      {showExitConfirmModal && (
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
+          <div className="bg-slate-900 border border-rose-500/40 rounded-2xl max-w-md w-full p-6 space-y-5 shadow-2xl relative">
+            <div className="flex items-start gap-3.5">
+              <div className="p-3 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30 flex-shrink-0">
+                <AlertTriangle className="w-6 h-6 animate-pulse" />
+              </div>
+              <div className="space-y-1.5">
+                <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                  <span>Exam In Progress</span>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                    Strict Mode
+                  </span>
+                </h3>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  You are currently writing an active examination. Navigating away or closing the browser will terminate this session and your progress will not be saved.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-slate-950/80 border border-rose-500/20 rounded-xl p-3.5 space-y-2 text-xs">
+              <div className="flex items-center justify-between text-slate-300 font-medium">
+                <span>Answered:</span>
+                <span className="text-cyan-400 font-bold">{answeredTotal} / {questions.length || 10} Questions</span>
+              </div>
+              <div className="flex items-center justify-between text-slate-300 font-medium">
+                <span>Time Remaining:</span>
+                <span className="text-amber-400 font-mono font-bold">{formatTime(secondsRemaining)}</span>
+              </div>
+              <p className="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
+                Are you sure you still want to exit and abandon this exam?
+              </p>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-1">
+              <button
+                onClick={() => setShowExitConfirmModal(false)}
+                className="px-5 py-2.5 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-500 text-white transition-all shadow-md hover:shadow-cyan-500/20 flex items-center gap-1.5"
+              >
+                <Check className="w-4 h-4" />
+                Stay & Continue Exam
+              </button>
+              <button
+                onClick={() => {
+                  setShowExitConfirmModal(false);
+                  router.push("/roadmaps");
+                }}
+                className="px-4 py-2.5 rounded-xl text-xs font-semibold text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 border border-rose-500/30 transition-colors"
+              >
+                Yes, Abandon & Exit
               </button>
             </div>
           </div>

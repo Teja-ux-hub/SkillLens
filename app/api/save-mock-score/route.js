@@ -58,7 +58,7 @@ export async function POST(request) {
     user.assessmentSummary.totalAttempts += 1;
     user.assessmentSummary.latestScore = mockScore;
     
-    if (mockScore >= 90) {
+    if (mockScore >= 80) {
       user.assessmentSummary.totalCompleted += 1;
     }
     

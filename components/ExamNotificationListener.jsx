@@ -9,7 +9,17 @@ import { getSocket } from "@/lib/socket";
 
 export default function ExamNotificationListener() {
   const router = useRouter();
+  const routerRef = useRef(router);
+  useEffect(() => {
+    routerRef.current = router;
+  }, [router]);
+
   const pathname = usePathname();
+  const pathnameRef = useRef(pathname);
+  useEffect(() => {
+    pathnameRef.current = pathname;
+  }, [pathname]);
+
   const { user, isLoaded } = useUser();
   const [activeInvite, setActiveInvite] = useState(null);
   const [dismissedSessionId, setDismissedSessionId] = useState(null);
@@ -24,12 +34,15 @@ export default function ExamNotificationListener() {
         const data = await res.json();
         if (data.hasInvite && data.invite?.sessionId !== dismissedSessionId) {
           // If we're already on that session page, don't show prompt
-          if (pathname?.includes(data.invite.sessionId)) {
-            setActiveInvite(null);
+          if (pathnameRef.current?.includes(data.invite.sessionId)) {
+            setActiveInvite(prev => prev === null ? prev : null);
             return;
           }
 
-          setActiveInvite(data.invite);
+          setActiveInvite(prev => {
+            if (prev?.sessionId === data.invite.sessionId) return prev;
+            return data.invite;
+          });
 
           if (!toastFiredRef.current) {
             toastFiredRef.current = true;
@@ -65,7 +78,7 @@ export default function ExamNotificationListener() {
                       onClick={() => {
                         toast.dismiss(t);
                         setActiveInvite(null);
-                        router.push(`/exam/session/${data.invite.sessionId}`);
+                        routerRef.current.push(`/exam/session/${data.invite.sessionId}`);
                       }}
                       className="flex-1 py-2 px-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/30"
                     >
@@ -83,7 +96,7 @@ export default function ExamNotificationListener() {
     } catch (err) {
       console.warn("Error checking active invite:", err);
     }
-  }, [user?.id, dismissedSessionId, pathname, router]);
+  }, [user?.id, dismissedSessionId]);
 
   // 1. Initial check & periodic poll
   useEffect(() => {
@@ -113,9 +126,12 @@ export default function ExamNotificationListener() {
 
     const handleInvitation = (data) => {
       console.log("📬 Live exam invitation received via Socket.IO:", data);
-      if (pathname?.includes(data.sessionId)) return;
+      if (pathnameRef.current?.includes(data.sessionId)) return;
 
-      setActiveInvite(data);
+      setActiveInvite(prev => {
+        if (prev?.sessionId === data.sessionId) return prev;
+        return data;
+      });
 
       toast.custom(
         (t) => (
@@ -149,7 +165,7 @@ export default function ExamNotificationListener() {
                 onClick={() => {
                   toast.dismiss(t);
                   setActiveInvite(null);
-                  router.push(`/exam/session/${data.sessionId}`);
+                  routerRef.current.push(`/exam/session/${data.sessionId}`);
                 }}
                 className="flex-1 py-2 px-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-md shadow-emerald-600/30"
               >
@@ -169,7 +185,7 @@ export default function ExamNotificationListener() {
       socket.off("connect", registerUser);
       socket.off("exam:invitation-received", handleInvitation);
     };
-  }, [user?.id, isLoaded, router, pathname]);
+  }, [user?.id, isLoaded]);
 
   // Don't render banner if on the session page or no active invite
   if (!activeInvite || pathname?.includes(activeInvite.sessionId)) return null;

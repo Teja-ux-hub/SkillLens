@@ -1,6 +1,6 @@
 // Updated CareerRoadmaps.js component with DB integration
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { toast } from "sonner";
@@ -34,7 +34,38 @@ import {
 
 const CareerRoadmaps = () => {
   const router = useRouter();
+  const routerRef = useRef(router);
+  useEffect(() => {
+    routerRef.current = router;
+  }, [router]);
+
+  const hasValidatedServerRef = useRef(false);
+
+  const isOnboardingEqual = (a, b) => {
+    if (!a || !b) return a === b;
+    return (
+      a.onboardingCompleted === b.onboardingCompleted &&
+      a.learningMode === b.learningMode &&
+      a.selectedRole === b.selectedRole &&
+      a.matchingStatus === b.matchingStatus &&
+      a.teammateId === b.teammateId
+    );
+  };
+
+  const isTeammateEqual = (a, b) => {
+    if (!a || !b) return a === b;
+    return (
+      (a.clerkUserId || a.userId) === (b.clerkUserId || b.userId) &&
+      a.username === b.username &&
+      a.email === b.email
+    );
+  };
   const { user } = useUser();
+  const prevUserIdRef = useRef(user?.id);
+  if (prevUserIdRef.current !== user?.id) {
+    prevUserIdRef.current = user?.id;
+    hasValidatedServerRef.current = false;
+  }
   const [selectedRoadmap, setSelectedRoadmap] = useState(null);
   const [expandedWeek, setExpandedWeek] = useState(null);
   const [showCompletion, setShowCompletion] = useState(false);
@@ -50,54 +81,106 @@ const CareerRoadmaps = () => {
 
   const [completedWeeks, setCompletedWeeks] = useState(new Set());
 
+  // Fetch teammate information with caching + forceRefresh option
+  const fetchTeammateInfo = useCallback(async (forceRefresh = false) => {
+    const userId = user?.id;
+    if (!userId) return;
+
+    // Check localStorage cache unless forceRefresh
+    if (!forceRefresh) {
+      const cachedTeammate = getTeammateDetailsCache(userId);
+      if (cachedTeammate) {
+        console.log('[ROADMAP] ⚡ Loaded teammate from localStorage cache:', cachedTeammate);
+        setTeammate(prev => isTeammateEqual(prev, cachedTeammate) ? prev : cachedTeammate);
+        return;
+      }
+    }
+
+    try {
+      console.log('[ROADMAP] 📡 Fetching fresh teammate info from API...');
+      const response = await fetch('/api/roadmaps/teammate');
+      if (response.ok) {
+        const data = await response.json();
+        if (data.teammate) {
+          console.log('[ROADMAP] ✅ Teammate info loaded and stored in localStorage:', data.teammate);
+          setTeammate(prev => isTeammateEqual(prev, data.teammate) ? prev : data.teammate);
+          setTeammateDetailsCache(userId, data.teammate);
+
+          // Keep userOnboarding in sync with teammateId only if changed
+          setUserOnboarding(prev => {
+            if (!prev) return prev;
+            if (prev.matchingStatus === 'matched' && prev.teammateId === data.teammate.clerkUserId) {
+              return prev;
+            }
+            const updated = {
+              ...prev,
+              matchingStatus: 'matched',
+              teammateId: data.teammate.clerkUserId
+            };
+            setOnboardingCache(userId, updated);
+            return updated;
+          });
+        } else {
+          setTeammate(prev => prev === null ? prev : null);
+          clearTeammateCache(userId);
+        }
+      }
+    } catch (error) {
+      console.error("[ROADMAP] ❌ Error fetching teammate:", error);
+    }
+  }, [user?.id]);
+
   // Check onboarding status and fetch teammate info with cache + live server sync
   useEffect(() => {
     let isMounted = true;
+    const userId = user?.id;
+    if (!userId) return;
 
     const checkOnboarding = async () => {
-      if (!user?.id) return;
-
       // 1. FAST PATH (Instant UI): Render cached data immediately if available
-      const cachedOnboarding = getOnboardingCache(user.id);
+      const cachedOnboarding = getOnboardingCache(userId);
       if (cachedOnboarding) {
         console.log('[ROADMAP] ⚡ Loaded onboarding data instantly from cache:', cachedOnboarding);
 
         if (!cachedOnboarding.onboardingCompleted) {
           console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
-          router.push('/roadmaps/onboarding');
+          routerRef.current.push('/roadmaps/onboarding');
           return;
         }
 
-        setUserOnboarding(cachedOnboarding);
+        setUserOnboarding(prev => isOnboardingEqual(prev, cachedOnboarding) ? prev : cachedOnboarding);
 
         // Auto-select chosen role
-        if (cachedOnboarding.selectedRole) {
-          const matchedRoadmap = careerRoadmaps.find(r => r.role === cachedOnboarding.selectedRole);
+        const targetRole = cachedOnboarding.selectedRole;
+        if (targetRole) {
+          const matchedRoadmap = careerRoadmaps.find(r => r.role === targetRole);
           if (matchedRoadmap) {
-            setSelectedRoadmap(matchedRoadmap);
-            console.log('[ROADMAP] 🎯 Auto-selected roadmap from cache:', cachedOnboarding.selectedRole);
+            setSelectedRoadmap(prev => prev?.role === matchedRoadmap.role ? prev : matchedRoadmap);
+            console.log('[ROADMAP] 🎯 Auto-selected roadmap from cache:', targetRole);
           }
         } else {
-          setSelectedRoadmap(careerRoadmaps[0]);
+          setSelectedRoadmap(prev => prev?.role === careerRoadmaps[0].role ? prev : careerRoadmaps[0]);
         }
 
         // Fast load teammate info from localStorage if matched
         if (cachedOnboarding.matchingStatus === 'matched') {
-          const cachedTeammate = getTeammateDetailsCache(user.id);
+          const cachedTeammate = getTeammateDetailsCache(userId);
           if (cachedTeammate && (!cachedOnboarding.teammateId || cachedTeammate.clerkUserId === cachedOnboarding.teammateId)) {
             console.log('[ROADMAP] ⚡ Loaded teammate details instantly from cache:', cachedTeammate);
-            setTeammate(cachedTeammate);
+            setTeammate(prev => isTeammateEqual(prev, cachedTeammate) ? prev : cachedTeammate);
           } else {
-            // Teammate not in cache or missing, fetch immediately
             fetchTeammateInfo(true);
           }
         } else if (cachedOnboarding.matchingStatus === 'waiting') {
-          setIsPolling(true);
+          setIsPolling(prev => prev ? prev : true);
         }
 
-        setIsCheckingOnboarding(false);
-        // Note: Do NOT return here! Always verify live DB status with server below to prevent stale cache lockouts.
+        setIsCheckingOnboarding(prev => prev ? false : prev);
       }
+
+      // Avoid duplicate network revalidation for the same mount
+      if (hasValidatedServerRef.current) return;
+      hasValidatedServerRef.current = true;
 
       // 2. NETWORK REVALIDATION: Always sync with live server DB
       try {
@@ -110,51 +193,51 @@ const CareerRoadmaps = () => {
 
           if (!data.onboardingCompleted) {
             console.log('[ROADMAP] ↪️ Redirecting to onboarding...');
-            router.push('/roadmaps/onboarding');
+            routerRef.current.push('/roadmaps/onboarding');
             return;
           }
 
-          // Persist in localStorage and state
-          setOnboardingCache(user.id, data);
-          setUserOnboarding(data);
+          // Persist in localStorage and state only if actually different
+          setOnboardingCache(userId, data);
+          setUserOnboarding(prev => isOnboardingEqual(prev, data) ? prev : data);
 
           // Auto-select the user's chosen role if they have one
           if (data.selectedRole) {
             const matchedRoadmap = careerRoadmaps.find(r => r.role === data.selectedRole);
             if (matchedRoadmap) {
-              setSelectedRoadmap(matchedRoadmap);
+              setSelectedRoadmap(prev => prev?.role === matchedRoadmap.role ? prev : matchedRoadmap);
               console.log('[ROADMAP] 🎯 Auto-selected roadmap:', data.selectedRole);
             }
           } else {
-            setSelectedRoadmap(careerRoadmaps[0]);
+            setSelectedRoadmap(prev => prev?.role === careerRoadmaps[0].role ? prev : careerRoadmaps[0]);
           }
 
           // Handle live matching status
           if (data.matchingStatus === 'matched') {
-            setIsPolling(false);
-            const cachedTeammate = getTeammateDetailsCache(user.id);
+            setIsPolling(prev => !prev ? prev : false);
+            const cachedTeammate = getTeammateDetailsCache(userId);
             if (!cachedTeammate || (data.teammateId && cachedTeammate.clerkUserId !== data.teammateId)) {
               console.log('[ROADMAP] 📡 Fetching fresh teammate info for matched user...');
               fetchTeammateInfo(true);
             } else {
-              setTeammate(cachedTeammate);
+              setTeammate(prev => isTeammateEqual(prev, cachedTeammate) ? prev : cachedTeammate);
             }
           } else if (data.matchingStatus === 'waiting') {
             console.log('[ROADMAP] ⏳ User is waiting for a match - starting poll');
-            setTeammate(null);
-            clearTeammateCache(user.id);
-            setIsPolling(true);
+            setTeammate(prev => prev === null ? prev : null);
+            clearTeammateCache(userId);
+            setIsPolling(prev => prev ? prev : true);
           } else {
-            setTeammate(null);
-            clearTeammateCache(user.id);
-            setIsPolling(false);
+            setTeammate(prev => prev === null ? prev : null);
+            clearTeammateCache(userId);
+            setIsPolling(prev => !prev ? prev : false);
           }
         }
       } catch (error) {
         console.error("[ROADMAP] ❌ Error checking onboarding:", error);
       } finally {
         if (isMounted) {
-          setIsCheckingOnboarding(false);
+          setIsCheckingOnboarding(prev => prev ? false : prev);
         }
       }
     };
@@ -164,54 +247,9 @@ const CareerRoadmaps = () => {
     return () => {
       isMounted = false;
     };
-  }, [user?.id, router]);
+  }, [user?.id, fetchTeammateInfo]);
 
-  // Fetch teammate information with caching + forceRefresh option
-  const fetchTeammateInfo = async (forceRefresh = false) => {
-    if (!user?.id) return;
 
-    // Check localStorage cache unless forceRefresh
-    if (!forceRefresh) {
-      const cachedTeammate = getTeammateDetailsCache(user.id);
-      if (cachedTeammate) {
-        console.log('[ROADMAP] ⚡ Loaded teammate from localStorage cache:', cachedTeammate);
-        setTeammate(cachedTeammate);
-        return;
-      }
-    }
-
-    try {
-      console.log('[ROADMAP] 📡 Fetching fresh teammate info from API...');
-      const response = await fetch('/api/roadmaps/teammate');
-      if (response.ok) {
-        const data = await response.json();
-        if (data.teammate) {
-          console.log('[ROADMAP] ✅ Teammate info loaded and stored in localStorage:', data.teammate);
-          setTeammate(data.teammate);
-          setTeammateDetailsCache(user.id, data.teammate);
-
-          // Keep userOnboarding in sync with teammateId
-          setUserOnboarding(prev => {
-            if (prev && (!prev.teammateId || prev.teammateId !== data.teammate.clerkUserId)) {
-              const updated = {
-                ...prev,
-                matchingStatus: 'matched',
-                teammateId: data.teammate.clerkUserId
-              };
-              setOnboardingCache(user.id, updated);
-              return updated;
-            }
-            return prev;
-          });
-        } else {
-          setTeammate(null);
-          clearTeammateCache(user.id);
-        }
-      }
-    } catch (error) {
-      console.error("[ROADMAP] ❌ Error fetching teammate:", error);
-    }
-  };
 
   // Fetch teammate progress summary with 24-hour localStorage caching
   const fetchTeammateProgressWithCache = async (forceRefresh = false) => {
@@ -308,13 +346,14 @@ const CareerRoadmaps = () => {
     if (!isPolling || !user?.id) return;
 
     console.log('[ROADMAP] 🔄 Starting match polling...');
+    let isMounted = true;
     
     const pollInterval = setInterval(async () => {
       try {
         console.log('[ROADMAP] 🔍 Polling for match...');
         const response = await fetch('/api/roadmaps/check-match');
         
-        if (response.ok) {
+        if (response.ok && isMounted) {
           const data = await response.json();
           
           if (data.status === 'matched' && data.teammateId) {
@@ -323,8 +362,11 @@ const CareerRoadmaps = () => {
             // Stop polling immediately
             setIsPolling(false);
             
-            // Update onboarding state and cache
+            // Update onboarding state and cache only if changed
             setUserOnboarding(prev => {
+              if (prev?.matchingStatus === 'matched' && String(prev?.teammateId) === String(data.teammateId)) {
+                return prev;
+              }
               const updated = {
                 ...prev,
                 matchingStatus: 'matched',
@@ -348,27 +390,39 @@ const CareerRoadmaps = () => {
 
     // Cleanup on unmount
     return () => {
+      isMounted = false;
       console.log('[ROADMAP] 🛑 Stopping poll interval');
       clearInterval(pollInterval);
     };
-  }, [isPolling, user?.id]);
+  }, [isPolling, user?.id, fetchTeammateInfo]);
 
   useEffect(() => {
+    let isMounted = true;
     const loadCompletedWeeks = async () => {
       if (!user?.id) return;
       
       try {
         const response = await fetch('/api/get-all-progress');
-        if (response.ok) {
+        if (response.ok && isMounted) {
           const data = await response.json();
-          const completedSet = new Set(Object.keys(data.completedWeeks));
-          setCompletedWeeks(completedSet);
+          if (data && data.completedWeeks) {
+            const keys = Object.keys(data.completedWeeks);
+            setCompletedWeeks(prev => {
+              if (prev && prev.size === keys.length && keys.every(k => prev.has(k))) {
+                return prev;
+              }
+              return new Set(keys);
+            });
+          }
         }
       } catch (error) {
       }
     };
 
     loadCompletedWeeks();
+    return () => {
+      isMounted = false;
+    };
   }, [user?.id]);
 
   const getWeekProgress = (roadmap, weekIndex) => {
@@ -435,9 +489,9 @@ const CareerRoadmaps = () => {
         const data = await response.json();
         const mockScore = data.mockScore;
 
-        if (!mockScore || mockScore < 90) {
+        if (!mockScore || mockScore < 80) {
           toast.error(
-            "You need to score 90% or higher to mark this week as completed!",
+            "You need to score 80% or higher to mark this week as completed!",
             {
               description: mockScore
                 ? `Your current score is ${mockScore}%. Take the mock interview again to improve your score.`
@@ -1108,7 +1162,7 @@ const CareerRoadmaps = () => {
                       <div className="text-sm text-gray-400 mb-1">Exams Wrote</div>
                       <div className="text-3xl font-bold text-amber-400">{teammateProgress.assessmentSummary?.totalAttempts || teammateProgress.mockInterviews?.length || 0}</div>
                       <p className="text-xs text-amber-300 mt-1">
-                        {teammateProgress.assessmentSummary?.totalCompleted || 0} Passed (≥90%)
+                        {teammateProgress.assessmentSummary?.totalCompleted || 0} Passed (≥80%)
                       </p>
                     </div>
                     <div className="bg-gradient-to-br from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-lg p-4">
@@ -1145,14 +1199,14 @@ const CareerRoadmaps = () => {
                               </div>
                               <div className="text-right">
                                 <span className={`text-2xl font-extrabold ${
-                                  interview.score >= 90 ? 'text-green-400' :
+                                  interview.score >= 80 ? 'text-green-400' :
                                   interview.score >= 70 ? 'text-blue-400' :
                                   interview.score >= 50 ? 'text-amber-400' : 'text-red-400'
                                 }`}>
                                   {interview.score}%
                                 </span>
                                 <div className="text-[10px] text-gray-400">
-                                  {interview.score >= 90 ? 'Passed ✅' : 'Needs Retake ⚠️'}
+                                  {interview.score >= 80 ? 'Passed ✅' : 'Needs Retake ⚠️'}
                                 </div>
                               </div>
                             </div>
